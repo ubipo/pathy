@@ -42,6 +42,6 @@ npmask = np.array(mask)
 
 img = np.zeros((h,w))
 for npm in npmask:
-    cv2.fillPoly(img, pts = [np.array(npm)], color=(255,255,0), lineType=8, shift=0)
+    cv2.fillPoly(img, pts = [np.array(npm)], color=[255,255,255], lineType=8, shift=0)
 
 cv2.imwrite(os.path.dirname(image_path)+"/" + os.path.splitext(filename)[0] +"_mask.png", img)
