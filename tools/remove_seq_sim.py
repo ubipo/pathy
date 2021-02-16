@@ -8,17 +8,23 @@ Usage: remove_seq_sim.py <dir> <threshold>
 "sequential" means sorted()
 See also: https://docs.opencv.org/3.4/d8/dc8/tutorial_histogram_comparison.html
 
-Deletion percentage by threshold values for giusti:
-32: 47.73%
-35: 49.42%
-50: 56.83%
-70: 63.58%
+Deletion ~percentage by threshold values for giusti:
+32: 47
+35: 49
+50: 56
+70: 63
+80: 67
+150: 78
+200: 81
+300: 86 <-
+400: 88
 """
 
-import os, sys, collections, statistics
+import os, sys, collections, statistics, shutil
 
 import cv2 as cv
 import progressbar
+import click
 
 
 CHISQUARE = 1
@@ -35,12 +41,12 @@ channels = [0, 1]
 def main(dir_p: str, threshold: float):
     _, _, image_names = next(os.walk(dir_p))
     image_names.sort()
+    image_ps = [os.path.join(dir_p, image_name) for image_name in image_names]
     
     image_ps_to_delete = []
     last_hists = collections.deque([], 3)
-    with progressbar.ProgressBar(max_value=len(image_names)) as bar:
-        for i, image_name in enumerate(image_names):
-            image_p = os.path.join(dir_p, image_name)
+    with progressbar.ProgressBar(max_value=len(image_ps)) as bar:
+        for i, image_p in enumerate(image_ps):
             image = cv.imread(image_p)
             image_hsv = cv.cvtColor(image, cv.COLOR_BGR2HSV)
             hist = cv.calcHist([image_hsv], channels, None, histSize, ranges, accumulate=False)
@@ -54,17 +60,20 @@ def main(dir_p: str, threshold: float):
 
             last_hists.appendleft(hist)
             bar.update(i)
-        
-            if i == 170:
-                break
 
-    print(image_ps_to_delete)
+    image_ps_to_keep = [image_p for image_p in image_ps if image_p not in image_ps_to_delete]
 
     images_len = len(image_names)
     images_to_delete_len = len(image_ps_to_delete)
     deleted_percentage = round((images_to_delete_len / images_len) * 100, 2)
     kept_percentage = 100 - deleted_percentage
     print(f"Deleting {images_to_delete_len} of {images_len} frames (delete {deleted_percentage}%, keep {kept_percentage}%)")
+
+    if click.confirm('Copy kept images to "kept" subdir'):
+        kept_dir_p = os.path.join(dir_p, "kept")
+        os.mkdir(kept_dir_p)
+        for image_p in image_ps_to_keep:
+            shutil.copy(image_p, kept_dir_p)
 
 
 if __name__ == "__main__":
