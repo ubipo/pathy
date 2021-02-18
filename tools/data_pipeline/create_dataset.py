@@ -5,7 +5,6 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import IPython.display as display
 
-
 SEED = 42
 path = "./demo_dataset/images/"
 IMG_SIZE_X = 880
@@ -13,6 +12,15 @@ IMG_SIZE_Y = 487
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 BUFFER_SIZE = 1000
 BATCH_SIZE = 5
+
+
+def augment_fn(image):
+    data = {"image":image}
+    aug_data =  transforms(**data)
+    aug_img = aug_data["image"]
+    aug_img = tf.cast(aug_img/255.0, tf.float32)
+    aug_img = tf.image.resize(aug_img, size=[IMG_SIZE_Y, IMG_SIZE_X])
+    return aug_img
 
 
 def parse_image(img_path: str) -> dict:
@@ -47,19 +55,7 @@ def load_image_train(datapoint: dict) -> tuple:
     input_image = tf.image.resize(datapoint['image'], (IMG_SIZE_Y, IMG_SIZE_X))
     input_mask = tf.image.resize(datapoint['mask'], (IMG_SIZE_Y, IMG_SIZE_X))
 
-    #It is possible to do some image mutations here
-
     input_image, input_mask = normalize(input_image, input_mask)
-
-    return input_image, input_mask
-
-@tf.function
-def load_image_test(datapoint: dict) -> tuple:
-    input_image = tf.image.resize(datapoint['image'], (IMG_SIZE_X, IMG_SIZE_Y))
-    input_mask = tf.image.resize(datapoint['mask'], (IMG_SIZE_X, IMG_SIZE_Y))
-
-    input_image, input_mask = normalize(input_image, input_mask)
-
     return input_image, input_mask
 
 @tf.function
@@ -77,13 +73,11 @@ if __name__ == "__main__":
 
     dataset = {'train': train_dataset}
 
-    dataset['train'] = dataset['train'].map(load_image_train, num_parallel_calls=AUTOTUNE)
-    dataset['train'] = dataset['train'].shuffle(buffer_size=BUFFER_SIZE, seed=43)
-    dataset['train'] = dataset['train'].repeat()
-    dataset['train'] = dataset['train'].batch(BATCH_SIZE)
-    dataset['train'] = dataset['train'].prefetch(buffer_size=AUTOTUNE)
+    train = dataset['train'].map(load_image_train, num_parallel_calls=AUTOTUNE)
+    train = train.cache().shuffle(buffer_size=BUFFER_SIZE).batch(BATCH_SIZE).repeat()
+    train = train.prefetch(buffer_size=tf.data.AUTOTUNE)
 
-    for image, mask in dataset['train'].take(1):
+    for image, mask in train.take(1):
         sample_image, sample_mask = image, mask
     
     display_sample([sample_image[0], sample_mask[0]])
@@ -100,5 +94,6 @@ def display_sample(display_list):
         plt.imshow(tf.keras.prepocessing.image.array_to_img(display_list[i]))
         plt.axis('off')
     plt.show()
+
 
 
