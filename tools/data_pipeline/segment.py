@@ -1,4 +1,4 @@
-import os
+import os, sys
 import cv2
 import tensorflow.keras as keras
 import numpy as np
@@ -199,11 +199,12 @@ class Dataloder(keras.utils.Sequence):
             self.indexes = np.random.permutation(self.indexes)
 
 if __name__ == "__main__":
-    DATA_DIR = Path('demo_dataset')
+    DATA_DIR = Path(sys.argv[1])
     x = list(DATA_DIR.glob('*.jpg'))
     y = list(DATA_DIR.glob('*.gt.png'))
 
     assert(len(x) == len(y))
+    assert(len(x) > 0)
 
     x.sort()
     y.sort()
@@ -212,9 +213,6 @@ if __name__ == "__main__":
     x_train = x[:valid_index]
     x_valid = x[valid_index:test_index]
     x_test = x[test_index:]
-    print(len(x_train))
-    print(len(x_valid))
-    print(len(x_test))
     
     y_train = y[:valid_index]
     y_valid = y[valid_index:test_index]
@@ -263,12 +261,6 @@ if __name__ == "__main__":
             y_valid, 
         augmentation=get_validation_augmentation(),
         preprocessing=get_preprocessing(preprocess_input),
-    )
-
-    image, mask = train_dataset[12] # get some sample
-    visualize(
-        image=image, 
-        path_mask=mask[..., 0].squeeze(),
     )
 
     train_dataloader = Dataloder(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
