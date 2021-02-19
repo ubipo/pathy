@@ -30,8 +30,77 @@ def denormalize(x):
     x = (x - x_min) / (x_max - x_min)
     x = x.clip(0, 1)
     return x
-    
 
+def round_clip_0_1(x, **kwargs):
+    return x.round().clip(0, 1)
+
+# define heavy augmentations
+def get_training_augmentation():
+    train_transform = [
+
+        A.HorizontalFlip(p=0.5),
+
+        A.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=1, border_mode=0),
+
+        A.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0),
+        A.RandomCrop(height=320, width=320, always_apply=True),
+
+        A.IAAAdditiveGaussianNoise(p=0.2),
+        A.IAAPerspective(p=0.5),
+
+        A.OneOf(
+            [
+                A.CLAHE(p=1),
+                A.RandomBrightness(p=1),
+                A.RandomGamma(p=1),
+            ],
+            p=0.9,
+        ),
+
+        A.OneOf(
+            [
+                A.IAASharpen(p=1),
+                A.Blur(blur_limit=3, p=1),
+                A.MotionBlur(blur_limit=3, p=1),
+            ],
+            p=0.9,
+        ),
+
+        A.OneOf(
+            [
+                A.RandomContrast(p=1),
+                A.HueSaturationValue(p=1),
+            ],
+            p=0.9,
+        ),
+        A.Lambda(mask=round_clip_0_1)
+    ]
+    return A.Compose(train_transform)
+
+def get_validation_augmentation():
+    """Add paddings to make image shape divisible by 32"""
+    test_transform = [
+        A.PadIfNeeded(448, 640)
+    ]
+    return A.Compose(test_transform)
+
+def get_preprocessing(preprocessing_fn):
+    """Construct preprocessing transform
+    
+    Args:
+        preprocessing_fn (callbale): data normalization function 
+            (can be specific for each pretrained neural network)
+    Return:
+        transform: albumentations.Compose
+    
+    """
+    
+    _transform = [
+        A.Lambda(image=preprocessing_fn),
+    ]
+    return A.Compose(_transform)
+    
+    
 # classes for data loading and preprocessing
 class Dataset:
     """CamVid Dataset. Read images, apply augmentation and preprocessing transformations.
@@ -46,21 +115,16 @@ class Dataset:
             (e.g. noralization, shape manipulation, etc.)
     
     """
-    
-    CLASSES = ['path']
-    
+
     def __init__(
             self, 
             x_ps: List[Path], 
-            y_ps: List[Path], 
-            classes=None, 
+            y_ps: List[Path],  
             augmentation=None, 
             preprocessing=None,
     ):
         self.x_ps = x_ps
         self.y_ps = y_ps
-
-        self.class_values = [self.CLASSES.index(cls.lower()) for cls in classes]
         
         self.augmentation = augmentation
         self.preprocessing = preprocessing
@@ -75,11 +139,8 @@ class Dataset:
         mask = cv2.resize(mask, (448,640))
         
         # extract certain classes from mask (e.g. cars)
-        masks = [(mask == v) for v in self.class_values]
+        masks = [(mask != 0)]
         mask = np.stack(masks, axis=-1).astype('float')
-        
-        # add background if mask is not binary
-
         
         # apply augmentations
         if self.augmentation:
@@ -126,7 +187,7 @@ class Dataloder(keras.utils.Sequence):
         # transpose list of lists
         batch = [np.stack(samples, axis=0) for samples in zip(*data)]
         
-        return batch
+        return tuple(batch)
     
     def __len__(self):
         """Denotes the number of batches per epoch"""
@@ -137,19 +198,7 @@ class Dataloder(keras.utils.Sequence):
         if self.shuffle:
             self.indexes = np.random.permutation(self.indexes)
 
-    def get_preprocessing(preprocessing_fn):
-
-    
-        _transform = [
-            A.Lambda(image=preprocessing_fn),
-        ]
-        return A.Compose(_transform)
-
 if __name__ == "__main__":
-    # sm.set_framework('keras')
-    # print(tf.keras.utils.Sequence)
-    # print(keras.utils.Sequence)
-    # print(tf.keras.utils.Sequence == keras.utils.Sequence )
     DATA_DIR = Path('demo_dataset')
     x = list(DATA_DIR.glob('*.jpg'))
     y = list(DATA_DIR.glob('*.gt.png'))
@@ -171,17 +220,9 @@ if __name__ == "__main__":
     y_valid = y[valid_index:test_index]
     y_test = y[test_index:]
 
-    dataset = Dataset(x_train, y_train, classes=['path'])
-
-    # image, mask = dataset[5] # get some sample
-    # visualize(
-    #     image=image, 
-    #     path_mask=mask[..., 0].squeeze(),
-    # )
-
     BACKBONE = 'efficientnetb3'
     BATCH_SIZE = 8
-    CLASSES = ['car']
+    CLASSES = ['path']
     LR = 0.0001
     EPOCHS = 40
     
@@ -213,27 +254,32 @@ if __name__ == "__main__":
     train_dataset = Dataset(
         x_train, 
         y_train, 
-        classes=['path']
+        augmentation=get_training_augmentation(),
+        preprocessing=get_preprocessing(preprocess_input),
     )
 
     valid_dataset = Dataset(
             x_valid, 
             y_valid, 
-        classes=['path']
+        augmentation=get_validation_augmentation(),
+        preprocessing=get_preprocessing(preprocess_input),
+    )
+
+    image, mask = train_dataset[12] # get some sample
+    visualize(
+        image=image, 
+        path_mask=mask[..., 0].squeeze(),
     )
 
     train_dataloader = Dataloder(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-    valid_dataloader = Dataloder(valid_dataset, batch_size=BATCH_SIZE, shuffle=True)
-    print(train_dataloader[0][0].shape)
-    assert train_dataloader[0][0].shape == (BATCH_SIZE, 640, 448, 3)
-    assert train_dataloader[0][1].shape == (BATCH_SIZE, 640, 448, n_classes)
+    valid_dataloader = Dataloder(valid_dataset, batch_size=1, shuffle=False)
+
 
     callbacks = [
         keras.callbacks.ModelCheckpoint('./best_model.h5', save_weights_only=True, save_best_only=True, mode='min'),
         keras.callbacks.ReduceLROnPlateau(),
     ]
 
-    
     history = model.fit(
         train_dataloader,
         steps_per_epoch=len(train_dataloader), 
