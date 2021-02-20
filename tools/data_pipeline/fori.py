@@ -1,4 +1,5 @@
 import os, sys
+from re import X
 import cv2
 import tensorflow.keras as keras
 import numpy as np
@@ -177,6 +178,8 @@ class Dataloder(keras.utils.Sequence):
         self.on_epoch_end()
 
     def __getitem__(self, i):
+
+        return self.dataset[i]
         
         # collect batch data
         start = i * self.batch_size
@@ -207,81 +210,94 @@ def init_tpu():
     return tf.distribute.TPUStrategy(resolver)
 
 
-if __name__ == "__main__":
-    DATA_DIR = Path(sys.argv[1])
-    x = list(DATA_DIR.glob('*.jpg'))
-    y = list(DATA_DIR.glob('*.gt.png'))
+DATA_DIR = Path("/opt/padnet/freiburg-smol")
+x = list(DATA_DIR.glob('*.jpg'))
+y = list(DATA_DIR.glob('*.gt.png'))
 
-    assert(len(x) == len(y))
-    assert(len(x) > 0)
+assert(len(x) == len(y))
+assert(len(x) > 0)
 
-    x.sort()
-    y.sort()
-    valid_index = math.floor(len(x) * 0.7)
-    test_index = math.floor(len(x) * 0.85)
-    x_train = x[:valid_index]
-    x_valid = x[valid_index:test_index]
-    x_test = x[test_index:]
-    
-    y_train = y[:valid_index]
-    y_valid = y[valid_index:test_index]
-    y_test = y[test_index:]
+x.sort()
+y.sort()
+valid_index = math.floor(len(x) * 0.7)
+test_index = math.floor(len(x) * 0.85)
+x_train = x[:valid_index]
+x_valid = x[valid_index:test_index]
+x_test = x[test_index:]
 
-    BACKBONE = 'efficientnetb3'
-    BATCH_SIZE = 1
-    CLASSES = ['path']
-    LR = 0.0001
-    EPOCHS = 40
+y_train = y[:valid_index]
+y_valid = y[valid_index:test_index]
+y_test = y[test_index:]
 
-    n_classes = 1 if len(CLASSES) == 1 else (len(CLASSES) + 1)  # case for binary and multiclass segmentation
-    activation = 'sigmoid' if n_classes == 1 else 'softmax'
-    
-    # tpu_strategy = init_tpu()
+BACKBONE = 'efficientnetb3'
+BATCH_SIZE = 1
+CLASSES = ['path']
+LR = 0.0001
+EPOCHS = 40
 
-    with open("/dev/random"):
-    # with tpu_strategy.scope():    
-        dice_loss = sm.losses.DiceLoss()
-        focal_loss = sm.losses.BinaryFocalLoss() if n_classes == 1 else sm.losses.CategoricalFocalLoss()
-        total_loss = dice_loss + (1 * focal_loss)
+n_classes = 1 if len(CLASSES) == 1 else (len(CLASSES) + 1)  # case for binary and multiclass segmentation
+activation = 'sigmoid' if n_classes == 1 else 'softmax'
 
-        optim = keras.optimizers.Adam(LR)
+tpu_strategy = init_tpu()
 
-        metrics = [sm.metrics.IOUScore(threshold=0.5), sm.metrics.FScore(threshold=0.5)]
+# with open("/dev/random"):
+with tpu_strategy.scope():    
+    dice_loss = sm.losses.DiceLoss()
+    focal_loss = sm.losses.BinaryFocalLoss() if n_classes == 1 else sm.losses.CategoricalFocalLoss()
+    total_loss = dice_loss + (1 * focal_loss)
 
-        print("All devices: ", tf.config.list_logical_devices('TPU'))
-        model: keras.Model = sm.Unet(BACKBONE, classes=n_classes, activation=activation)
-        model.compile(optim, total_loss, metrics)
+    optim = keras.optimizers.Adam(LR)
 
-    preprocess_input = sm.get_preprocessing(BACKBONE)
+    # metrics = [sm.metrics.IOUScore(threshold=0.5), sm.metrics.FScore(threshold=0.5)]
 
-    train_dataset = Dataset(
-        x_train, 
-        y_train, 
-        # augmentation=get_training_augmentation(),
-        preprocessing=get_preprocessing(preprocess_input),
-    )
+    print("All devices: ", tf.config.list_logical_devices('TPU'))
+    model: keras.Model = sm.Unet(BACKBONE, classes=n_classes, activation=activation)
+    # model.compile(optim, total_loss, metrics)
+    model.compile(optim, total_loss)
 
-    valid_dataset = Dataset(
-            x_valid, 
-            y_valid, 
-        # augmentation=get_validation_augmentation(),
-        preprocessing=get_preprocessing(preprocess_input),
-    )
+preprocess_input = sm.get_preprocessing(BACKBONE)
 
-    train_dataloader = Dataloder(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-    valid_dataloader = Dataloder(valid_dataset, batch_size=1, shuffle=False)
+train_dataset = Dataset(
+    x_train, 
+    y_train, 
+    # augmentation=get_training_augmentation(),
+    preprocessing=get_preprocessing(preprocess_input),
+)
 
-    callbacks = [
-        keras.callbacks.ModelCheckpoint('./best_model.h5', save_weights_only=True, save_best_only=True, mode='min'),
-        keras.callbacks.ReduceLROnPlateau(),
-    ]
+valid_dataset = Dataset(
+        x_test, 
+        y_test, 
+    # augmentation=get_validation_augmentation(),
+    preprocessing=get_preprocessing(preprocess_input),
+)
 
-    history = model.fit(
-        train_dataloader,
-        steps_per_epoch=len(train_dataloader), 
-        epochs=EPOCHS, 
-        callbacks=callbacks, 
-        validation_data=valid_dataloader, 
-        validation_steps=len(valid_dataloader),
-    )
-    
+train_dataloader = Dataloder(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+valid_dataloader = Dataloder(valid_dataset, batch_size=1, shuffle=False)
+
+callbacks = [
+    keras.callbacks.ModelCheckpoint('./best_model.h5', save_weights_only=True, save_best_only=True, mode='min'),
+    keras.callbacks.ReduceLROnPlateau(),
+]
+
+train_data = list(train_dataloader)
+valid_data = list(valid_dataloader)
+
+x_train, y_train = zip(*train_data)
+x_valid, y_valid = zip(*valid_data)
+# dimensions are: (batch_nr, img_x, img_y, rgb)
+
+# model.predict(x_train[0])
+
+# x_train_one_batch = x_train[0]
+# y_train_one_batch = y_train[0]
+
+# model.train_on_batch(x_train_one_batch, y_train_one_batch)
+
+history = model.fit(
+    x=np.asarray(x_train),
+    y=np.asarray(y_train),
+    batch_size=1,
+    epochs=EPOCHS, 
+    callbacks=callbacks, 
+    validation_data=(np.asarray(x_valid), np.asarray(y_valid)), 
+)
