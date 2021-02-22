@@ -1,0 +1,11 @@
+file: README
+sections:
+- file: dataprep/yamaha_flatten
+  sections:
+  - file: dataprep/create_label_jsons
+  - file: dataprep/freiburg_flatten
+  - file: dataprep/remove_seq_sim
+  - file: dataprep/giusti_flatten
+  - file: dataprep/convert_masks
+  - file: dataprep/images_to_tfr
+- file: admin/data-labelling

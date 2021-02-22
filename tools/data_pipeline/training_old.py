@@ -1,4 +1,4 @@
-import os
+import os, sys
 import cv2
 import tensorflow.keras as keras
 import numpy as np
@@ -134,9 +134,10 @@ class Dataset:
         # read data
         image = cv2.imread(str(self.x_ps[i].resolve()))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = cv2.resize(image, (448,640))
+        size = (640,448)
+        image = cv2.resize(image, size)
         mask = cv2.imread(str(self.y_ps[i].resolve()), 0)
-        mask = cv2.resize(mask, (448,640))
+        mask = cv2.resize(mask, size)
         
         # extract certain classes from mask (e.g. cars)
         masks = [(mask != 0)]
@@ -198,12 +199,21 @@ class Dataloder(keras.utils.Sequence):
         if self.shuffle:
             self.indexes = np.random.permutation(self.indexes)
 
+
+def init_tpu():
+    resolver = tf.distribute.cluster_resolver.TPUClusterResolver(tpu='grpc://10.240.1.2')
+    tf.config.experimental_connect_to_cluster(resolver)
+    tf.tpu.experimental.initialize_tpu_system(resolver)
+    return tf.distribute.TPUStrategy(resolver)
+
+
 if __name__ == "__main__":
-    DATA_DIR = Path('demo_dataset')
+    DATA_DIR = Path(sys.argv[1])
     x = list(DATA_DIR.glob('*.jpg'))
     y = list(DATA_DIR.glob('*.gt.png'))
 
     assert(len(x) == len(y))
+    assert(len(x) > 0)
 
     x.sort()
     y.sort()
@@ -212,68 +222,54 @@ if __name__ == "__main__":
     x_train = x[:valid_index]
     x_valid = x[valid_index:test_index]
     x_test = x[test_index:]
-    print(len(x_train))
-    print(len(x_valid))
-    print(len(x_test))
     
     y_train = y[:valid_index]
     y_valid = y[valid_index:test_index]
     y_test = y[test_index:]
 
     BACKBONE = 'efficientnetb3'
-    BATCH_SIZE = 8
+    BATCH_SIZE = 1
     CLASSES = ['path']
     LR = 0.0001
     EPOCHS = 40
-    
-    preprocess_input = sm.get_preprocessing(BACKBONE)
 
-    # define network parameters
     n_classes = 1 if len(CLASSES) == 1 else (len(CLASSES) + 1)  # case for binary and multiclass segmentation
     activation = 'sigmoid' if n_classes == 1 else 'softmax'
+    
+    # tpu_strategy = init_tpu()
 
-    #create model
-    model = sm.Unet(BACKBONE, classes=n_classes, activation=activation)
+    with open("/dev/random"):
+    # with tpu_strategy.scope():    
+        dice_loss = sm.losses.DiceLoss()
+        focal_loss = sm.losses.BinaryFocalLoss() if n_classes == 1 else sm.losses.CategoricalFocalLoss()
+        total_loss = dice_loss + (1 * focal_loss)
 
-    # define optomizer
-    optim = keras.optimizers.Adam(LR)
+        optim = keras.optimizers.Adam(LR)
 
-    # Segmentation models losses can be combined together by '+' and scaled by integer or float factor
-    dice_loss = sm.losses.DiceLoss()
-    focal_loss = sm.losses.BinaryFocalLoss() if n_classes == 1 else sm.losses.CategoricalFocalLoss()
-    total_loss = dice_loss + (1 * focal_loss)
+        metrics = [sm.metrics.IOUScore(threshold=0.5), sm.metrics.FScore(threshold=0.5)]
 
-    # actulally total_loss can be imported directly from library, above example just show you how to manipulate with losses
-    # total_loss = sm.losses.binary_focal_dice_loss # or sm.losses.categorical_focal_dice_loss 
+        print("All devices: ", tf.config.list_logical_devices('TPU'))
+        model: keras.Model = sm.Unet(BACKBONE, classes=n_classes, activation=activation)
+        model.compile(optim, total_loss, metrics)
 
-    metrics = [sm.metrics.IOUScore(threshold=0.5), sm.metrics.FScore(threshold=0.5)]
-
-    # compile keras model with defined optimozer, loss and metrics
-    model.compile(optim, total_loss, metrics)
+    preprocess_input = sm.get_preprocessing(BACKBONE)
 
     train_dataset = Dataset(
         x_train, 
         y_train, 
-        augmentation=get_training_augmentation(),
+        # augmentation=get_training_augmentation(),
         preprocessing=get_preprocessing(preprocess_input),
     )
 
     valid_dataset = Dataset(
             x_valid, 
             y_valid, 
-        augmentation=get_validation_augmentation(),
+        # augmentation=get_validation_augmentation(),
         preprocessing=get_preprocessing(preprocess_input),
-    )
-
-    image, mask = train_dataset[12] # get some sample
-    visualize(
-        image=image, 
-        path_mask=mask[..., 0].squeeze(),
     )
 
     train_dataloader = Dataloder(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     valid_dataloader = Dataloder(valid_dataset, batch_size=1, shuffle=False)
-
 
     callbacks = [
         keras.callbacks.ModelCheckpoint('./best_model.h5', save_weights_only=True, save_best_only=True, mode='min'),
