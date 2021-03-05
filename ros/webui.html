@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paddy Web UI</title>
+
+    <style>
+        .connection-panel {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section {
+            margin-bottom: 1rem;
+        }
+
+        .images-cont {
+            display: flex;
+            flex-flow: row;
+        }
+
+        #steering-indicator {
+            border: 2px solid black;
+        }
+
+        .dms-cont {
+            margin-top: 1rem;
+            display: flex;
+            flex-flow: column;
+        }
+    </style>
+</head>
+<body>
+    <fieldset class="section">
+        <legend>WebSocket Connection</legend>
+        <div class="connection-panel">
+            <button id="reconnect-btn">Reconnect</button>
+            <p id="status-text">Unkown</p>
+        </div>
+    </fieldset>
+
+    <fieldset class="section">
+        <legend>Image feed</legend>
+        <div class="images-cont">
+            <img id="rgb-img" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgIGhlaWdodD0iMzAwcHgiIHdpZHRoPSIzMDBweCIKICAgICB2ZXJzaW9uPSIxLjEiCiAgICAgdmlld0JveD0iLTMwMCAtMzAwIDYwMCA2MDAiCiAgICAgZm9udC1mYW1pbHk9IkJpdHN0cmVhbSBWZXJhIFNhbnMsTGliZXJhdGlvbiBTYW5zLCBBcmlhbCwgc2Fucy1zZXJpZiIKICAgICBmb250LXNpemU9IjcyIgogICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiID4KICAKICA8Y2lyY2xlIHN0cm9rZT0iI0FBQSIgc3Ryb2tlLXdpZHRoPSIxMCIgcj0iMjgwIiBmaWxsPSIjRkZGIi8+CiAgPHRleHQgc3R5bGU9ImZpbGw6IzQ0NDsiPgogICAgPHRzcGFuIHg9IjAiIHk9Ii04Ij5OTyBJTUFHRTwvdHNwYW4+PHRzcGFuIHg9IjAiIHk9IjgwIj5BVkFJTEFCTEU8L3RzcGFuPgogIDwvdGV4dD4KPC9zdmc+">
+            <img id="mask-img" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgIGhlaWdodD0iMzAwcHgiIHdpZHRoPSIzMDBweCIKICAgICB2ZXJzaW9uPSIxLjEiCiAgICAgdmlld0JveD0iLTMwMCAtMzAwIDYwMCA2MDAiCiAgICAgZm9udC1mYW1pbHk9IkJpdHN0cmVhbSBWZXJhIFNhbnMsTGliZXJhdGlvbiBTYW5zLCBBcmlhbCwgc2Fucy1zZXJpZiIKICAgICBmb250LXNpemU9IjcyIgogICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiID4KICAKICA8Y2lyY2xlIHN0cm9rZT0iI0FBQSIgc3Ryb2tlLXdpZHRoPSIxMCIgcj0iMjgwIiBmaWxsPSIjRkZGIi8+CiAgPHRleHQgc3R5bGU9ImZpbGw6IzQ0NDsiPgogICAgPHRzcGFuIHg9IjAiIHk9Ii04Ij5OTyBJTUFHRTwvdHNwYW4+PHRzcGFuIHg9IjAiIHk9IjgwIj5BVkFJTEFCTEU8L3RzcGFuPgogIDwvdGV4dD4KPC9zdmc+">
+        </div>
+    </fieldset>
+
+    <fieldset class="section">
+        <legend>Control</legend>
+        <svg id="steering-indicator" width="200" height="100" id="object" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        </svg>
+    
+        <div class="dms-cont">
+            <label for="dms">Dead man's switch</label>
+            <input id="dms-input" type="text">
+        </div>
+    </fieldset>
+
+    <script>
+        const eRgbImg = document.getElementById("rgb-img")
+        const eMaskImg = document.getElementById("mask-img")
+        const eStatusText = document.getElementById("status-text")
+        const eReconnectBtn = document.getElementById("reconnect-btn")
+        const eDmsInput = document.getElementById("dms-input")
+        const eSteeringIndicator = document.getElementById("steering-indicator")
+
+        let ws = null
+        TIMEOUT = 1000
+        let previous_interval = null
+
+        // https://stackoverflow.com/a/32924508/7120579
+        function pointFromAngle(cx, cy, rad, angle) {
+            var nx = Math.cos(angle)*rad + cx;
+            var ny = Math.sin(angle)*rad + cy;
+            return { x: nx, y: ny };
+        }
+
+        function updateSteeringIndicator(steer) {
+            var lineLength = 100;
+            var cx = 100,
+                cy = 98;
+
+            lineAngle = Math.PI + (((steer + 1) / 2) * Math.PI);
+            var pointPosition1 = pointFromAngle(cx, cy, lineLength, lineAngle);
+            var pointPosition2 = { x: cx, y: cy };
+            var linePath = "M"+pointPosition1.x.toFixed(0)+","+pointPosition1.y.toFixed(0) +" L"+pointPosition2.x.toFixed(0)+","+pointPosition2.y.toFixed(0);
+
+            var line = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+            line.setAttribute("d",linePath);
+            line.style.stroke = "#ef4b22";
+            line.style.strokeWidth = "2px";
+            line.style.fill = "none";
+
+            eSteeringIndicator.replaceChildren(line);
+        }
+
+        function connect() {
+            ws = new WebSocket("ws://10.42.0.58:5678/")
+            console.log(ws)
+
+            last_message_time = Date.now()
+
+            ws.onmessage = function (event) {
+                last_message_time = Date.now()
+
+                message = JSON.parse(event.data)
+                type = message.type
+                data = message.data
+
+                base64_prefix = "data:image/png;base64,"
+                if (type == "RGB") {
+                    eRgbImg.setAttribute("src", base64_prefix + data)
+                } else if (type == "MASK") {
+                    eMaskImg.setAttribute("src", base64_prefix + data)
+                } else if (type == "STEER") {
+                    updateSteeringIndicator(data["steer"])
+                } else if (type != "PONG") {
+                    console.error(`Unknown message type ${type}`)
+                }
+            }
+
+            if (previous_interval != null)
+                window.clearInterval(previous_interval)
+
+            window.setInterval(() => {
+                if ((Date.now() - last_message_time) > TIMEOUT) {
+                    eStatusText.textContent = "DISCONNECTED"
+                } else {
+                    eStatusText.textContent = "CONNECTED"
+                }
+                msg_data = {
+                    type: "PING",
+                    data: null
+                }
+                ws.send(JSON.stringify(msg_data))
+            }, 500)
+        }
+
+        updateSteeringIndicator(0)
+
+        function dmspressed() {
+            eDmsInput.value = ""
+            if (ws != null) {
+                msg_data = {
+                    type: "DMS",
+                    data: "ping"
+                }
+                ws.send(JSON.stringify(msg_data))
+            }
+        }
+
+        eReconnectBtn.addEventListener("click", e => connect())
+        eDmsInput.addEventListener("input", e => dmspressed())
+
+        connect()
+    </script>
+</body>
+</html>
