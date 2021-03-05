@@ -32,7 +32,7 @@ jobs:
 
       - name: Add CNAME
         run: |
-          echo "paddy.pfiers.net" > CNAME
+          pwd && echo "paddy.pfiers.net" > CNAME
 
       - name: Push docs dir
         uses: s0/git-publish-subdir-action@develop
