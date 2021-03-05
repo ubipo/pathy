@@ -34,6 +34,10 @@ jobs:
         run: |
           echo "paddy.pfiers.net" > _build/html/CNAME
 
+      - name: Add .nojekyll
+        run: |
+          touch _build/html/.nojekyll
+
       - name: Push docs dir
         uses: s0/git-publish-subdir-action@develop
         env:
