@@ -1,7 +1,7 @@
 file: README
 sections:
-- file: model
-- file: dataprep
+- file: model/README
+- file: dataprep/README
   sections:
   - file: dataprep/yamaha_flatten
   - file: dataprep/create_label_jsons
@@ -10,4 +10,6 @@ sections:
   - file: dataprep/giusti_flatten
   - file: dataprep/convert_masks
   - file: dataprep/images_to_tfr
-- file: admin/data-labelling
+- file: admin/README
+  sections:
+  - file: admin/data-labelling
