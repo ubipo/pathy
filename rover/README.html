@@ -5,67 +5,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation &#8212; Paddy</title>
+    <title>Rover &#8212; Paddy</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
   <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
   <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://paddy.pfiers.net/README.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Semantic Image Segmnatation using a CNN" href="model/README.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://paddy.pfiers.net/rover/README.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://paddy.pfiers.net/README.html" />
+<meta property="og:url"         content="https://paddy.pfiers.net/rover/README.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation" />
-<meta property="og:description" content="Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation  This project is Pieter Fiers and Simon Germeau’s professional bachelor’s th" />
+<meta property="og:title"       content="Rover" />
+<meta property="og:description" content="Rover  Components  Chassis  The base of the rover is the “TS100 Shock Absorber Tank Chassis” by DOIT (manual). This kit for this rover was rover was kindly prov" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -81,32 +80,32 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
+<a class="navbar-brand text-wrap" href="../index.html">
   
   
   <h1 class="site-logo" id="site-title">Paddy</h1>
   
 </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <ul class="nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
    Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
   </a>
  </li>
 </ul>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="model/README.html">
+  <a class="reference internal" href="../model/README.html">
    Semantic Image Segmnatation using a CNN
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="dataprep/README.html">
+  <a class="reference internal" href="../dataprep/README.html">
    Dataprep
   </a>
   <ul class="simple collapse-ul">
@@ -115,12 +114,12 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="admin/README.html">
+  <a class="reference internal" href="../admin/README.html">
    Admin
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="admin/data-labelling.html">
+    <a class="reference internal" href="../admin/data-labelling.html">
      Data Labelling
     </a>
    </li>
@@ -129,7 +128,7 @@
   </i>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="DOCUMENTATION.html">
+  <a class="reference internal" href="../DOCUMENTATION.html">
    Documentation
   </a>
  </li>
@@ -173,7 +172,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/rover/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -193,7 +192,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
-        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/README.md"><button
+        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/rover/README.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -219,9 +218,21 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#repository-structure">
-   Repository structure
+  <a class="reference internal nav-link" href="#components">
+   Components
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chassis">
+     Chassis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#h-bridge">
+     H-bridge
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -234,41 +245,21 @@
         
               <div>
                 
-  <div class="section" id="autonomously-following-forest-paths-with-a-mobile-robot-using-semantic-segmentation">
-<h1>Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation<a class="headerlink" href="#autonomously-following-forest-paths-with-a-mobile-robot-using-semantic-segmentation" title="Permalink to this headline">¶</a></h1>
-<p>This project is <a class="reference external" href="https://pfiers.net">Pieter Fiers</a> and
-<a class="reference external" href="https://github.com/GermeauSimon">Simon Germeau</a>’s professional bachelor’s thesis for <a class="reference external" href="https://www.ucll.be/">UCLL</a>’s <a class="reference external" href="http://onderwijsaanbod.leuven.ucll.be/opleidingen/n/SC_52335187.htm">Aplied Informatics degree</a>.</p>
-<p>We created a rover that is capable of autonomously following forest paths.</p>
-<p>We used a Semantic Segmentation CNN, as opposed to the classification CNN
-used by Giusti et al.<a class="footnote-reference brackets" href="#id3" id="id1">1</a> and Smolyanskiy et al.<a class="footnote-reference brackets" href="#id4" id="id2">2</a>. We believe this enables
-interesting future expansions, like higher-level decision making about path
-intersections, and the mapping of road geometries.</p>
-<video width="100%" controls>
-    <source src="intro.webm" type="video/webm">
-</video>
-<div class="section" id="repository-structure">
-<h2>Repository structure<a class="headerlink" href="#repository-structure" title="Permalink to this headline">¶</a></h2>
-<p>The repository is structured according to the four main stages of our project:</p>
-<p><span class="xref myst">Dataprep</span> - Documentation about, and the scripts we used for, the processing and labelling
-of data used for training.</p>
-<p><span class="xref myst">Model</span> - This folder contains the machine learning process we used to train our CNN.</p>
-<p><span class="xref myst">Rover</span> - Documentation regarding the hardware aspect of our rover.</p>
-<p><span class="xref myst">ROS</span> - All documentation, ROS nodes, and extra files needed to make the rover drive
-itself.</p>
-<p>ROS is the “<a class="reference external" href="https://www.ros.org/">Robot Operating System</a>”. See
-“<span class="xref myst">About ROS</span>” for more about why <em>we</em> use ROS.</p>
-<br>
-<div class="toctree-wrapper compound">
+  <div class="section" id="rover">
+<h1>Rover<a class="headerlink" href="#rover" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chassis">
+<h3>Chassis<a class="headerlink" href="#chassis" title="Permalink to this headline">¶</a></h3>
+<p>The base of the rover is the “TS100 Shock Absorber Tank Chassis” by <span class="xref myst">DOIT</span> (<a class="reference external" href="https://raw.githubusercontent.com/SeeedDocument/Outsourcing/master/110090267%20TS100%20shock%20absorber%20tank%20chassis%20with%20track%20and%20DC%20geared%20motors%20Kit/InstallationforTS100%20.pdf">manual</a>). This kit for this rover was rover was kindly provided to us by our mentor at <a class="reference external" href="https://airobot.eu/">Airobot</a>.</p>
+<p>The chassis uses <a class="reference external" href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-7420481794.72.fWWJc1&amp;id=45203541487">simple DC motors</a> with a Hall-effect sensor. It is possible to use the sensor with Ardupilot, but we didn’t in our setup.</p>
 </div>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Smolyanskiy et al., “Toward Low-Flying Autonomous MAV Trail Navigation using DeepNeural Networks for Environmental Awareness” May 2017.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Giusti et al., “A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots” Dec 2015.</p>
-</dd>
-</dl>
+<div class="section" id="h-bridge">
+<h3>H-bridge<a class="headerlink" href="#h-bridge" title="Permalink to this headline">¶</a></h3>
+<p>To control the speed and direction of the two motors we used an <a class="reference external" href="https://www.velleman.eu/products/view/?id=435576">H-bridge breakout board</a>, also provided to us by Airobot.</p>
+<p>To ease control of the H-bridge through software we added a simple <a class="reference external" href="https://web.mit.edu/6.131/www/document/7402.pdf">NOR-gate</a> circuit.</p>
+<p>TODO: Finish diagram</p>
+</div>
 </div>
 </div>
 
@@ -285,7 +276,7 @@ itself.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./."
+            path: "./rover"
         },
         predefinedOutput: true
     }
@@ -300,7 +291,6 @@ itself.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="model/README.html" title="next page">Semantic Image Segmnatation using a CNN</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -320,7 +310,7 @@ itself.</p>
     </div>
 
     
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
