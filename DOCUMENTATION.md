@@ -26,7 +26,7 @@ Open [_build/html/index.html](_build/html/index.html) in your browser.
 
 With [python 3.x](https://python.org) installed, run:
 ```
-python -m http.server --directory "_build/html/"
+python3 -m http.server --directory "_build/html/"
 ```
 And open [0.0.0.0:8000](http://0.0.0.0:8000/) in your browser.
 
