@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train &#8212; Paddy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://paddy.pfiers.net/model/train.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://paddy.pfiers.net/model/train.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Train" />
+<meta property="og:description" content="Train  In order to make steering decision, we want the drone to be able to “see” the path in front of it. To achieve this we’ll train a convolutional neural net" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Paddy</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Autonomously mapping linear landscape features using a drone
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Semantic Image Segmnatation using a CNN
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dataprep/README.html">
+   Dataprep
+  </a>
+  <ul class="simple collapse-ul">
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../admin/README.html">
+   Admin
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../admin/data-labelling.html">
+     Data Labelling
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DOCUMENTATION.html">
+   Documentation
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/model/train.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ubipo/paddy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/model/train.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ubipo/paddy/master?urlpath=tree/model/train.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-tpu">
+   Set up TPU
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-dataset">
+   Prepare dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-dataset">
+   Visualise dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-model">
+   Create model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-model">
+   Train model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics">
+   Metrics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-model">
+   Test model
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="train">
+<h1>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h1>
+<p>In order to make steering decision, we want the drone to be able to “see” the path in front of it. To achieve this we’ll train a convolutional neural net.</p>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.distribute.tpu_strategy</span> <span class="kn">import</span> <span class="n">TPUStrategy</span>
+<span class="kn">import</span> <span class="nn">segmentation_models</span> <span class="k">as</span> <span class="nn">sm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.summary API due to missing TensorBoard installation.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Segmentation Models: using `tf.keras` framework.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convenience methods</span>
+<span class="kn">from</span> <span class="nn">visualise</span> <span class="kn">import</span> <span class="n">show_two</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">tpu</span> <span class="kn">import</span> <span class="n">resolve_tpu_strategy</span><span class="p">,</span> <span class="n">get_tpu_devices</span>
+<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">load_dataset</span><span class="p">,</span> <span class="n">split_dataset_paths</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-tpu">
+<h2>Set up TPU<a class="headerlink" href="#set-up-tpu" title="Permalink to this headline">¶</a></h2>
+<p>To speed up model training, we use <a class="reference external" href="https://cloud.google.com/">Google Cloud Platform</a>’s “<a class="reference external" href="https://cloud.google.com/tpu">TPU’s</a>”. TPU’s use a machine learning ASIC.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tpu_strategy</span> <span class="o">=</span> <span class="n">resolve_tpu_strategy</span><span class="p">(</span><span class="s1">&#39;padnet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Initializing the TPU system: padnet
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Initializing the TPU system: padnet
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Clearing out eager caches
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Clearing out eager caches
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Finished initializing TPU system.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Finished initializing TPU system.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Found TPU system:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Found TPU system:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores: 8
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores: 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Workers: 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Workers: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 0, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbro_tpu_devices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_tpu_devices</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nbro_tpu_devices</span><span class="si">}</span><span class="s2"> TPU devices connected!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 TPU devices connected!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PARALLEL_OPS = tf.data.experimental.AUTOTUNE</span>
+<span class="n">PARALLEL_OPS</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-dataset">
+<h2>Prepare dataset<a class="headerlink" href="#prepare-dataset" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Explain where we got the Freiburg dataset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">448</span><span class="p">,</span> <span class="mi">640</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GCS_PATTERN</span> <span class="o">=</span> <span class="s1">&#39;gs://padnet-data/freiburg/tfr/*.tfr&#39;</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">GCS_PATTERN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_RATIO</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">VALIDATION_RATIO</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">train_paths</span><span class="p">,</span> <span class="n">validate_paths</span><span class="p">,</span> <span class="n">test_paths</span> <span class="o">=</span> <span class="n">split_dataset_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">TRAIN_RATIO</span><span class="p">,</span> <span class="n">VALIDATION_RATIO</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> tfrs. Splitting into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> training, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> validation, and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> test tfrs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 230 tfrs. Splitting into 161 training, 34 validation, and 35 test tfrs
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualise-dataset">
+<h2>Visualise dataset<a class="headerlink" href="#visualise-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualisation_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">train_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span>
+<span class="n">sample_rgb</span><span class="p">,</span> <span class="n">sample_gt</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">visualisation_dataset</span><span class="p">))</span>
+<span class="n">show_two</span><span class="p">(</span><span class="s2">&quot;RGB image&quot;</span><span class="p">,</span> <span class="n">sample_rgb</span><span class="p">,</span> <span class="s2">&quot;Ground truth mask&quot;</span><span class="p">,</span> <span class="n">sample_gt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/train_16_0.png" src="../_images/train_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="load-dataset">
+<h2>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># Using TPU v3-8 device =&gt; must be divisible by 8 for sharding</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset generation *must* come after tpu resolution</span>
+<span class="n">training_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">train_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">repeat</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+<span class="n">validation_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-model">
+<h2>Create model<a class="headerlink" href="#create-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">tpu_strategy</span><span class="p">:</span> <span class="n">TPUStrategy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">:</span>
+    <span class="n">BACKBONE</span> <span class="o">=</span> <span class="s1">&#39;efficientnetb3&#39;</span>
+    <span class="n">CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span>
+    <span class="n">LR</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+    <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">CLASSES</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">CLASSES</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># case for binary and multiclass segmentation</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;sigmoid&#39;</span> <span class="k">if</span> <span class="n">n_classes</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;softmax&#39;</span>
+
+    <span class="k">def</span> <span class="nf">scoped_create_model</span><span class="p">():</span>
+        <span class="n">dice_loss</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">DiceLoss</span><span class="p">()</span>
+        <span class="n">focal_loss</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">BinaryFocalLoss</span><span class="p">()</span> <span class="k">if</span> <span class="n">n_classes</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">CategoricalFocalLoss</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="n">dice_loss</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">focal_loss</span><span class="p">)</span>
+
+        <span class="n">optim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">LR</span><span class="p">)</span>
+
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">sm</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">IOUScore</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">sm</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">FScore</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)]</span>
+
+        <span class="n">model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Unet</span><span class="p">(</span><span class="n">BACKBONE</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">total_loss</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span>
+        <span class="c1"># model.compile(optim, total_loss)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">if</span> <span class="n">tpu_strategy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tpu_strategy</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">scoped_create_model</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">scoped_create_model</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">tpu_strategy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-model">
+<h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_paths</span><span class="p">)</span> <span class="o">//</span> <span class="n">BATCH_SIZE</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="c1"># Arbitrary amount of extra augmentations per image</span>
+<span class="n">validation_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">)</span> <span class="o">//</span> <span class="n">BATCH_SIZE</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With a batch size of </span><span class="si">{</span><span class="n">BATCH_SIZE</span><span class="si">}</span><span class="s2">, there will be </span><span class="si">{</span><span class="n">steps_per_epoch</span><span class="si">}</span><span class="s2"> batches per training epoch and </span><span class="si">{</span><span class="n">validation_steps</span><span class="si">}</span><span class="s2"> batches per validation run.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>With a batch size of 16, there will be 100 batches per training epoch and 2 batches per validation run.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensorboard_log_dir</span> <span class="o">=</span> <span class="s2">&quot;gs://padnet-data/model/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">)</span>
+<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;./best_model.h5&#39;</span><span class="p">,</span> <span class="n">save_weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">),</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(),</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">tensorboard_log_dir</span><span class="p">,</span> <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="c1">#early stopping</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">training_dataset</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span>
+    <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_dataset</span><span class="p">,</span>
+    <span class="n">validation_steps</span><span class="o">=</span><span class="n">validation_steps</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;gs://padnet-data/trained_models/no_aug.h5&#39;</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/40
+100/100 [==============================] - 224s 1s/step - loss: 0.7952 - iou_score: 0.4034 - f1-score: 0.5326 - val_loss: 0.7753 - val_iou_score: 0.5061 - val_f1-score: 0.6616
+Epoch 2/40
+100/100 [==============================] - 64s 648ms/step - loss: 0.5138 - iou_score: 0.9008 - f1-score: 0.9469 - val_loss: 0.5554 - val_iou_score: 0.6984 - val_f1-score: 0.8169
+Epoch 3/40
+100/100 [==============================] - 65s 653ms/step - loss: 0.3543 - iou_score: 0.9370 - f1-score: 0.9673 - val_loss: 0.3496 - val_iou_score: 0.8738 - val_f1-score: 0.9315
+Epoch 4/40
+100/100 [==============================] - 62s 620ms/step - loss: 0.2445 - iou_score: 0.9469 - f1-score: 0.9726 - val_loss: 0.2394 - val_iou_score: 0.8913 - val_f1-score: 0.9417
+Epoch 5/40
+100/100 [==============================] - 46s 459ms/step - loss: 0.1690 - iou_score: 0.9550 - f1-score: 0.9769 - val_loss: 0.1775 - val_iou_score: 0.8958 - val_f1-score: 0.9442
+Epoch 6/40
+100/100 [==============================] - 45s 448ms/step - loss: 0.1227 - iou_score: 0.9594 - f1-score: 0.9792 - val_loss: 0.1389 - val_iou_score: 0.8952 - val_f1-score: 0.9436
+Epoch 7/40
+100/100 [==============================] - 63s 635ms/step - loss: 0.0923 - iou_score: 0.9648 - f1-score: 0.9820 - val_loss: 0.1221 - val_iou_score: 0.8905 - val_f1-score: 0.9410
+Epoch 8/40
+100/100 [==============================] - 40s 405ms/step - loss: 0.0719 - iou_score: 0.9695 - f1-score: 0.9845 - val_loss: 0.1113 - val_iou_score: 0.8865 - val_f1-score: 0.9385
+Epoch 9/40
+100/100 [==============================] - 64s 649ms/step - loss: 0.0605 - iou_score: 0.9693 - f1-score: 0.9844 - val_loss: 0.1037 - val_iou_score: 0.8869 - val_f1-score: 0.9387
+Epoch 10/40
+100/100 [==============================] - 64s 641ms/step - loss: 0.0502 - iou_score: 0.9726 - f1-score: 0.9861 - val_loss: 0.0941 - val_iou_score: 0.8939 - val_f1-score: 0.9429
+Epoch 11/40
+100/100 [==============================] - 65s 649ms/step - loss: 0.0433 - iou_score: 0.9741 - f1-score: 0.9869 - val_loss: 0.0965 - val_iou_score: 0.8857 - val_f1-score: 0.9381
+Epoch 12/40
+100/100 [==============================] - 64s 647ms/step - loss: 0.0374 - iou_score: 0.9759 - f1-score: 0.9878 - val_loss: 0.0887 - val_iou_score: 0.8954 - val_f1-score: 0.9437
+Epoch 13/40
+100/100 [==============================] - 62s 628ms/step - loss: 0.0335 - iou_score: 0.9767 - f1-score: 0.9882 - val_loss: 0.0908 - val_iou_score: 0.8880 - val_f1-score: 0.9394
+Epoch 14/40
+100/100 [==============================] - 59s 594ms/step - loss: 0.0302 - iou_score: 0.9774 - f1-score: 0.9886 - val_loss: 0.0871 - val_iou_score: 0.8931 - val_f1-score: 0.9424
+Epoch 15/40
+100/100 [==============================] - 55s 558ms/step - loss: 0.0273 - iou_score: 0.9791 - f1-score: 0.9894 - val_loss: 0.0860 - val_iou_score: 0.8922 - val_f1-score: 0.9419
+Epoch 16/40
+100/100 [==============================] - 39s 394ms/step - loss: 0.0254 - iou_score: 0.9792 - f1-score: 0.9895 - val_loss: 0.0839 - val_iou_score: 0.8971 - val_f1-score: 0.9447
+Epoch 17/40
+100/100 [==============================] - 62s 622ms/step - loss: 0.0233 - iou_score: 0.9801 - f1-score: 0.9900 - val_loss: 0.0856 - val_iou_score: 0.8916 - val_f1-score: 0.9415
+Epoch 18/40
+100/100 [==============================] - 57s 573ms/step - loss: 0.0215 - iou_score: 0.9809 - f1-score: 0.9904 - val_loss: 0.0854 - val_iou_score: 0.8930 - val_f1-score: 0.9423
+Epoch 19/40
+100/100 [==============================] - 62s 628ms/step - loss: 0.0201 - iou_score: 0.9815 - f1-score: 0.9907 - val_loss: 0.0851 - val_iou_score: 0.8915 - val_f1-score: 0.9415
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="n">ea75cecef43e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">validation_steps</span><span class="o">=</span><span class="n">validation_steps</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;gs://padnet-data/model/no_aug.h5&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="nn">/opt/padnet/env/lib/python3.8/site-packages/tensorflow/python/keras/engine/training.py</span> in <span class="ni">save</span><span class="nt">(self, filepath, overwrite, include_optimizer, save_format, signatures, options, save_traces)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1999</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2000</span><span class="s2">     # pylint: enable=line-too-long</span>
+<span class="ne">-&gt; </span><span class="mi">2001</span><span class="s2">     save.save_model(self, filepath, overwrite, include_optimizer, save_format,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2002</span><span class="s2">                     signatures, options, save_traces)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2003</span><span class="s2"> </span>
+
+<span class="nn">/opt/padnet/env/lib/python3.8/site-packages/tensorflow/python/keras/saving/save.py</span> in <span class="ni">save_model</span><span class="nt">(model, filepath, overwrite, include_optimizer, save_format, signatures, options, save_traces)</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span><span class="s2">           &#39;to the Tensorflow SavedModel format (by setting save_format=&quot;tf&quot;) &#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span><span class="s2">           &#39;or using `save_weights`.&#39;)</span>
+<span class="ne">--&gt; </span><span class="mi">153</span><span class="s2">     hdf5_format.save_model_to_hdf5(</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span><span class="s2">         model, filepath, overwrite, include_optimizer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="s2">   else:</span>
+
+<span class="nn">/opt/padnet/env/lib/python3.8/site-packages/tensorflow/python/keras/saving/hdf5_format.py</span> in <span class="ni">save_model_to_hdf5</span><span class="nt">(model, filepath, overwrite, include_optimizer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span><span class="s2">       gfile.MakeDirs(dirpath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">108</span><span class="s2">     f = h5py.File(filepath, mode=&#39;w&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span><span class="s2">     opened_new_file = True</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="s2">   else:</span>
+
+<span class="nn">/opt/padnet/env/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">__init__</span><span class="nt">(self, name, mode, driver, libver, userblock_size, swmr, rdcc_nslots, rdcc_nbytes, rdcc_w0, track_order, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span><span class="s2">             with phil:</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span><span class="s2">                 fapl = make_fapl(driver, libver, rdcc_nslots, rdcc_nbytes, rdcc_w0, **kwds)</span>
+<span class="ne">--&gt; </span><span class="mi">406</span><span class="s2">                 fid = make_fid(name, mode, userblock_size,</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span><span class="s2">                                fapl, fcpl=make_fcpl(track_order=track_order),</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span><span class="s2">                                swmr=swmr)</span>
+
+<span class="nn">/opt/padnet/env/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">make_fid</span><span class="nt">(name, mode, userblock_size, fapl, fcpl, swmr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span><span class="s2">         fid = h5f.create(name, h5f.ACC_EXCL, fapl=fapl, fcpl=fcpl)</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="s2">     elif mode == &#39;w&#39;:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span><span class="s2">         fid = h5f.create(name, h5f.ACC_TRUNC, fapl=fapl, fcpl=fcpl)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span><span class="s2">     elif mode == &#39;a&#39;:</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="s2">         # Open in append mode (read/write).</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/h5f.pyx</span> in <span class="ni">h5py.h5f.create</span><span class="nt">()</span>
+
+<span class="ne">OSError</span>: Unable to create file (unable to open file: name = &#39;gs://padnet-data/model/no_aug.h5&#39;, errno = 2, error message = &#39;No such file or directory&#39;, flags = 13, o_flags = 242)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="test-model">
+<h2>Test model<a class="headerlink" href="#test-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">test_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NBRO_TEST_CASES</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_sample_rgbs</span><span class="p">,</span> <span class="n">test_sample_gts</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">test_lst</span><span class="p">[:</span><span class="n">NBRO_TEST_CASES</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">test_sample_rgbs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">test_sample_rgb</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">test_sample_gt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_sample_rgbs</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">test_sample_gts</span><span class="p">):</span>
+    <span class="n">show</span><span class="p">({</span>
+        <span class="s2">&quot;RGB image&quot;</span><span class="p">:</span> <span class="n">test_sample_rgb</span><span class="p">,</span>
+        <span class="s2">&quot;Prediction&quot;</span><span class="p">:</span> <span class="n">prediction</span><span class="p">,</span>
+        <span class="s2">&quot;Ground truth mask&quot;</span><span class="p">:</span> <span class="n">test_sample_gt</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./model"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Pieter Fiers, Simon Germeau<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1703 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train with augmentations &#8212; Paddy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://paddy.pfiers.net/model/train_aug.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://paddy.pfiers.net/model/train_aug.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Train with augmentations" />
+<meta property="og:description" content="Train with augmentations  TODO: …explain why we want to try augmentations  from datetime import datetime  import matplotlib.pyplot as plt import numpy as np  im" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Paddy</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Autonomously mapping linear landscape features using a drone
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Semantic Image Segmnatation using a CNN
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dataprep/README.html">
+   Dataprep
+  </a>
+  <ul class="simple collapse-ul">
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../admin/README.html">
+   Admin
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../admin/data-labelling.html">
+     Data Labelling
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DOCUMENTATION.html">
+   Documentation
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/model/train_aug.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ubipo/paddy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/model/train_aug.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ubipo/paddy/master?urlpath=tree/model/train_aug.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prep">
+   Prep
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#augmentations">
+   Augmentations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-augmentations">
+   Visualise augmentations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-model">
+   Create model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-model">
+   Train model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics">
+   Metrics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-model">
+   Test model
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="train-with-augmentations">
+<h1>Train with augmentations<a class="headerlink" href="#train-with-augmentations" title="Permalink to this headline">¶</a></h1>
+<p>TODO: …explain why we want to try augmentations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.distribute.tpu_strategy</span> <span class="kn">import</span> <span class="n">TPUStrategy</span>
+<span class="kn">import</span> <span class="nn">segmentation_models</span> <span class="k">as</span> <span class="nn">sm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.compat.v2.summary API due to missing TensorBoard installation.
+WARNING:root:Limited tf.summary API due to missing TensorBoard installation.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Segmentation Models: using `tf.keras` framework.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convenience methods</span>
+<span class="kn">from</span> <span class="nn">visualise</span> <span class="kn">import</span> <span class="n">show_two</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">tpu</span> <span class="kn">import</span> <span class="n">resolve_tpu_strategy</span><span class="p">,</span> <span class="n">get_tpu_devices</span>
+<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">load_dataset</span><span class="p">,</span> <span class="n">split_dataset_paths</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prep">
+<h2>Prep<a class="headerlink" href="#prep" title="Permalink to this headline">¶</a></h2>
+<p>These are the same steps as <a class="reference internal" href="train.html"><span class="doc std std-doc">train.ipynb</span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tpu_strategy</span> <span class="o">=</span> <span class="n">resolve_tpu_strategy</span><span class="p">(</span><span class="s1">&#39;padnet&#39;</span><span class="p">)</span>
+<span class="n">nbro_tpu_devices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_tpu_devices</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nbro_tpu_devices</span><span class="si">}</span><span class="s2"> TPU devices connected!&quot;</span><span class="p">)</span>
+<span class="n">PARALLEL_OPS</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Initializing the TPU system: padnet
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Initializing the TPU system: padnet
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Clearing out eager caches
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Clearing out eager caches
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Finished initializing TPU system.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Finished initializing TPU system.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Found TPU system:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Found TPU system:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores: 8
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores: 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Workers: 1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Workers: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 0, 0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 0, 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 0, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">448</span><span class="p">,</span> <span class="mi">640</span><span class="p">]</span>
+<span class="n">GCS_PATTERN</span> <span class="o">=</span> <span class="s1">&#39;gs://padnet-data/freiburg/tfr/*.tfr&#39;</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">GCS_PATTERN</span><span class="p">)</span>
+<span class="n">TRAIN_RATIO</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">VALIDATION_RATIO</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">train_paths</span><span class="p">,</span> <span class="n">validate_paths</span><span class="p">,</span> <span class="n">test_paths</span> <span class="o">=</span> <span class="n">split_dataset_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">TRAIN_RATIO</span><span class="p">,</span> <span class="n">VALIDATION_RATIO</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> tfrs. Splitting into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> training, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> validation, and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_paths</span><span class="p">)</span><span class="si">}</span><span class="s2"> test tfrs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="augmentations">
+<h2>Augmentations<a class="headerlink" href="#augmentations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">augment</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">gt</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize_with_crop_or_pad</span><span class="p">(</span>
+        <span class="n">rgb</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span>
+    <span class="p">)</span>
+    <span class="n">gt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize_with_crop_or_pad</span><span class="p">(</span>
+        <span class="n">gt</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span>
+    <span class="p">)</span>
+    <span class="n">seeds</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">stateless_split</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="c1"># Random crop back to the original size</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_crop</span><span class="p">(</span>
+        <span class="n">rgb</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">gt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_crop</span><span class="p">(</span>
+        <span class="n">gt</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="o">*</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># Random horizontal flip</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_flip_left_right</span><span class="p">(</span>
+        <span class="n">rgb</span><span class="p">,</span> <span class="n">seeds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">gt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_flip_left_right</span><span class="p">(</span>
+        <span class="n">gt</span><span class="p">,</span> <span class="n">seeds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># Random brightness</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_brightness</span><span class="p">(</span>
+        <span class="n">rgb</span><span class="p">,</span> <span class="n">max_delta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># Random hue</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">stateless_random_hue</span><span class="p">(</span>
+        <span class="n">rgb</span><span class="p">,</span> <span class="n">max_delta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">gt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">gt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rgb</span><span class="p">,</span> <span class="n">gt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="n">alg</span><span class="o">=</span><span class="s1">&#39;philox&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">curried_augment</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">gt</span><span class="p">):</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">make_seeds</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">rgb_aug</span><span class="p">,</span> <span class="n">gt_aug</span> <span class="o">=</span> <span class="n">augment</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">gt</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rgb_aug</span><span class="p">,</span> <span class="n">gt_aug</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualise-augmentations">
+<h2>Visualise augmentations<a class="headerlink" href="#visualise-augmentations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aug_vis_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">train_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">curried_augment</span><span class="p">,</span> <span class="n">num_parallel_calls</span><span class="o">=</span><span class="n">PARALLEL_OPS</span><span class="p">)</span>
+<span class="n">aug_vis_dataset_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">aug_vis_dataset</span><span class="p">)</span>
+<span class="n">aug_sample_rgb</span><span class="p">,</span> <span class="n">aug_sample_gt</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">aug_vis_dataset_iterator</span><span class="p">)</span>
+<span class="n">show</span><span class="p">({</span>
+    <span class="s2">&quot;Augmented RGB image&quot;</span><span class="p">:</span> <span class="n">aug_sample_rgb</span><span class="p">,</span>
+    <span class="s2">&quot;Ground truth mask&quot;</span><span class="p">:</span> <span class="n">aug_sample_gt</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/train_aug_13_0.png" src="../_images/train_aug_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="load-dataset">
+<h2>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># Using TPU v3-8 device =&gt; must be divisible by 8 for sharding</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset generation *must* come after tpu resolution</span>
+<span class="n">training_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">train_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">curried_augment</span><span class="p">,</span> <span class="n">num_parallel_calls</span><span class="o">=</span><span class="n">PARALLEL_OPS</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">repeat</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+<span class="n">validation_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-model">
+<h2>Create model<a class="headerlink" href="#create-model" title="Permalink to this headline">¶</a></h2>
+<p>TODO: move this function to a helper file, it doesn’t show anything new</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">tpu_strategy</span><span class="p">:</span> <span class="n">TPUStrategy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">:</span>
+    <span class="n">BACKBONE</span> <span class="o">=</span> <span class="s1">&#39;efficientnetb3&#39;</span>
+    <span class="n">CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span>
+    <span class="n">LR</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+    <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">CLASSES</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">CLASSES</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># case for binary and multiclass segmentation</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;sigmoid&#39;</span> <span class="k">if</span> <span class="n">n_classes</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;softmax&#39;</span>
+
+    <span class="k">def</span> <span class="nf">scoped_create_model</span><span class="p">():</span>
+        <span class="n">dice_loss</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">DiceLoss</span><span class="p">()</span>
+        <span class="n">focal_loss</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">BinaryFocalLoss</span><span class="p">()</span> <span class="k">if</span> <span class="n">n_classes</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">sm</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">CategoricalFocalLoss</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="n">dice_loss</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">focal_loss</span><span class="p">)</span>
+
+        <span class="n">optim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">LR</span><span class="p">)</span>
+
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">sm</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">IOUScore</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">sm</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">FScore</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)]</span>
+
+        <span class="n">model</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Unet</span><span class="p">(</span><span class="n">BACKBONE</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optim</span><span class="p">,</span> <span class="n">total_loss</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span>
+        <span class="c1"># model.compile(optim, total_loss)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">if</span> <span class="n">tpu_strategy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tpu_strategy</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">scoped_create_model</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">scoped_create_model</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">tpu_strategy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-model">
+<h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_paths</span><span class="p">)</span> <span class="o">//</span> <span class="n">BATCH_SIZE</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="c1"># Arbitrary amount of extra augmentations per image</span>
+<span class="n">validation_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">validate_paths</span><span class="p">)</span> <span class="o">//</span> <span class="n">BATCH_SIZE</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With a batch size of </span><span class="si">{</span><span class="n">BATCH_SIZE</span><span class="si">}</span><span class="s2">, there will be </span><span class="si">{</span><span class="n">steps_per_epoch</span><span class="si">}</span><span class="s2"> batches per training epoch and </span><span class="si">{</span><span class="n">validation_steps</span><span class="si">}</span><span class="s2"> batches per validation run.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>With a batch size of 16, there will be 100 batches per training epoch and 2 batches per validation run.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensorboard_log_dir</span> <span class="o">=</span> <span class="s2">&quot;gs://padnet-data/model/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">)</span>
+<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;./best_model.h5&#39;</span><span class="p">,</span> <span class="n">save_weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">),</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(),</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">tensorboard_log_dir</span><span class="p">,</span> <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="c1">#early stopping</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">training_dataset</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span>
+    <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_dataset</span><span class="p">,</span>
+    <span class="n">validation_steps</span><span class="o">=</span><span class="n">validation_steps</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./test_save.h5&#39;</span><span class="p">)</span>
+  
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, None, None,  0                                            
+__________________________________________________________________________________________________
+stem_conv (Conv2D)              (None, None, None, 4 1080        input_1[0][0]                    
+__________________________________________________________________________________________________
+stem_bn (BatchNormalization)    (None, None, None, 4 160         stem_conv[0][0]                  
+__________________________________________________________________________________________________
+stem_activation (Activation)    (None, None, None, 4 0           stem_bn[0][0]                    
+__________________________________________________________________________________________________
+block1a_dwconv (DepthwiseConv2D (None, None, None, 4 360         stem_activation[0][0]            
+__________________________________________________________________________________________________
+block1a_bn (BatchNormalization) (None, None, None, 4 160         block1a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block1a_activation (Activation) (None, None, None, 4 0           block1a_bn[0][0]                 
+__________________________________________________________________________________________________
+block1a_se_squeeze (GlobalAvera (None, 40)           0           block1a_activation[0][0]         
+__________________________________________________________________________________________________
+block1a_se_reshape (Reshape)    (None, 1, 1, 40)     0           block1a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block1a_se_reduce (Conv2D)      (None, 1, 1, 10)     410         block1a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block1a_se_expand (Conv2D)      (None, 1, 1, 40)     440         block1a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block1a_se_excite (Multiply)    (None, None, None, 4 0           block1a_activation[0][0]         
+                                                                 block1a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block1a_project_conv (Conv2D)   (None, None, None, 2 960         block1a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block1a_project_bn (BatchNormal (None, None, None, 2 96          block1a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block1b_dwconv (DepthwiseConv2D (None, None, None, 2 216         block1a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block1b_bn (BatchNormalization) (None, None, None, 2 96          block1b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block1b_activation (Activation) (None, None, None, 2 0           block1b_bn[0][0]                 
+__________________________________________________________________________________________________
+block1b_se_squeeze (GlobalAvera (None, 24)           0           block1b_activation[0][0]         
+__________________________________________________________________________________________________
+block1b_se_reshape (Reshape)    (None, 1, 1, 24)     0           block1b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block1b_se_reduce (Conv2D)      (None, 1, 1, 6)      150         block1b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block1b_se_expand (Conv2D)      (None, 1, 1, 24)     168         block1b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block1b_se_excite (Multiply)    (None, None, None, 2 0           block1b_activation[0][0]         
+                                                                 block1b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block1b_project_conv (Conv2D)   (None, None, None, 2 576         block1b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block1b_project_bn (BatchNormal (None, None, None, 2 96          block1b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block1b_drop (FixedDropout)     (None, None, None, 2 0           block1b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block1b_add (Add)               (None, None, None, 2 0           block1b_drop[0][0]               
+                                                                 block1a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block2a_expand_conv (Conv2D)    (None, None, None, 1 3456        block1b_add[0][0]                
+__________________________________________________________________________________________________
+block2a_expand_bn (BatchNormali (None, None, None, 1 576         block2a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block2a_expand_activation (Acti (None, None, None, 1 0           block2a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block2a_dwconv (DepthwiseConv2D (None, None, None, 1 1296        block2a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block2a_bn (BatchNormalization) (None, None, None, 1 576         block2a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block2a_activation (Activation) (None, None, None, 1 0           block2a_bn[0][0]                 
+__________________________________________________________________________________________________
+block2a_se_squeeze (GlobalAvera (None, 144)          0           block2a_activation[0][0]         
+__________________________________________________________________________________________________
+block2a_se_reshape (Reshape)    (None, 1, 1, 144)    0           block2a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block2a_se_reduce (Conv2D)      (None, 1, 1, 6)      870         block2a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block2a_se_expand (Conv2D)      (None, 1, 1, 144)    1008        block2a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block2a_se_excite (Multiply)    (None, None, None, 1 0           block2a_activation[0][0]         
+                                                                 block2a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block2a_project_conv (Conv2D)   (None, None, None, 3 4608        block2a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block2a_project_bn (BatchNormal (None, None, None, 3 128         block2a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block2b_expand_conv (Conv2D)    (None, None, None, 1 6144        block2a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block2b_expand_bn (BatchNormali (None, None, None, 1 768         block2b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block2b_expand_activation (Acti (None, None, None, 1 0           block2b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block2b_dwconv (DepthwiseConv2D (None, None, None, 1 1728        block2b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block2b_bn (BatchNormalization) (None, None, None, 1 768         block2b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block2b_activation (Activation) (None, None, None, 1 0           block2b_bn[0][0]                 
+__________________________________________________________________________________________________
+block2b_se_squeeze (GlobalAvera (None, 192)          0           block2b_activation[0][0]         
+__________________________________________________________________________________________________
+block2b_se_reshape (Reshape)    (None, 1, 1, 192)    0           block2b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block2b_se_reduce (Conv2D)      (None, 1, 1, 8)      1544        block2b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block2b_se_expand (Conv2D)      (None, 1, 1, 192)    1728        block2b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block2b_se_excite (Multiply)    (None, None, None, 1 0           block2b_activation[0][0]         
+                                                                 block2b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block2b_project_conv (Conv2D)   (None, None, None, 3 6144        block2b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block2b_project_bn (BatchNormal (None, None, None, 3 128         block2b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block2b_drop (FixedDropout)     (None, None, None, 3 0           block2b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block2b_add (Add)               (None, None, None, 3 0           block2b_drop[0][0]               
+                                                                 block2a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block2c_expand_conv (Conv2D)    (None, None, None, 1 6144        block2b_add[0][0]                
+__________________________________________________________________________________________________
+block2c_expand_bn (BatchNormali (None, None, None, 1 768         block2c_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block2c_expand_activation (Acti (None, None, None, 1 0           block2c_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block2c_dwconv (DepthwiseConv2D (None, None, None, 1 1728        block2c_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block2c_bn (BatchNormalization) (None, None, None, 1 768         block2c_dwconv[0][0]             
+__________________________________________________________________________________________________
+block2c_activation (Activation) (None, None, None, 1 0           block2c_bn[0][0]                 
+__________________________________________________________________________________________________
+block2c_se_squeeze (GlobalAvera (None, 192)          0           block2c_activation[0][0]         
+__________________________________________________________________________________________________
+block2c_se_reshape (Reshape)    (None, 1, 1, 192)    0           block2c_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block2c_se_reduce (Conv2D)      (None, 1, 1, 8)      1544        block2c_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block2c_se_expand (Conv2D)      (None, 1, 1, 192)    1728        block2c_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block2c_se_excite (Multiply)    (None, None, None, 1 0           block2c_activation[0][0]         
+                                                                 block2c_se_expand[0][0]          
+__________________________________________________________________________________________________
+block2c_project_conv (Conv2D)   (None, None, None, 3 6144        block2c_se_excite[0][0]          
+__________________________________________________________________________________________________
+block2c_project_bn (BatchNormal (None, None, None, 3 128         block2c_project_conv[0][0]       
+__________________________________________________________________________________________________
+block2c_drop (FixedDropout)     (None, None, None, 3 0           block2c_project_bn[0][0]         
+__________________________________________________________________________________________________
+block2c_add (Add)               (None, None, None, 3 0           block2c_drop[0][0]               
+                                                                 block2b_add[0][0]                
+__________________________________________________________________________________________________
+block3a_expand_conv (Conv2D)    (None, None, None, 1 6144        block2c_add[0][0]                
+__________________________________________________________________________________________________
+block3a_expand_bn (BatchNormali (None, None, None, 1 768         block3a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block3a_expand_activation (Acti (None, None, None, 1 0           block3a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block3a_dwconv (DepthwiseConv2D (None, None, None, 1 4800        block3a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block3a_bn (BatchNormalization) (None, None, None, 1 768         block3a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block3a_activation (Activation) (None, None, None, 1 0           block3a_bn[0][0]                 
+__________________________________________________________________________________________________
+block3a_se_squeeze (GlobalAvera (None, 192)          0           block3a_activation[0][0]         
+__________________________________________________________________________________________________
+block3a_se_reshape (Reshape)    (None, 1, 1, 192)    0           block3a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block3a_se_reduce (Conv2D)      (None, 1, 1, 8)      1544        block3a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block3a_se_expand (Conv2D)      (None, 1, 1, 192)    1728        block3a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block3a_se_excite (Multiply)    (None, None, None, 1 0           block3a_activation[0][0]         
+                                                                 block3a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block3a_project_conv (Conv2D)   (None, None, None, 4 9216        block3a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block3a_project_bn (BatchNormal (None, None, None, 4 192         block3a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block3b_expand_conv (Conv2D)    (None, None, None, 2 13824       block3a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block3b_expand_bn (BatchNormali (None, None, None, 2 1152        block3b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block3b_expand_activation (Acti (None, None, None, 2 0           block3b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block3b_dwconv (DepthwiseConv2D (None, None, None, 2 7200        block3b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block3b_bn (BatchNormalization) (None, None, None, 2 1152        block3b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block3b_activation (Activation) (None, None, None, 2 0           block3b_bn[0][0]                 
+__________________________________________________________________________________________________
+block3b_se_squeeze (GlobalAvera (None, 288)          0           block3b_activation[0][0]         
+__________________________________________________________________________________________________
+block3b_se_reshape (Reshape)    (None, 1, 1, 288)    0           block3b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block3b_se_reduce (Conv2D)      (None, 1, 1, 12)     3468        block3b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block3b_se_expand (Conv2D)      (None, 1, 1, 288)    3744        block3b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block3b_se_excite (Multiply)    (None, None, None, 2 0           block3b_activation[0][0]         
+                                                                 block3b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block3b_project_conv (Conv2D)   (None, None, None, 4 13824       block3b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block3b_project_bn (BatchNormal (None, None, None, 4 192         block3b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block3b_drop (FixedDropout)     (None, None, None, 4 0           block3b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block3b_add (Add)               (None, None, None, 4 0           block3b_drop[0][0]               
+                                                                 block3a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block3c_expand_conv (Conv2D)    (None, None, None, 2 13824       block3b_add[0][0]                
+__________________________________________________________________________________________________
+block3c_expand_bn (BatchNormali (None, None, None, 2 1152        block3c_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block3c_expand_activation (Acti (None, None, None, 2 0           block3c_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block3c_dwconv (DepthwiseConv2D (None, None, None, 2 7200        block3c_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block3c_bn (BatchNormalization) (None, None, None, 2 1152        block3c_dwconv[0][0]             
+__________________________________________________________________________________________________
+block3c_activation (Activation) (None, None, None, 2 0           block3c_bn[0][0]                 
+__________________________________________________________________________________________________
+block3c_se_squeeze (GlobalAvera (None, 288)          0           block3c_activation[0][0]         
+__________________________________________________________________________________________________
+block3c_se_reshape (Reshape)    (None, 1, 1, 288)    0           block3c_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block3c_se_reduce (Conv2D)      (None, 1, 1, 12)     3468        block3c_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block3c_se_expand (Conv2D)      (None, 1, 1, 288)    3744        block3c_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block3c_se_excite (Multiply)    (None, None, None, 2 0           block3c_activation[0][0]         
+                                                                 block3c_se_expand[0][0]          
+__________________________________________________________________________________________________
+block3c_project_conv (Conv2D)   (None, None, None, 4 13824       block3c_se_excite[0][0]          
+__________________________________________________________________________________________________
+block3c_project_bn (BatchNormal (None, None, None, 4 192         block3c_project_conv[0][0]       
+__________________________________________________________________________________________________
+block3c_drop (FixedDropout)     (None, None, None, 4 0           block3c_project_bn[0][0]         
+__________________________________________________________________________________________________
+block3c_add (Add)               (None, None, None, 4 0           block3c_drop[0][0]               
+                                                                 block3b_add[0][0]                
+__________________________________________________________________________________________________
+block4a_expand_conv (Conv2D)    (None, None, None, 2 13824       block3c_add[0][0]                
+__________________________________________________________________________________________________
+block4a_expand_bn (BatchNormali (None, None, None, 2 1152        block4a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block4a_expand_activation (Acti (None, None, None, 2 0           block4a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block4a_dwconv (DepthwiseConv2D (None, None, None, 2 2592        block4a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block4a_bn (BatchNormalization) (None, None, None, 2 1152        block4a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block4a_activation (Activation) (None, None, None, 2 0           block4a_bn[0][0]                 
+__________________________________________________________________________________________________
+block4a_se_squeeze (GlobalAvera (None, 288)          0           block4a_activation[0][0]         
+__________________________________________________________________________________________________
+block4a_se_reshape (Reshape)    (None, 1, 1, 288)    0           block4a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block4a_se_reduce (Conv2D)      (None, 1, 1, 12)     3468        block4a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block4a_se_expand (Conv2D)      (None, 1, 1, 288)    3744        block4a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block4a_se_excite (Multiply)    (None, None, None, 2 0           block4a_activation[0][0]         
+                                                                 block4a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block4a_project_conv (Conv2D)   (None, None, None, 9 27648       block4a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block4a_project_bn (BatchNormal (None, None, None, 9 384         block4a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block4b_expand_conv (Conv2D)    (None, None, None, 5 55296       block4a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4b_expand_bn (BatchNormali (None, None, None, 5 2304        block4b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block4b_expand_activation (Acti (None, None, None, 5 0           block4b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block4b_dwconv (DepthwiseConv2D (None, None, None, 5 5184        block4b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block4b_bn (BatchNormalization) (None, None, None, 5 2304        block4b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block4b_activation (Activation) (None, None, None, 5 0           block4b_bn[0][0]                 
+__________________________________________________________________________________________________
+block4b_se_squeeze (GlobalAvera (None, 576)          0           block4b_activation[0][0]         
+__________________________________________________________________________________________________
+block4b_se_reshape (Reshape)    (None, 1, 1, 576)    0           block4b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block4b_se_reduce (Conv2D)      (None, 1, 1, 24)     13848       block4b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block4b_se_expand (Conv2D)      (None, 1, 1, 576)    14400       block4b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block4b_se_excite (Multiply)    (None, None, None, 5 0           block4b_activation[0][0]         
+                                                                 block4b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block4b_project_conv (Conv2D)   (None, None, None, 9 55296       block4b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block4b_project_bn (BatchNormal (None, None, None, 9 384         block4b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block4b_drop (FixedDropout)     (None, None, None, 9 0           block4b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4b_add (Add)               (None, None, None, 9 0           block4b_drop[0][0]               
+                                                                 block4a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4c_expand_conv (Conv2D)    (None, None, None, 5 55296       block4b_add[0][0]                
+__________________________________________________________________________________________________
+block4c_expand_bn (BatchNormali (None, None, None, 5 2304        block4c_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block4c_expand_activation (Acti (None, None, None, 5 0           block4c_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block4c_dwconv (DepthwiseConv2D (None, None, None, 5 5184        block4c_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block4c_bn (BatchNormalization) (None, None, None, 5 2304        block4c_dwconv[0][0]             
+__________________________________________________________________________________________________
+block4c_activation (Activation) (None, None, None, 5 0           block4c_bn[0][0]                 
+__________________________________________________________________________________________________
+block4c_se_squeeze (GlobalAvera (None, 576)          0           block4c_activation[0][0]         
+__________________________________________________________________________________________________
+block4c_se_reshape (Reshape)    (None, 1, 1, 576)    0           block4c_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block4c_se_reduce (Conv2D)      (None, 1, 1, 24)     13848       block4c_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block4c_se_expand (Conv2D)      (None, 1, 1, 576)    14400       block4c_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block4c_se_excite (Multiply)    (None, None, None, 5 0           block4c_activation[0][0]         
+                                                                 block4c_se_expand[0][0]          
+__________________________________________________________________________________________________
+block4c_project_conv (Conv2D)   (None, None, None, 9 55296       block4c_se_excite[0][0]          
+__________________________________________________________________________________________________
+block4c_project_bn (BatchNormal (None, None, None, 9 384         block4c_project_conv[0][0]       
+__________________________________________________________________________________________________
+block4c_drop (FixedDropout)     (None, None, None, 9 0           block4c_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4c_add (Add)               (None, None, None, 9 0           block4c_drop[0][0]               
+                                                                 block4b_add[0][0]                
+__________________________________________________________________________________________________
+block4d_expand_conv (Conv2D)    (None, None, None, 5 55296       block4c_add[0][0]                
+__________________________________________________________________________________________________
+block4d_expand_bn (BatchNormali (None, None, None, 5 2304        block4d_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block4d_expand_activation (Acti (None, None, None, 5 0           block4d_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block4d_dwconv (DepthwiseConv2D (None, None, None, 5 5184        block4d_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block4d_bn (BatchNormalization) (None, None, None, 5 2304        block4d_dwconv[0][0]             
+__________________________________________________________________________________________________
+block4d_activation (Activation) (None, None, None, 5 0           block4d_bn[0][0]                 
+__________________________________________________________________________________________________
+block4d_se_squeeze (GlobalAvera (None, 576)          0           block4d_activation[0][0]         
+__________________________________________________________________________________________________
+block4d_se_reshape (Reshape)    (None, 1, 1, 576)    0           block4d_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block4d_se_reduce (Conv2D)      (None, 1, 1, 24)     13848       block4d_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block4d_se_expand (Conv2D)      (None, 1, 1, 576)    14400       block4d_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block4d_se_excite (Multiply)    (None, None, None, 5 0           block4d_activation[0][0]         
+                                                                 block4d_se_expand[0][0]          
+__________________________________________________________________________________________________
+block4d_project_conv (Conv2D)   (None, None, None, 9 55296       block4d_se_excite[0][0]          
+__________________________________________________________________________________________________
+block4d_project_bn (BatchNormal (None, None, None, 9 384         block4d_project_conv[0][0]       
+__________________________________________________________________________________________________
+block4d_drop (FixedDropout)     (None, None, None, 9 0           block4d_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4d_add (Add)               (None, None, None, 9 0           block4d_drop[0][0]               
+                                                                 block4c_add[0][0]                
+__________________________________________________________________________________________________
+block4e_expand_conv (Conv2D)    (None, None, None, 5 55296       block4d_add[0][0]                
+__________________________________________________________________________________________________
+block4e_expand_bn (BatchNormali (None, None, None, 5 2304        block4e_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block4e_expand_activation (Acti (None, None, None, 5 0           block4e_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block4e_dwconv (DepthwiseConv2D (None, None, None, 5 5184        block4e_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block4e_bn (BatchNormalization) (None, None, None, 5 2304        block4e_dwconv[0][0]             
+__________________________________________________________________________________________________
+block4e_activation (Activation) (None, None, None, 5 0           block4e_bn[0][0]                 
+__________________________________________________________________________________________________
+block4e_se_squeeze (GlobalAvera (None, 576)          0           block4e_activation[0][0]         
+__________________________________________________________________________________________________
+block4e_se_reshape (Reshape)    (None, 1, 1, 576)    0           block4e_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block4e_se_reduce (Conv2D)      (None, 1, 1, 24)     13848       block4e_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block4e_se_expand (Conv2D)      (None, 1, 1, 576)    14400       block4e_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block4e_se_excite (Multiply)    (None, None, None, 5 0           block4e_activation[0][0]         
+                                                                 block4e_se_expand[0][0]          
+__________________________________________________________________________________________________
+block4e_project_conv (Conv2D)   (None, None, None, 9 55296       block4e_se_excite[0][0]          
+__________________________________________________________________________________________________
+block4e_project_bn (BatchNormal (None, None, None, 9 384         block4e_project_conv[0][0]       
+__________________________________________________________________________________________________
+block4e_drop (FixedDropout)     (None, None, None, 9 0           block4e_project_bn[0][0]         
+__________________________________________________________________________________________________
+block4e_add (Add)               (None, None, None, 9 0           block4e_drop[0][0]               
+                                                                 block4d_add[0][0]                
+__________________________________________________________________________________________________
+block5a_expand_conv (Conv2D)    (None, None, None, 5 55296       block4e_add[0][0]                
+__________________________________________________________________________________________________
+block5a_expand_bn (BatchNormali (None, None, None, 5 2304        block5a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block5a_expand_activation (Acti (None, None, None, 5 0           block5a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block5a_dwconv (DepthwiseConv2D (None, None, None, 5 14400       block5a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block5a_bn (BatchNormalization) (None, None, None, 5 2304        block5a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block5a_activation (Activation) (None, None, None, 5 0           block5a_bn[0][0]                 
+__________________________________________________________________________________________________
+block5a_se_squeeze (GlobalAvera (None, 576)          0           block5a_activation[0][0]         
+__________________________________________________________________________________________________
+block5a_se_reshape (Reshape)    (None, 1, 1, 576)    0           block5a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block5a_se_reduce (Conv2D)      (None, 1, 1, 24)     13848       block5a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block5a_se_expand (Conv2D)      (None, 1, 1, 576)    14400       block5a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block5a_se_excite (Multiply)    (None, None, None, 5 0           block5a_activation[0][0]         
+                                                                 block5a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block5a_project_conv (Conv2D)   (None, None, None, 1 78336       block5a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block5a_project_bn (BatchNormal (None, None, None, 1 544         block5a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block5b_expand_conv (Conv2D)    (None, None, None, 8 110976      block5a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5b_expand_bn (BatchNormali (None, None, None, 8 3264        block5b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block5b_expand_activation (Acti (None, None, None, 8 0           block5b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block5b_dwconv (DepthwiseConv2D (None, None, None, 8 20400       block5b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block5b_bn (BatchNormalization) (None, None, None, 8 3264        block5b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block5b_activation (Activation) (None, None, None, 8 0           block5b_bn[0][0]                 
+__________________________________________________________________________________________________
+block5b_se_squeeze (GlobalAvera (None, 816)          0           block5b_activation[0][0]         
+__________________________________________________________________________________________________
+block5b_se_reshape (Reshape)    (None, 1, 1, 816)    0           block5b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block5b_se_reduce (Conv2D)      (None, 1, 1, 34)     27778       block5b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block5b_se_expand (Conv2D)      (None, 1, 1, 816)    28560       block5b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block5b_se_excite (Multiply)    (None, None, None, 8 0           block5b_activation[0][0]         
+                                                                 block5b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block5b_project_conv (Conv2D)   (None, None, None, 1 110976      block5b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block5b_project_bn (BatchNormal (None, None, None, 1 544         block5b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block5b_drop (FixedDropout)     (None, None, None, 1 0           block5b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5b_add (Add)               (None, None, None, 1 0           block5b_drop[0][0]               
+                                                                 block5a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5c_expand_conv (Conv2D)    (None, None, None, 8 110976      block5b_add[0][0]                
+__________________________________________________________________________________________________
+block5c_expand_bn (BatchNormali (None, None, None, 8 3264        block5c_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block5c_expand_activation (Acti (None, None, None, 8 0           block5c_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block5c_dwconv (DepthwiseConv2D (None, None, None, 8 20400       block5c_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block5c_bn (BatchNormalization) (None, None, None, 8 3264        block5c_dwconv[0][0]             
+__________________________________________________________________________________________________
+block5c_activation (Activation) (None, None, None, 8 0           block5c_bn[0][0]                 
+__________________________________________________________________________________________________
+block5c_se_squeeze (GlobalAvera (None, 816)          0           block5c_activation[0][0]         
+__________________________________________________________________________________________________
+block5c_se_reshape (Reshape)    (None, 1, 1, 816)    0           block5c_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block5c_se_reduce (Conv2D)      (None, 1, 1, 34)     27778       block5c_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block5c_se_expand (Conv2D)      (None, 1, 1, 816)    28560       block5c_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block5c_se_excite (Multiply)    (None, None, None, 8 0           block5c_activation[0][0]         
+                                                                 block5c_se_expand[0][0]          
+__________________________________________________________________________________________________
+block5c_project_conv (Conv2D)   (None, None, None, 1 110976      block5c_se_excite[0][0]          
+__________________________________________________________________________________________________
+block5c_project_bn (BatchNormal (None, None, None, 1 544         block5c_project_conv[0][0]       
+__________________________________________________________________________________________________
+block5c_drop (FixedDropout)     (None, None, None, 1 0           block5c_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5c_add (Add)               (None, None, None, 1 0           block5c_drop[0][0]               
+                                                                 block5b_add[0][0]                
+__________________________________________________________________________________________________
+block5d_expand_conv (Conv2D)    (None, None, None, 8 110976      block5c_add[0][0]                
+__________________________________________________________________________________________________
+block5d_expand_bn (BatchNormali (None, None, None, 8 3264        block5d_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block5d_expand_activation (Acti (None, None, None, 8 0           block5d_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block5d_dwconv (DepthwiseConv2D (None, None, None, 8 20400       block5d_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block5d_bn (BatchNormalization) (None, None, None, 8 3264        block5d_dwconv[0][0]             
+__________________________________________________________________________________________________
+block5d_activation (Activation) (None, None, None, 8 0           block5d_bn[0][0]                 
+__________________________________________________________________________________________________
+block5d_se_squeeze (GlobalAvera (None, 816)          0           block5d_activation[0][0]         
+__________________________________________________________________________________________________
+block5d_se_reshape (Reshape)    (None, 1, 1, 816)    0           block5d_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block5d_se_reduce (Conv2D)      (None, 1, 1, 34)     27778       block5d_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block5d_se_expand (Conv2D)      (None, 1, 1, 816)    28560       block5d_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block5d_se_excite (Multiply)    (None, None, None, 8 0           block5d_activation[0][0]         
+                                                                 block5d_se_expand[0][0]          
+__________________________________________________________________________________________________
+block5d_project_conv (Conv2D)   (None, None, None, 1 110976      block5d_se_excite[0][0]          
+__________________________________________________________________________________________________
+block5d_project_bn (BatchNormal (None, None, None, 1 544         block5d_project_conv[0][0]       
+__________________________________________________________________________________________________
+block5d_drop (FixedDropout)     (None, None, None, 1 0           block5d_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5d_add (Add)               (None, None, None, 1 0           block5d_drop[0][0]               
+                                                                 block5c_add[0][0]                
+__________________________________________________________________________________________________
+block5e_expand_conv (Conv2D)    (None, None, None, 8 110976      block5d_add[0][0]                
+__________________________________________________________________________________________________
+block5e_expand_bn (BatchNormali (None, None, None, 8 3264        block5e_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block5e_expand_activation (Acti (None, None, None, 8 0           block5e_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block5e_dwconv (DepthwiseConv2D (None, None, None, 8 20400       block5e_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block5e_bn (BatchNormalization) (None, None, None, 8 3264        block5e_dwconv[0][0]             
+__________________________________________________________________________________________________
+block5e_activation (Activation) (None, None, None, 8 0           block5e_bn[0][0]                 
+__________________________________________________________________________________________________
+block5e_se_squeeze (GlobalAvera (None, 816)          0           block5e_activation[0][0]         
+__________________________________________________________________________________________________
+block5e_se_reshape (Reshape)    (None, 1, 1, 816)    0           block5e_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block5e_se_reduce (Conv2D)      (None, 1, 1, 34)     27778       block5e_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block5e_se_expand (Conv2D)      (None, 1, 1, 816)    28560       block5e_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block5e_se_excite (Multiply)    (None, None, None, 8 0           block5e_activation[0][0]         
+                                                                 block5e_se_expand[0][0]          
+__________________________________________________________________________________________________
+block5e_project_conv (Conv2D)   (None, None, None, 1 110976      block5e_se_excite[0][0]          
+__________________________________________________________________________________________________
+block5e_project_bn (BatchNormal (None, None, None, 1 544         block5e_project_conv[0][0]       
+__________________________________________________________________________________________________
+block5e_drop (FixedDropout)     (None, None, None, 1 0           block5e_project_bn[0][0]         
+__________________________________________________________________________________________________
+block5e_add (Add)               (None, None, None, 1 0           block5e_drop[0][0]               
+                                                                 block5d_add[0][0]                
+__________________________________________________________________________________________________
+block6a_expand_conv (Conv2D)    (None, None, None, 8 110976      block5e_add[0][0]                
+__________________________________________________________________________________________________
+block6a_expand_bn (BatchNormali (None, None, None, 8 3264        block6a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6a_expand_activation (Acti (None, None, None, 8 0           block6a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6a_dwconv (DepthwiseConv2D (None, None, None, 8 20400       block6a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6a_bn (BatchNormalization) (None, None, None, 8 3264        block6a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6a_activation (Activation) (None, None, None, 8 0           block6a_bn[0][0]                 
+__________________________________________________________________________________________________
+block6a_se_squeeze (GlobalAvera (None, 816)          0           block6a_activation[0][0]         
+__________________________________________________________________________________________________
+block6a_se_reshape (Reshape)    (None, 1, 1, 816)    0           block6a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6a_se_reduce (Conv2D)      (None, 1, 1, 34)     27778       block6a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6a_se_expand (Conv2D)      (None, 1, 1, 816)    28560       block6a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6a_se_excite (Multiply)    (None, None, None, 8 0           block6a_activation[0][0]         
+                                                                 block6a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6a_project_conv (Conv2D)   (None, None, None, 2 189312      block6a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6a_project_bn (BatchNormal (None, None, None, 2 928         block6a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6b_expand_conv (Conv2D)    (None, None, None, 1 322944      block6a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6b_expand_bn (BatchNormali (None, None, None, 1 5568        block6b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6b_expand_activation (Acti (None, None, None, 1 0           block6b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6b_dwconv (DepthwiseConv2D (None, None, None, 1 34800       block6b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6b_bn (BatchNormalization) (None, None, None, 1 5568        block6b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6b_activation (Activation) (None, None, None, 1 0           block6b_bn[0][0]                 
+__________________________________________________________________________________________________
+block6b_se_squeeze (GlobalAvera (None, 1392)         0           block6b_activation[0][0]         
+__________________________________________________________________________________________________
+block6b_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block6b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6b_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block6b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6b_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block6b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6b_se_excite (Multiply)    (None, None, None, 1 0           block6b_activation[0][0]         
+                                                                 block6b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6b_project_conv (Conv2D)   (None, None, None, 2 322944      block6b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6b_project_bn (BatchNormal (None, None, None, 2 928         block6b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6b_drop (FixedDropout)     (None, None, None, 2 0           block6b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6b_add (Add)               (None, None, None, 2 0           block6b_drop[0][0]               
+                                                                 block6a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6c_expand_conv (Conv2D)    (None, None, None, 1 322944      block6b_add[0][0]                
+__________________________________________________________________________________________________
+block6c_expand_bn (BatchNormali (None, None, None, 1 5568        block6c_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6c_expand_activation (Acti (None, None, None, 1 0           block6c_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6c_dwconv (DepthwiseConv2D (None, None, None, 1 34800       block6c_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6c_bn (BatchNormalization) (None, None, None, 1 5568        block6c_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6c_activation (Activation) (None, None, None, 1 0           block6c_bn[0][0]                 
+__________________________________________________________________________________________________
+block6c_se_squeeze (GlobalAvera (None, 1392)         0           block6c_activation[0][0]         
+__________________________________________________________________________________________________
+block6c_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block6c_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6c_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block6c_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6c_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block6c_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6c_se_excite (Multiply)    (None, None, None, 1 0           block6c_activation[0][0]         
+                                                                 block6c_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6c_project_conv (Conv2D)   (None, None, None, 2 322944      block6c_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6c_project_bn (BatchNormal (None, None, None, 2 928         block6c_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6c_drop (FixedDropout)     (None, None, None, 2 0           block6c_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6c_add (Add)               (None, None, None, 2 0           block6c_drop[0][0]               
+                                                                 block6b_add[0][0]                
+__________________________________________________________________________________________________
+block6d_expand_conv (Conv2D)    (None, None, None, 1 322944      block6c_add[0][0]                
+__________________________________________________________________________________________________
+block6d_expand_bn (BatchNormali (None, None, None, 1 5568        block6d_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6d_expand_activation (Acti (None, None, None, 1 0           block6d_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6d_dwconv (DepthwiseConv2D (None, None, None, 1 34800       block6d_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6d_bn (BatchNormalization) (None, None, None, 1 5568        block6d_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6d_activation (Activation) (None, None, None, 1 0           block6d_bn[0][0]                 
+__________________________________________________________________________________________________
+block6d_se_squeeze (GlobalAvera (None, 1392)         0           block6d_activation[0][0]         
+__________________________________________________________________________________________________
+block6d_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block6d_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6d_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block6d_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6d_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block6d_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6d_se_excite (Multiply)    (None, None, None, 1 0           block6d_activation[0][0]         
+                                                                 block6d_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6d_project_conv (Conv2D)   (None, None, None, 2 322944      block6d_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6d_project_bn (BatchNormal (None, None, None, 2 928         block6d_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6d_drop (FixedDropout)     (None, None, None, 2 0           block6d_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6d_add (Add)               (None, None, None, 2 0           block6d_drop[0][0]               
+                                                                 block6c_add[0][0]                
+__________________________________________________________________________________________________
+block6e_expand_conv (Conv2D)    (None, None, None, 1 322944      block6d_add[0][0]                
+__________________________________________________________________________________________________
+block6e_expand_bn (BatchNormali (None, None, None, 1 5568        block6e_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6e_expand_activation (Acti (None, None, None, 1 0           block6e_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6e_dwconv (DepthwiseConv2D (None, None, None, 1 34800       block6e_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6e_bn (BatchNormalization) (None, None, None, 1 5568        block6e_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6e_activation (Activation) (None, None, None, 1 0           block6e_bn[0][0]                 
+__________________________________________________________________________________________________
+block6e_se_squeeze (GlobalAvera (None, 1392)         0           block6e_activation[0][0]         
+__________________________________________________________________________________________________
+block6e_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block6e_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6e_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block6e_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6e_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block6e_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6e_se_excite (Multiply)    (None, None, None, 1 0           block6e_activation[0][0]         
+                                                                 block6e_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6e_project_conv (Conv2D)   (None, None, None, 2 322944      block6e_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6e_project_bn (BatchNormal (None, None, None, 2 928         block6e_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6e_drop (FixedDropout)     (None, None, None, 2 0           block6e_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6e_add (Add)               (None, None, None, 2 0           block6e_drop[0][0]               
+                                                                 block6d_add[0][0]                
+__________________________________________________________________________________________________
+block6f_expand_conv (Conv2D)    (None, None, None, 1 322944      block6e_add[0][0]                
+__________________________________________________________________________________________________
+block6f_expand_bn (BatchNormali (None, None, None, 1 5568        block6f_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block6f_expand_activation (Acti (None, None, None, 1 0           block6f_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block6f_dwconv (DepthwiseConv2D (None, None, None, 1 34800       block6f_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block6f_bn (BatchNormalization) (None, None, None, 1 5568        block6f_dwconv[0][0]             
+__________________________________________________________________________________________________
+block6f_activation (Activation) (None, None, None, 1 0           block6f_bn[0][0]                 
+__________________________________________________________________________________________________
+block6f_se_squeeze (GlobalAvera (None, 1392)         0           block6f_activation[0][0]         
+__________________________________________________________________________________________________
+block6f_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block6f_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block6f_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block6f_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block6f_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block6f_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block6f_se_excite (Multiply)    (None, None, None, 1 0           block6f_activation[0][0]         
+                                                                 block6f_se_expand[0][0]          
+__________________________________________________________________________________________________
+block6f_project_conv (Conv2D)   (None, None, None, 2 322944      block6f_se_excite[0][0]          
+__________________________________________________________________________________________________
+block6f_project_bn (BatchNormal (None, None, None, 2 928         block6f_project_conv[0][0]       
+__________________________________________________________________________________________________
+block6f_drop (FixedDropout)     (None, None, None, 2 0           block6f_project_bn[0][0]         
+__________________________________________________________________________________________________
+block6f_add (Add)               (None, None, None, 2 0           block6f_drop[0][0]               
+                                                                 block6e_add[0][0]                
+__________________________________________________________________________________________________
+block7a_expand_conv (Conv2D)    (None, None, None, 1 322944      block6f_add[0][0]                
+__________________________________________________________________________________________________
+block7a_expand_bn (BatchNormali (None, None, None, 1 5568        block7a_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block7a_expand_activation (Acti (None, None, None, 1 0           block7a_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block7a_dwconv (DepthwiseConv2D (None, None, None, 1 12528       block7a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block7a_bn (BatchNormalization) (None, None, None, 1 5568        block7a_dwconv[0][0]             
+__________________________________________________________________________________________________
+block7a_activation (Activation) (None, None, None, 1 0           block7a_bn[0][0]                 
+__________________________________________________________________________________________________
+block7a_se_squeeze (GlobalAvera (None, 1392)         0           block7a_activation[0][0]         
+__________________________________________________________________________________________________
+block7a_se_reshape (Reshape)    (None, 1, 1, 1392)   0           block7a_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block7a_se_reduce (Conv2D)      (None, 1, 1, 58)     80794       block7a_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block7a_se_expand (Conv2D)      (None, 1, 1, 1392)   82128       block7a_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block7a_se_excite (Multiply)    (None, None, None, 1 0           block7a_activation[0][0]         
+                                                                 block7a_se_expand[0][0]          
+__________________________________________________________________________________________________
+block7a_project_conv (Conv2D)   (None, None, None, 3 534528      block7a_se_excite[0][0]          
+__________________________________________________________________________________________________
+block7a_project_bn (BatchNormal (None, None, None, 3 1536        block7a_project_conv[0][0]       
+__________________________________________________________________________________________________
+block7b_expand_conv (Conv2D)    (None, None, None, 2 884736      block7a_project_bn[0][0]         
+__________________________________________________________________________________________________
+block7b_expand_bn (BatchNormali (None, None, None, 2 9216        block7b_expand_conv[0][0]        
+__________________________________________________________________________________________________
+block7b_expand_activation (Acti (None, None, None, 2 0           block7b_expand_bn[0][0]          
+__________________________________________________________________________________________________
+block7b_dwconv (DepthwiseConv2D (None, None, None, 2 20736       block7b_expand_activation[0][0]  
+__________________________________________________________________________________________________
+block7b_bn (BatchNormalization) (None, None, None, 2 9216        block7b_dwconv[0][0]             
+__________________________________________________________________________________________________
+block7b_activation (Activation) (None, None, None, 2 0           block7b_bn[0][0]                 
+__________________________________________________________________________________________________
+block7b_se_squeeze (GlobalAvera (None, 2304)         0           block7b_activation[0][0]         
+__________________________________________________________________________________________________
+block7b_se_reshape (Reshape)    (None, 1, 1, 2304)   0           block7b_se_squeeze[0][0]         
+__________________________________________________________________________________________________
+block7b_se_reduce (Conv2D)      (None, 1, 1, 96)     221280      block7b_se_reshape[0][0]         
+__________________________________________________________________________________________________
+block7b_se_expand (Conv2D)      (None, 1, 1, 2304)   223488      block7b_se_reduce[0][0]          
+__________________________________________________________________________________________________
+block7b_se_excite (Multiply)    (None, None, None, 2 0           block7b_activation[0][0]         
+                                                                 block7b_se_expand[0][0]          
+__________________________________________________________________________________________________
+block7b_project_conv (Conv2D)   (None, None, None, 3 884736      block7b_se_excite[0][0]          
+__________________________________________________________________________________________________
+block7b_project_bn (BatchNormal (None, None, None, 3 1536        block7b_project_conv[0][0]       
+__________________________________________________________________________________________________
+block7b_drop (FixedDropout)     (None, None, None, 3 0           block7b_project_bn[0][0]         
+__________________________________________________________________________________________________
+block7b_add (Add)               (None, None, None, 3 0           block7b_drop[0][0]               
+                                                                 block7a_project_bn[0][0]         
+__________________________________________________________________________________________________
+top_conv (Conv2D)               (None, None, None, 1 589824      block7b_add[0][0]                
+__________________________________________________________________________________________________
+top_bn (BatchNormalization)     (None, None, None, 1 6144        top_conv[0][0]                   
+__________________________________________________________________________________________________
+top_activation (Activation)     (None, None, None, 1 0           top_bn[0][0]                     
+__________________________________________________________________________________________________
+decoder_stage0_upsampling (UpSa (None, None, None, 1 0           top_activation[0][0]             
+__________________________________________________________________________________________________
+decoder_stage0_concat (Concaten (None, None, None, 2 0           decoder_stage0_upsampling[0][0]  
+                                                                 block6a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+decoder_stage0a_conv (Conv2D)   (None, None, None, 2 5419008     decoder_stage0_concat[0][0]      
+__________________________________________________________________________________________________
+decoder_stage0a_bn (BatchNormal (None, None, None, 2 1024        decoder_stage0a_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage0a_relu (Activatio (None, None, None, 2 0           decoder_stage0a_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage0b_conv (Conv2D)   (None, None, None, 2 589824      decoder_stage0a_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage0b_bn (BatchNormal (None, None, None, 2 1024        decoder_stage0b_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage0b_relu (Activatio (None, None, None, 2 0           decoder_stage0b_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage1_upsampling (UpSa (None, None, None, 2 0           decoder_stage0b_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage1_concat (Concaten (None, None, None, 5 0           decoder_stage1_upsampling[0][0]  
+                                                                 block4a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+decoder_stage1a_conv (Conv2D)   (None, None, None, 1 626688      decoder_stage1_concat[0][0]      
+__________________________________________________________________________________________________
+decoder_stage1a_bn (BatchNormal (None, None, None, 1 512         decoder_stage1a_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage1a_relu (Activatio (None, None, None, 1 0           decoder_stage1a_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage1b_conv (Conv2D)   (None, None, None, 1 147456      decoder_stage1a_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage1b_bn (BatchNormal (None, None, None, 1 512         decoder_stage1b_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage1b_relu (Activatio (None, None, None, 1 0           decoder_stage1b_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage2_upsampling (UpSa (None, None, None, 1 0           decoder_stage1b_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage2_concat (Concaten (None, None, None, 3 0           decoder_stage2_upsampling[0][0]  
+                                                                 block3a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+decoder_stage2a_conv (Conv2D)   (None, None, None, 6 184320      decoder_stage2_concat[0][0]      
+__________________________________________________________________________________________________
+decoder_stage2a_bn (BatchNormal (None, None, None, 6 256         decoder_stage2a_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage2a_relu (Activatio (None, None, None, 6 0           decoder_stage2a_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage2b_conv (Conv2D)   (None, None, None, 6 36864       decoder_stage2a_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage2b_bn (BatchNormal (None, None, None, 6 256         decoder_stage2b_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage2b_relu (Activatio (None, None, None, 6 0           decoder_stage2b_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage3_upsampling (UpSa (None, None, None, 6 0           decoder_stage2b_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage3_concat (Concaten (None, None, None, 2 0           decoder_stage3_upsampling[0][0]  
+                                                                 block2a_expand_activation[0][0]  
+__________________________________________________________________________________________________
+decoder_stage3a_conv (Conv2D)   (None, None, None, 3 59904       decoder_stage3_concat[0][0]      
+__________________________________________________________________________________________________
+decoder_stage3a_bn (BatchNormal (None, None, None, 3 128         decoder_stage3a_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage3a_relu (Activatio (None, None, None, 3 0           decoder_stage3a_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage3b_conv (Conv2D)   (None, None, None, 3 9216        decoder_stage3a_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage3b_bn (BatchNormal (None, None, None, 3 128         decoder_stage3b_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage3b_relu (Activatio (None, None, None, 3 0           decoder_stage3b_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage4_upsampling (UpSa (None, None, None, 3 0           decoder_stage3b_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage4a_conv (Conv2D)   (None, None, None, 1 4608        decoder_stage4_upsampling[0][0]  
+__________________________________________________________________________________________________
+decoder_stage4a_bn (BatchNormal (None, None, None, 1 64          decoder_stage4a_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage4a_relu (Activatio (None, None, None, 1 0           decoder_stage4a_bn[0][0]         
+__________________________________________________________________________________________________
+decoder_stage4b_conv (Conv2D)   (None, None, None, 1 2304        decoder_stage4a_relu[0][0]       
+__________________________________________________________________________________________________
+decoder_stage4b_bn (BatchNormal (None, None, None, 1 64          decoder_stage4b_conv[0][0]       
+__________________________________________________________________________________________________
+decoder_stage4b_relu (Activatio (None, None, None, 1 0           decoder_stage4b_bn[0][0]         
+__________________________________________________________________________________________________
+final_conv (Conv2D)             (None, None, None, 1 145         decoder_stage4b_relu[0][0]       
+__________________________________________________________________________________________________
+sigmoid (Activation)            (None, None, None, 1 0           final_conv[0][0]                 
+==================================================================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total params: 17,867,833
+Trainable params: 17,778,553
+Non-trainable params: 89,280
+__________________________________________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>TODO: Load the non-augmented model, compare metrics</p>
+</div>
+<div class="section" id="test-model">
+<h2>Test model<a class="headerlink" href="#test-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">test_paths</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">PARALLEL_OPS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NBRO_TEST_CASES</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_sample_rgbs</span><span class="p">,</span> <span class="n">test_sample_gts</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">test_lst</span><span class="p">[:</span><span class="n">NBRO_TEST_CASES</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">test_sample_rgbs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">test_sample_rgb</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">test_sample_gt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">test_sample_rgbs</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">test_sample_gts</span><span class="p">):</span>
+    <span class="n">show</span><span class="p">({</span>
+        <span class="s2">&quot;RGB image&quot;</span><span class="p">:</span> <span class="n">test_sample_rgb</span><span class="p">,</span>
+        <span class="s2">&quot;Prediction&quot;</span><span class="p">:</span> <span class="n">prediction</span><span class="p">,</span>
+        <span class="s2">&quot;Ground truth mask&quot;</span><span class="p">:</span> <span class="n">test_sample_gt</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/train_aug_35_0.png" src="../_images/train_aug_35_0.png" />
+<img alt="../_images/train_aug_35_1.png" src="../_images/train_aug_35_1.png" />
+<img alt="../_images/train_aug_35_2.png" src="../_images/train_aug_35_2.png" />
+<img alt="../_images/train_aug_35_3.png" src="../_images/train_aug_35_3.png" />
+<img alt="../_images/train_aug_35_4.png" src="../_images/train_aug_35_4.png" />
+<img alt="../_images/train_aug_35_5.png" src="../_images/train_aug_35_5.png" />
+<img alt="../_images/train_aug_35_6.png" src="../_images/train_aug_35_6.png" />
+<img alt="../_images/train_aug_35_7.png" src="../_images/train_aug_35_7.png" />
+<img alt="../_images/train_aug_35_8.png" src="../_images/train_aug_35_8.png" />
+<img alt="../_images/train_aug_35_9.png" src="../_images/train_aug_35_9.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./model"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Pieter Fiers, Simon Germeau<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
