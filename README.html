@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Autonomously mapping linear landscape features using a drone &#8212; Paddy</title>
+    <title>Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation &#8212; Paddy</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -64,8 +64,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://paddy.pfiers.net/README.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Autonomously mapping linear landscape features using a drone" />
-<meta property="og:description" content="Autonomously mapping linear landscape features using a drone  More accurate alternative title:&lt;br /&gt; Autonomously following forest paths with a drone using a se" />
+<meta property="og:title"       content="Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation" />
+<meta property="og:description" content="Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation  This project is Pieter Fiers and Simon Germeau’s professional bachelor’s th" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -95,7 +95,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="reference internal" href="#">
-   Autonomously mapping linear landscape features using a drone
+   Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
   </a>
  </li>
 </ul>
@@ -213,6 +213,50 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repository-structure">
+   Repository structure
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataprep">
+     <span class="xref myst">
+      Dataprep
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model">
+     <span class="xref myst">
+      Model
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rover">
+     <span class="xref myst">
+      Rover
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ros">
+     <span class="xref myst">
+      ROS
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -220,14 +264,53 @@
         
               <div>
                 
-  <div class="section" id="autonomously-mapping-linear-landscape-features-using-a-drone">
-<h1>Autonomously mapping linear landscape features using a drone<a class="headerlink" href="#autonomously-mapping-linear-landscape-features-using-a-drone" title="Permalink to this headline">¶</a></h1>
-<p>More accurate alternative title:<br />
-<strong>Autonomously following forest paths with a drone using a semantic segmentation CNN</strong></p>
+  <div class="section" id="autonomously-following-forest-paths-with-a-mobile-robot-using-semantic-segmentation">
+<h1>Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation<a class="headerlink" href="#autonomously-following-forest-paths-with-a-mobile-robot-using-semantic-segmentation" title="Permalink to this headline">¶</a></h1>
+<p>This project is <a class="reference external" href="https://pfiers.net">Pieter Fiers</a> and
+<a class="reference external" href="https://github.com/GermeauSimon">Simon Germeau</a>’s professional bachelor’s thesis for <a class="reference external" href="https://www.ucll.be/">UCLL</a>’s <a class="reference external" href="http://onderwijsaanbod.leuven.ucll.be/opleidingen/n/SC_52335187.htm">Aplied Informatics degree</a>.</p>
+<p>We created a rover that is capable of autonomously following forest paths.</p>
+<p>We used a Semantic Segmentation CNN, as opposed to the classification CNN
+used by Giusti et al.<a class="footnote-reference brackets" href="#id3" id="id1">1</a> and Smolyanskiy et al.<a class="footnote-reference brackets" href="#id4" id="id2">2</a>. We believe this enables
+interesting future expansions, like higher-level decision making about path
+intersections, and the mapping of road geometries.</p>
 <video width="100%" controls>
     <source src="intro.webm" type="video/webm">
 </video>
+<div class="section" id="repository-structure">
+<h2>Repository structure<a class="headerlink" href="#repository-structure" title="Permalink to this headline">¶</a></h2>
+<p>The repository is structured according to the four main stages of our project:</p>
+<div class="section" id="dataprep">
+<h3><span class="xref myst">Dataprep</span><a class="headerlink" href="#dataprep" title="Permalink to this headline">¶</a></h3>
+<p>Documentation about, and the scripts we used for, the processing and labelling
+of data used for training.</p>
+</div>
+<div class="section" id="model">
+<h3><span class="xref myst">Model</span><a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
+<p>This folder contains the machine learning process we used to train our CNN.</p>
+</div>
+<div class="section" id="rover">
+<h3><span class="xref myst">Rover</span><a class="headerlink" href="#rover" title="Permalink to this headline">¶</a></h3>
+<p>Documentation regarding the hardware aspect of our rover.</p>
+</div>
+<div class="section" id="ros">
+<h3><span class="xref myst">ROS</span><a class="headerlink" href="#ros" title="Permalink to this headline">¶</a></h3>
+<p>ROS is the “<a class="reference external" href="https://www.ros.org/">Robot Operating System</a>”. See
+“<span class="xref myst">About ROS</span>” for more about why <em>we</em> use ROS.</p>
+<p>All documentation, ROS nodes, and extra files needed to make the rover drive
+itself.</p>
+<br>
 <div class="toctree-wrapper compound">
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Smolyanskiy et al., “Toward Low-Flying Autonomous MAV Trail Navigation using DeepNeural Networks for Environmental Awareness” May 2017.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Giusti et al., “A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots” Dec 2015.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 
