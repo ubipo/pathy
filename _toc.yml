@@ -1,5 +1,5 @@
-file: README
-sections:
+- file: README
+
 - file: model/README
 - file: dataprep/README
   sections:
@@ -13,5 +13,4 @@ sections:
 - file: admin/README
   sections:
   - file: admin/data-labelling
-
-file: DOCUMENTATION
+- file: DOCUMENTATION

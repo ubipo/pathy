@@ -1,28 +1,38 @@
 # Documentation
 
-## Viewing
+**TL;DR: [paddy.pfiers.net](https://paddy.pfiers.net)**
 
-### Online
+We use [Jupyter Book](https://jupyterbook.org/) (not to be confused with 
+[Jupyter Notebooks](https://jupyter.org/)) to create HTML documentation 
+from the .md, .py and .ipynb files in the repo (spread across the repo's 
+different parts).
 
-An online version of this project's documentation is available at [paddy.pfiers.net](https://paddy.pfiers.net).
+Any page of this rendered documentation can also be downloaded as pdf from
+the relevant webpage.
 
-### Locally
+![Find the "as pdf" button in the top-right corner](media/documentation-as-pdf.png)
 
-1. Checkout the docs branch
+By far the easiest way to view these docs is by browsing to
+[paddy.pfiers.net](https://paddy.pfiers.net). However, you can also
+view and/or build them locally:
+
+## Viewing locally
+
+1\. Checkout the docs branch
 
 ```
 git checkout docs
 ```
 
 
-2. Open docs (method 1)
+2\. Open docs (method 1)
 
 Open [_build/html/index.html](_build/html/index.html) in your browser.
 
 
 **OR**
 
-2. Open docs (method 2)
+2\. Open docs (method 2)
 
 With [python 3.x](https://python.org) installed, run:
 ```
@@ -57,4 +67,4 @@ pip install -r requirements
 jupyter-book build .
 ```
 
-To view the docs, see [Viewing > Locally](#locally)
+To view the docs, see [Viewing locally](#viewing-locally)
