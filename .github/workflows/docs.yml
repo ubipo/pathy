@@ -28,7 +28,11 @@ jobs:
           
       - name: Build Jupyter Book
         run: |
-         jupyter-book build .
+          jupyter-book build .
+
+      - name: Add CNAME
+        run: |
+          echo "paddy.pfiers.net" > CNAME
 
       - name: Push docs dir
         uses: s0/git-publish-subdir-action@develop
