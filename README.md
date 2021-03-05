@@ -3,4 +3,6 @@
 More accurate alternative title:  
 **Autonomously following forest paths with a drone using a semantic segmentation CNN**
 
-![intro-video](media/intro.webm)
+<video height="540" muted>
+    <source src="media/intro.webm" type="video/webm">
+</video>

@@ -1,7 +1,9 @@
 file: README
 sections:
-- file: dataprep/yamaha_flatten
+- file: model
+- file: dataprep
   sections:
+  - file: dataprep/yamaha_flatten
   - file: dataprep/create_label_jsons
   - file: dataprep/freiburg_flatten
   - file: dataprep/remove_seq_sim
