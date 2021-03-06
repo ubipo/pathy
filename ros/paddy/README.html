@@ -66,7 +66,7 @@
 <meta property="og:url"         content="https://paddy.pfiers.net/ros/paddy/README.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Paddy" />
-<meta property="og:description" content="Paddy  Paddy, the ROS package that runs padnet, consists of 7 nodes:    Nodes in the Paddy package  Nodes  Camstream: Webcam video capture  Model: Semantic segm" />
+<meta property="og:description" content="Paddy  Paddy, the ROS package that runs padnet, consists of 7 nodes:    Nodes in the Paddy package  Nodes  Camstream: Webcam video capture  Padnet: Semantic seg" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -256,6 +256,16 @@
     <i class="fas fa-chevron-down">
     </i>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../droidcam.html">
+     DroidCAM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../webui.html">
+     Web UI
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -356,8 +366,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#future-improvements">
-   Future improvements
+  <a class="reference internal nav-link" href="#running">
+   Running
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters">
+   Parameters
   </a>
  </li>
 </ul>
@@ -374,19 +389,43 @@
   <div class="section" id="paddy">
 <h1>Paddy<a class="headerlink" href="#paddy" title="Permalink to this headline">¶</a></h1>
 <p>Paddy, the ROS package that runs padnet, consists of 7 nodes:</p>
-<div class="figure align-default" id="id1">
-<img alt="../../_images/ros-diagram.svg" src="../../_images/ros-diagram.svg" /><p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Nodes in the Paddy package</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="nodes-overview">
+<a class="reference internal image-reference" href="../../_images/ros-diagram.svg"><img alt="../../_images/ros-diagram.svg" src="../../_images/ros-diagram.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Nodes in the Paddy package</span><a class="headerlink" href="#nodes-overview" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="nodes">
 <h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Camstream: Webcam video capture</p></li>
-<li><p>Model: Semantic segmentation DNN</p></li>
-<li></li>
+<li><p><a class="reference internal" href="paddy/camstream.html"><span class="doc std std-doc">Camstream</span></a>: Webcam video capture</p></li>
+<li><p><a class="reference internal" href="paddy/padnet.html"><span class="doc std std-doc">Padnet</span></a>: Semantic segmentation CNN</p></li>
+<li><p><a class="reference internal" href="paddy/steering.html"><span class="doc std std-doc">Steering</span></a>: Steering from path mask</p></li>
+<li><p><a class="reference internal" href="paddy/dms.html"><span class="doc std std-doc">DMS</span></a>: Dead man’s switch</p></li>
+<li><p><a class="reference internal" href="paddy/mav.html"><span class="doc std std-doc">Mav</span></a>: Mavlink proxy and injection</p></li>
+<li><p><a class="reference internal" href="paddy/gcs_webui_ws_server.html"><span class="doc std std-doc">GCS WebUI WebSockets server</span></a>: WebSockets server for the WebUI</p></li>
 </ul>
 </div>
-<div class="section" id="future-improvements">
-<h2>Future improvements<a class="headerlink" href="#future-improvements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>During development and testing we manually started all nodes using:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ros2 run paddy &lt;name-of-node&gt;
+</pre></div>
+</div>
+<p>In <a class="reference external" href="https://www.byobu.org/">Byobu</a>, a terminal multiplexer, this looks something
+like this:</p>
+<div class="figure align-default" id="byobu">
+<a class="reference internal image-reference" href="../../_images/ros-development-byobu.png"><img alt="../../_images/ros-development-byobu.png" src="../../_images/ros-development-byobu.png" style="width: 960.0px; height: 540.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Running paddy nodes in development</span><a class="headerlink" href="#byobu" title="Permalink to this image">¶</a></p>
+</div>
+<p>This would probably be a bit of a hassle in production. ROS 2 of course has
+<a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Launch-system.html">a more elegant way of launching nodes</a>
+. This is a possible improvement.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Currently, all node arguments are hardcoded. This isn’t great. ROS 2 again has more
+elegant way of handling this (e.g. using
+<a class="reference external" href="https://docs.ros.org/en/foxy/Guides/Parameters-YAML-files-migration-guide.html">parameter files</a>
+). This is a possible improvement.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

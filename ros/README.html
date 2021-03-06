@@ -66,7 +66,7 @@
 <meta property="og:url"         content="https://paddy.pfiers.net/ros/README.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="ROS" />
-<meta property="og:description" content="ROS  ROS (Robot Operating System) is a framework…  Nodes  Nodes  " />
+<meta property="og:description" content="ROS  ROS (Robot Operating System) is a “set of software libraries and tools that help you build robot applications”. We used the newest stable ROS release, whic" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -256,6 +256,16 @@
     <i class="fas fa-chevron-down">
     </i>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="droidcam.html">
+     DroidCAM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="webui.html">
+     Web UI
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -351,9 +361,21 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nodes">
-   Nodes
+  <a class="reference internal nav-link" href="#advantages-of-using-ros">
+   Advantages of using ROS
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topic-inspection">
+     Topic inspection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rewriting-topics">
+     Rewriting topics
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -368,10 +390,55 @@
                 
   <div class="section" id="ros">
 <h1>ROS<a class="headerlink" href="#ros" title="Permalink to this headline">¶</a></h1>
-<p>ROS (Robot Operating System) is a framework…</p>
-<div class="section" id="nodes">
-<h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.ros.org/">ROS (Robot Operating System)</a> is a “set of software
+libraries and tools that help you build robot applications”. We used the newest
+stable ROS release, which at the time of creating this project was
+<a class="reference external" href="https://docs.ros.org/en/foxy/Installation.html">ROS 2: Foxy Fitzroy</a>.</p>
+<p>A robot programmed using ROS uses
+<a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Understanding-ROS2-Nodes.html">Nodes</a>
+as its functional blocks and
+<a class="reference external" href="https://docs.ros.org/en/foxy/Tutorials/Topics/Understanding-ROS2-Topics.html">Topics</a>
+to exchange data between these nodes.</p>
+<p>Nodes are separated into packages. A package is the minimal publishable unit of
+ROS ‘stuff’.</p>
+<p>To control our rover we created one package: “paddy”. This package contains all
+nodes to handle camera input, steering, oversight etc.</p>
+<p>We discuss the various nodes and their function in our
+<a class="reference internal" href="paddy/README.html"><span class="doc std std-doc">package’s readme</span></a>.</p>
+<p>Two auxillary components are needed to use the package: <a class="reference internal" href="droidcam.html"><span class="doc std std-doc">DroidCam</span></a> for
+the software side of the rover’s camera and <a class="reference internal" href="webui.html"><span class="doc std std-doc">web UI</span></a> for the live
+monitoring system.</p>
+<div class="section" id="advantages-of-using-ros">
+<h2>Advantages of using ROS<a class="headerlink" href="#advantages-of-using-ros" title="Permalink to this headline">¶</a></h2>
+<p>Besides encouraging a modular approach, ROS also offers some nice debugging
+functionality.</p>
+<div class="section" id="topic-inspection">
+<h3>Topic inspection<a class="headerlink" href="#topic-inspection" title="Permalink to this headline">¶</a></h3>
+<p>To debug a ROS topic (“/paddy/steering” in this example), use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">echo</span> <span class="o">/</span><span class="n">paddy</span><span class="o">/</span><span class="n">steering</span>
+</pre></div>
+</div>
+<p>Something similar can be used for Image topics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">image_tools</span> <span class="n">showimage</span> <span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span> <span class="o">-</span><span class="n">r</span> <span class="n">image</span><span class="o">:=/</span><span class="n">paddy</span><span class="o">/</span><span class="n">rgb</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/showimage.png"><img alt="../_images/showimage.png" src="../_images/showimage.png" style="width: 1040.25px; height: 402.75px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Using showimage to inspect an image topic</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="rewriting-topics">
+<h3>Rewriting topics<a class="headerlink" href="#rewriting-topics" title="Permalink to this headline">¶</a></h3>
+<p>Because topics are just strings, and nodes are thus loosely coupled, it is
+possible to rewrite topics.</p>
+<p>I often used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">paddy</span> <span class="n">mav</span> <span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">paddy</span><span class="o">/</span><span class="n">steering_safe</span><span class="o">:=/</span><span class="n">paddy</span><span class="o">/</span><span class="n">steering</span>
+</pre></div>
+</div>
+<p>…during development to run the rover with ‘unsafe’ steering (steering messages
+that aren’t protected by the dead man’s switch).</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 </div>
