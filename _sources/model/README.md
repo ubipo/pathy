@@ -1,4 +1,4 @@
-# Semantic Image Segmnatation using a CNN
+# Model
 
 ## Prior art
 Before we started developing this project we looked online for research and/or papers that have done something similar to what we were planning on doing. We found two researches, one by Giusti et al[^1]. and one by Smolyanskiy et al.[^2] Giusti classified their images with 1 of 3 classes: left view, right view and center view. They trained their model to classify an image with one of these classes to then get steering from this prediction.
@@ -32,7 +32,7 @@ Freiburg (DeepScene)[^3] is a dataset created by the university of Freiburg and 
 
 
 ### Giusti
-The Giusti dataset is a dataset of forest trails in Switzerland. This dataset did not contain segmentation masks but it was classified as 1 of 3 classes. They captured these images by placing 3 action camera's on a helmet and then walking over forest trails in Switzerland. Since we wanted to extract a mask from the path, we had to segment these images ourselves. The original dataset consisted out of 20 000 images, a lot of them were almost the exact same image since they were frames extracted from a video. We created a script that made a selection of the images based on their color histogram. Images that followed each other and had almost the exact same histogram were deleted. To do this we set up a web tool that gave a simple interface to segment the images. Labeling 500+ images is a very time consuming task so we contacted some teachers if it was possible to join one of their classes and let the first and second year students help us with labeling images. The tool however returns a json file with the coordinates of all points of the mask. We created a script that converted the json file into an image file of the same size as the original image with again, the pathin white and all the rest in black. In total we have +-580 labeled images.
+The Giusti dataset is a dataset of forest trails in Switzerland. This dataset did not contain segmentation masks but it was classified as 1 of 3 classes. They captured these images by placing 3 action camera's on a helmet and then walking over forest trails in Switzerland. Since we wanted to extract a mask from the path, we had to segment these images ourselves. The original dataset consisted out of 20 000 images, a lot of them were almost the exact same image since they were frames extracted from a video. We created a script that made a selection of the images based on their color histogram. Images that followed each other and had almost the exact same histogram were deleted. To do this we set up a web tool that gave a simple interface to segment the images. Labeling 500+ images is a very time consuming task so we contacted some teachers if it was possible to join one of their classes and let the first and second year students help us with labeling images. The tool however returns a json file with the coordinates of all points of the mask. We created a script that converted the json file into an image file of the same size as the original image with again, the path in white and all the rest in black. In total we have +-580 labeled images.
 
 ![](https://i.imgur.com/DKwvPBt.jpg)
 
@@ -42,7 +42,7 @@ Our last dataset, Steentjes, was a dataset with images from a forest in Schiplak
 
 We also experimented with combining multiple datasets together. After some testing we got the best result from combining Freiburg and Steentjes together.
 
-All these datasets were converted into TFRecords to work on the Google Cloud TPU’s and were stored on Google Cloud Buckets to maximise training performance.
+All these datasets were converted into TFRecords to work on the Google Cloud TPUs and were stored on Google Cloud Buckets to maximize training performance.
 
 ![](https://i.imgur.com/YN2LeuL.jpg)
 
@@ -61,7 +61,7 @@ We chose to implement our model in [Tensorflow](https://www.tensorflow.org/), a 
 
 The network structure that we chose is called **Unet**[^4].  This network is created by the university of Freiburg and it was originally created to segment clinical images like X-rays. Unet is a so called 'Convolutional neural network'. The reason why we chose for this model is because it gave us the perfect balance between performance and accuracy. It is also a model that does not require a very large dataset to get good results from.
 
-If we talk about a network structure, we don't mean a network with routers and switchs but a network of opperations that happen on a image and that are connected to each other. We are not going in full detail about every layer in this network but there are two main ones: Convolution layer and Max Pooling.
+If we talk about a network structure, we don't mean a network with routers and switches but a network of operations that happen on a image and that are connected to each other. We are not going in full detail about every layer in this network but there are two main ones: Convolution layer and Max Pooling.
 
 
 
@@ -89,7 +89,7 @@ We also tried performing transfer learning by training our model on one of our t
 
 ## Training
 
-All datasets were split into three subdatasets, train, test and validation. The splits we used were: 70% training, 15% test and 15% validation. An image can never be in 2 splits at the same time.
+All datasets were split into three subsets, train, test and validation. The splits we used were: 70% training, 15% test and 15% validation. An image can never be in 2 splits at the same time.
 
 Most of the experiments were done with a batch size of 16 images. We tried a batch size of 32 once but it did not give us better results.
 
@@ -136,7 +136,7 @@ Like with all tests, we also tested if augmentations would help and in this case
 
 
 ## TPU 
-Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where [Google’s TPU’s](https://cloud.google.com/tpu) come in to play. These TPU’s are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free. 
+Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where [Google’s TPUs](https://cloud.google.com/tpu) come in to play. These TPUs are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free. 
 
 Without this TPU we wouldn’t have been able to do so much experimenting with training our model on different datasets etc. because it would have taken day’s to train our model on our own laptop.
 
@@ -157,7 +157,7 @@ The reason why we wanted to convert our model to TensorRT is that we were planni
 ```{figure} https://i.imgur.com/eD0p8QL.png
 :name: ref
 
-[Tensorrt](https://developer.nvidia.com/tensorrt)
+[TensorRT](https://developer.nvidia.com/tensorrt)
 ```
 
 
@@ -165,6 +165,8 @@ The reason why we wanted to convert our model to TensorRT is that we were planni
 ## Real life testing
 
 When testing our final Freiburg+Steentjes+augmentations model in a real forest we had very good results. Our drone always stayed on the path and followed it nicely. The model also performed well on densely overgrown paths and was able to guide our drone over this path. When pointing the drone in a direction where there is no path, the model returns a black image, indicating that it is well trained to not classify non-paths as paths. The model was not only capable of detecting the path that starts at the bottom of the screen but also when the path was horizontal. We tested this by going a few meters off trail and pointing it in the direction of the path. The drone was able to see the path even with some trees in the way.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eeTxom6YrDs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
 
