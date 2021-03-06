@@ -11,7 +11,7 @@ name: rover
 The assembled rover.
 ```
 
-We used a generic USB WiFi-adapter to connect our ground station (laptop) to the SBC and by extent, the flight controller. 
+We used a generic USB Wi-Fi adapter to connect our ground station (laptop) to the SBC and by extent, the flight controller. 
 
 ```{figure} media/system-diagram.png
 ---
