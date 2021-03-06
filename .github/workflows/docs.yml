@@ -28,7 +28,7 @@ jobs:
 
       - name: Add docutils to PYTHONPATH
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/
+          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/" >> $GITHUB_ENV
           
       - name: Build Jupyter Book
         run: |
