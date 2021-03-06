@@ -19,12 +19,12 @@ Disable Pixhawk physical safety switch (not connected).
 **RELAY_PIN**: AUXOUT5  
 **RELAY_PIN2**: AUXOUT6  
 Track direction output. See 
-[Components > Flight Controller](components.md#flight-controller) for hookup 
+[Components > Flight Controller](components#flight-controller) for hookup 
 info.
 
 **SERVO1_FUNCTION**: ThrottleRight  
 **SERVO2_FUNCTION**: ThrottleLeft  
-Track PWN speed control. See [Components > H-bridge](components.md#h-bridge) for hookup 
+Track PWN speed control. See {ref}`Components >  H-bridge <components:h-bridge>` for hookup 
 info.
 
 **SERVO1_MIN**: 1100 PWN  

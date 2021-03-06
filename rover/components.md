@@ -10,12 +10,14 @@ Rover bottom level
 Rover top level
 ```
 
+(components:chassis)=
 ## Chassis
 
 The base of the rover is the "[TS100 Shock Absorber Tank Chassis](https://www.seeedstudio.com/TS100-shock-absorber-tank-chassis-with-track-and-DC-geared-motors-Kit-p-4107.html)" by [DOIT](https://www.doit.am) ([manual](https://raw.githubusercontent.com/SeeedDocument/Outsourcing/master/110090267%20TS100%20shock%20absorber%20tank%20chassis%20with%20track%20and%20DC%20geared%20motors%20Kit/InstallationforTS100%20.pdf)). The kit for this rover was kindly provided to us by our mentor at [Airobot](https://airobot.eu/).
 
 The chassis uses [simple DC motors](https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-7420481794.72.fWWJc1&id=45203541487) with a Hall-effect sensor. It is possible to use these sensors with Ardupilot for better positional accuracy, but we didn't in our setup. The motors are rated for a max of 9V.
 
+(components:h-bridge)=
 ## H-bridge
 
 To control the speed and direction of the two motors we used a [VMA409 H-bridge breakout board](https://www.velleman.eu/products/view/?id=435576), also provided to us by Airobot.

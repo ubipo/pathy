@@ -19,6 +19,7 @@
   - file: admin/data-labelling
 - file: rover/README
   sections:
+  - file: rover/components
   - file: rover/ardupilot-config
   - file: rover/qgroundcontrol
 - file: ros/README
