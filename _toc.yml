@@ -13,4 +13,6 @@
 - file: admin/README
   sections:
   - file: admin/data-labelling
+- file: rover/README
+- file: ros/README
 - file: DOCUMENTATION
