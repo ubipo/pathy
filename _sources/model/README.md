@@ -1,7 +1,7 @@
 # Semantic Image Segmnatation using a CNN
 
 ## Prior art
-Before we started developing this project we looked online for research and/or papers that have done something similar to what we were planning on doing. We found two researches, one by Giusti et al. and one by Smolyanskiy et al. Giusti classified their images with 1 of 3 classes: left view, right view and center view. They trained their model to classify an image with one of these classes to then get steering from this prediction.
+Before we started developing this project we looked online for research and/or papers that have done something similar to what we were planning on doing. We found two researches, one by Giusti et al[^1]. and one by Smolyanskiy et al.[^2] Giusti classified their images with 1 of 3 classes: left view, right view and center view. They trained their model to classify an image with one of these classes to then get steering from this prediction.
 
 Smolyanskiy did the same things but instead of 3 classes, they used 6 classes. The 3 same classes as Giusti and 3 classes that represented if the drone was in the center, left or right of the path. The addition of these 3 classes was done to make sure that the drone always flies in the middle of the path and so to avoid obstacles to the side of the road.
 
@@ -10,7 +10,11 @@ You can keep adding classes to make a better steering estimation but this is not
 ## Semantic segmentation
 Semantic segmentation is like object detection a computer vision technique. With object detection you are trying to detect a certain object in an image and most of the time draw a box around it. Semantic segmentation kind of does the same but it tries to label a region in an image. In our case, we are only interested where the road is, so we only need to mark the road and no other regions.
 
-![](https://i.imgur.com/VKcyK1y.png)
+```{figure} https://i.imgur.com/VKcyK1y.png
+:name: ref
+
+[Semantic segmentation](https://medium.com/deelvin-machine-learning/compression-artifact-localization-as-a-semantic-segmentation-task-2b57f8a4a022)
+```
 
 
 
@@ -21,7 +25,7 @@ To train our network we used three datasets: Freiburg, Giusti and Steentjes. Aft
 
 
 ### Freiburg (DeepScene)
-Freiburg (DeepScene) is a dataset created by the university of Freiburg and contains mostly images of gravel roads. All these images have a manually labeled segmentation mask for multiple classes like: sky,road,high vegetation etc. Since we were only interested in the trail, we made a script that converted the original mask into a binary mask where the road was white and all the rest was black. This dataset has +-250 labeled images. The original dataset also contained depth maps and other ground truth masks. These images were captured using a rover
+Freiburg (DeepScene)[^3] is a dataset created by the university of Freiburg and contains mostly images of gravel roads. All these images have a manually labeled segmentation mask for multiple classes like: sky,road,high vegetation etc. Since we were only interested in the trail, we made a script that converted the original mask into a binary mask where the road was white and all the rest was black. This dataset has +-250 labeled images. The original dataset also contained depth maps and other ground truth masks. These images were captured using a rover
 
 ![](https://i.imgur.com/eq4iVmJ.jpg)
 
@@ -53,18 +57,24 @@ We first wanted to use a library called ‘Albumentations’. This library has a
 
 
 ## Model
-We chose to implement our model in Tensorflow, a machine learning library created by Google. The reason we chose Tensorflow is because it gave us the possibility to use a Keras model via the Tensorflow Keras API. This enabled us to use Google TPUs to train our model. Tensorflow also has a very active community and extensive documentation. 
+We chose to implement our model in [Tensorflow](https://www.tensorflow.org/), a machine learning library created by Google. The reason we chose Tensorflow is because it gave us the possibility to use a Keras model via the Tensorflow Keras API. This enabled us to use Google TPUs to train our model. Tensorflow also has a very active community and extensive documentation. 
 
-The network structure that we chose is called **Unet**.  This network is created by the university of Freiburg and it was originally created to segment clinical images like X-rays. Unet is a so called 'Convolutional neural network'. The reason why we chose for this model is because it gave us the perfect balance between performance and accuracy. It is also a model that does not require a very large dataset to get good results from.
+The network structure that we chose is called **Unet**[^4].  This network is created by the university of Freiburg and it was originally created to segment clinical images like X-rays. Unet is a so called 'Convolutional neural network'. The reason why we chose for this model is because it gave us the perfect balance between performance and accuracy. It is also a model that does not require a very large dataset to get good results from.
 
 If we talk about a network structure, we don't mean a network with routers and switchs but a network of opperations that happen on a image and that are connected to each other. We are not going in full detail about every layer in this network but there are two main ones: Convolution layer and Max Pooling.
 
 
 
-We used a high level API called **Segmentation_models** to create our model. This library abstracts away some things and makes it easier to implement a model. This library returns a Keras model but since we were planning on using Google’s TPU’s to train our model, we had to use the Tensorflow Keras API.
+We used a high level API called **Segmentation_models**[^5] to create our model. This library abstracts away some things and makes it easier to implement a model. This library returns a Keras model but since we were planning on using Google’s TPU’s to train our model, we had to use the Tensorflow Keras API.
 
-As the backbone for our network we used **efficientnetb3**. This is the encoder used to extract features from the data. It might be a bit confusing but we are not actually using the standard Unet but we are implementing efficientnet in the Unet structure. If you look at the image below, you can see that there are two parts to the Unet: Downsample and upsample. The downsample part is the efficientnet and the upsamle part is efficientnet but reversed. You can substitute efficientnet for other backbones like Mobilenet which is optimized to run on mobile devices.
-![](https://i.imgur.com/1A02S1r.png)
+As the backbone for our network we used **efficientnetb3**[^6]. This is the encoder used to extract features from the data. It might be a bit confusing but we are not actually using the standard Unet but we are implementing efficientnet in the Unet structure. If you look at the image below, you can see that there are two parts to the Unet: Downsample and upsample. The downsample part is the efficientnet and the upsamle part is efficientnet but reversed. You can substitute efficientnet for other backbones like Mobilenet which is optimized to run on mobile devices.
+![]()
+```{figure} https://i.imgur.com/1A02S1r.png
+:name: ref
+
+[Unet](https://github.com/qubvel/segmentation_models)
+```
+
 The loss function we used was a custom loss function that was also implemented in the Segmentation models library. Essentially it is two loss functions, dice loss and Focal Binary Loss, added together.
 
 **Dice loss** is a binary semantic segmentation specific loss function. 
@@ -126,30 +136,46 @@ Like with all tests, we also tested if augmentations would help and in this case
 
 
 ## TPU 
-Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where Google’s TPU’s come in to play. These TPU’s are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free. 
+Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where [Google’s TPU’s](https://cloud.google.com/tpu) come in to play. These TPU’s are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free. 
 
 Without this TPU we wouldn’t have been able to do so much experimenting with training our model on different datasets etc. because it would have taken day’s to train our model on our own laptop.
 
-![](https://i.imgur.com/f5sTiPD.png)
-https://cloud.google.com/tpu
 
 ```{figure} https://i.imgur.com/f5sTiPD.png
 :name: ref
 
-Google cloud TPU
+[Google cloud TPU](https://cloud.google.com/tpu)
 ```
 
 
 
 ## TensorRT
-TensorRT is an SDK made by Nvidia for doing inference on a deep learning model that is optimized for Nvidia GPUs. By converting your model from a Tensorflow Keras model to a TensorRT model, you first have to freeze the model. Freezing a model is essentially locking all the weights in the model so that your model stays the same. Then you can convert your model to TensorRT.
+[TensorRT](https://developer.nvidia.com/tensorrt) is an SDK made by Nvidia for doing inference on a deep learning model that is optimized for Nvidia GPUs. By converting your model from a Tensorflow Keras model to a TensorRT model, you first have to freeze the model. Freezing a model is essentially locking all the weights in the model so that your model stays the same. Then you can convert your model to TensorRT.
 
 The reason why we wanted to convert our model to TensorRT is that we were planning on running the inference on a Nvidia Jetson Nano 4GB. This way we could get a performance boost for the inference. The Jetson nano is a mini computer that has a 128-core Maxwell GPU. Unfortunately we were not able to make the conversion work.
 
-![](https://i.imgur.com/eD0p8QL.png)
+```{figure} https://i.imgur.com/eD0p8QL.png
+:name: ref
+
+[Tensorrt](https://developer.nvidia.com/tensorrt)
+```
 
 
 
 ## Real life testing
 
 When testing our final Freiburg+Steentjes+augmentations model in a real forest we had very good results. Our drone always stayed on the path and followed it nicely. The model also performed well on densely overgrown paths and was able to guide our drone over this path. When pointing the drone in a direction where there is no path, the model returns a black image, indicating that it is well trained to not classify non-paths as paths. The model was not only capable of detecting the path that starts at the bottom of the screen but also when the path was horizontal. We tested this by going a few meters off trail and pointing it in the direction of the path. The drone was able to see the path even with some trees in the way.
+
+<br>
+
+[^1]: Smolyanskiy et al., “Toward Low-Flying Autonomous MAV Trail Navigation using DeepNeural Networks for Environmental Awareness” May 2017.  
+
+[^2]: Giusti et al., “A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots” Dec 2015.
+
+[^3]: A. Valada et al. “Deep Multispectral Semantic Scene Understanding of Forested Environments Using Multimodal Fusion,” 2016.
+
+[^4]: Ronneberger et al., “U-Net: Convolutional Networks for Biomedical Image Segmentation.” May 2015.
+
+[^5]: P. Yakubovskiy, “qubvel/segmentation_models,” 2019. [Online]. Available: https://github.com/qubvel/segmentation_models. 
+
+[^6]: M. Tan, “EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks” May 2019.
