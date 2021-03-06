@@ -14,4 +14,4 @@ To control the speed and direction of the two motors we used an [H-bridge breako
 
 To ease control of the H-bridge through software we added a simple [NOR-gate](https://web.mit.edu/6.131/www/document/7402.pdf) circuit.
 
-TODO: Finish diagram
+![NOR-gates circuit diagram ](media/nor-gates-circuit.svg)
