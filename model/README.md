@@ -131,12 +131,21 @@ Training a deep learning models requires a lot of processing power. You can trai
 Without this TPU we wouldn’t have been able to do so much experimenting with training our model on different datasets etc. because it would have taken day’s to train our model on our own laptop.
 
 ![](https://i.imgur.com/f5sTiPD.png)
+https://cloud.google.com/tpu
+
+```{figure} https://i.imgur.com/f5sTiPD.png
+:name: ref
+
+Google cloud TPU
+```
+
 
 
 ## TensorRT
 TensorRT is an SDK made by Nvidia for doing inference on a deep learning model that is optimized for Nvidia GPUs. By converting your model from a Tensorflow Keras model to a TensorRT model, you first have to freeze the model. Freezing a model is essentially locking all the weights in the model so that your model stays the same. Then you can convert your model to TensorRT.
 
 The reason why we wanted to convert our model to TensorRT is that we were planning on running the inference on a Nvidia Jetson Nano 4GB. This way we could get a performance boost for the inference. The Jetson nano is a mini computer that has a 128-core Maxwell GPU. Unfortunately we were not able to make the conversion work.
+
 ![](https://i.imgur.com/eD0p8QL.png)
 
 
