@@ -42,26 +42,26 @@ And open [0.0.0.0:8000](http://0.0.0.0:8000/) in your browser.
 
 ## Building
 
-1. Create an virtual enviroment.
+1\. Create an virtual enviroment.
 
 ```
 python3 -m venv env
 ```
 
 
-2. Activate the enviroment (depends on shell).
+2\. Activate the enviroment (depends on shell).
 
 ```
 source env/bin/activate
 ```
 
-3. Install requirements
+3\. Install requirements
 
 ```
 pip install -r requirements
 ```
 
-4. Build documentation
+4\. Build documentation
 
 ```
 jupyter-book build .

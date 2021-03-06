@@ -55,6 +55,8 @@
     <link rel="canonical" href="https://paddy.pfiers.net/rover/ardupilot-config.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QGroundControl" href="qgroundcontrol.html" />
+    <link rel="prev" title="Rover" href="README.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -64,7 +66,7 @@
 <meta property="og:url"         content="https://paddy.pfiers.net/rover/ardupilot-config.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Ardupilot configuration" />
-<meta property="og:description" content="Ardupilot configuration" />
+<meta property="og:description" content="Ardupilot configuration  Arming  ARMING_CHECK: 9376&lt;br /&gt; Only check Parameters, Board voltage, Loggig, and system.  BRD_SAFETYENABLE: Disabled&lt;br /&gt; Disable Pi" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -98,7 +100,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../model/README.html">
    Semantic Image Segmnatation using a CNN
@@ -127,10 +129,24 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="README.html">
    Rover
   </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ardupilot configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qgroundcontrol.html">
+     QGroundControl
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ros/README.html">
@@ -222,6 +238,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arming">
+   Arming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   I/O
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -231,6 +266,19 @@
                 
   <div class="section" id="ardupilot-configuration">
 <h1>Ardupilot configuration<a class="headerlink" href="#ardupilot-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arming">
+<h2>Arming<a class="headerlink" href="#arming" title="Permalink to this headline">¶</a></h2>
+<p><strong>ARMING_CHECK</strong>: 9376<br />
+Only check Parameters, Board voltage, Loggig, and system.</p>
+<p><strong>BRD_SAFETYENABLE</strong>: Disabled<br />
+Disable Pixhawk physical safety switch (not connected).</p>
+</div>
+<div class="section" id="i-o">
+<h2>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<p><strong>RELAY_PIN</strong>: AUXOUT5<br />
+<strong>RELAY_PIN2</strong>: AUXOUT6<br />
+Track direction output. See <span class="xref myst">Rover &gt; Pixhawk</span></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -261,6 +309,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Rover</a>
+    <a class='right-next' id="next-link" href="qgroundcontrol.html" title="next page">QGroundControl</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
