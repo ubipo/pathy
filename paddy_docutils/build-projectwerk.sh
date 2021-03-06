@@ -19,6 +19,7 @@ python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 
+export PYTHONPATH=$PYTHONPATH:$REPO_DIR/paddy_docutils/
 jupyter-book build .
 cp -r _build $TEMP_DIR
 

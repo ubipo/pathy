@@ -25,6 +25,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+
+      - name: Add docutils to PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/" >> $GITHUB_ENV
           
       - name: Build Jupyter Book
         run: |
