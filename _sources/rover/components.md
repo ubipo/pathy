@@ -1,5 +1,15 @@
 # Components
 
+The rover has two levels. The bottom level is the diy-assembly tank chassis. The top level is a wooden frame to hold the power components.
+
+```{figure} media/rover-lower.jpg
+Rover bottom level
+```
+
+```{figure} media/rover-upper.jpg
+Rover top level
+```
+
 ## Chassis
 
 The base of the rover is the "[TS100 Shock Absorber Tank Chassis](https://www.seeedstudio.com/TS100-shock-absorber-tank-chassis-with-track-and-DC-geared-motors-Kit-p-4107.html)" by [DOIT](https://www.doit.am) ([manual](https://raw.githubusercontent.com/SeeedDocument/Outsourcing/master/110090267%20TS100%20shock%20absorber%20tank%20chassis%20with%20track%20and%20DC%20geared%20motors%20Kit/InstallationforTS100%20.pdf)). The kit for this rover was kindly provided to us by our mentor at [Airobot](https://airobot.eu/).

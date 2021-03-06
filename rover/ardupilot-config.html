@@ -66,7 +66,7 @@
 <meta property="og:url"         content="https://paddy.pfiers.net/rover/ardupilot-config.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Ardupilot configuration" />
-<meta property="og:description" content="Ardupilot configuration  Arming  ARMING_CHECK: 9376&lt;br /&gt; Only check Parameters, Board voltage, Loggig, and system.  BRD_SAFETYENABLE: Disabled&lt;br /&gt; Disable Pi" />
+<meta property="og:description" content="Ardupilot configuration  We only made the absolute necessary changes to Ardupilot’s config. You could probably tweak some trim values better.  General  FRAME_CL" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -244,6 +244,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general">
+   General
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#arming">
    Arming
   </a>
@@ -251,6 +256,16 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#i-o">
    I/O
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motor">
+   Motor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steering">
+   Steering
   </a>
  </li>
 </ul>
@@ -266,6 +281,11 @@
                 
   <div class="section" id="ardupilot-configuration">
 <h1>Ardupilot configuration<a class="headerlink" href="#ardupilot-configuration" title="Permalink to this headline">¶</a></h1>
+<p>We only made the absolute necessary changes to Ardupilot’s config. You could probably tweak some trim values better.</p>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<p><strong>FRAME_CLASS</strong>: Rover</p>
+</div>
 <div class="section" id="arming">
 <h2>Arming<a class="headerlink" href="#arming" title="Permalink to this headline">¶</a></h2>
 <p><strong>ARMING_CHECK</strong>: 9376<br />
@@ -277,7 +297,28 @@ Disable Pixhawk physical safety switch (not connected).</p>
 <h2>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
 <p><strong>RELAY_PIN</strong>: AUXOUT5<br />
 <strong>RELAY_PIN2</strong>: AUXOUT6<br />
-Track direction output. See <span class="xref myst">Rover &gt; Pixhawk</span></p>
+Track direction output. See
+<a class="reference external" href="components.md#flight-controller">Components &gt; Flight Controller</a> for hookup
+info.</p>
+<p><strong>SERVO1_FUNCTION</strong>: ThrottleRight<br />
+<strong>SERVO2_FUNCTION</strong>: ThrottleLeft<br />
+Track PWN speed control. See <a class="reference external" href="components.md#h-bridge">Components &gt; H-bridge</a> for hookup
+info.</p>
+<p><strong>SERVO1_MIN</strong>: 1100 PWN<br />
+<strong>SERVO2_MIN</strong>: 1100 PWN<br />
+Trim.</p>
+</div>
+<div class="section" id="motor">
+<h2>Motor<a class="headerlink" href="#motor" title="Permalink to this headline">¶</a></h2>
+<p><strong>MOT_SLEWRATE</strong>: 0 %/s<br />
+Disable motor slew. We didn’t experience any negative consequences, your experience may differ.</p>
+</div>
+<div class="section" id="steering">
+<h2>Steering<a class="headerlink" href="#steering" title="Permalink to this headline">¶</a></h2>
+<p><strong>PILOT_STEER_TYPE</strong>: Direction unchanged when backing up<br />
+Personal preference</p>
+<p><strong>SERIAL1_PROTOCOL</strong>: MAVLink1<br />
+You could probably change this to MAVLink2 with only minor changes needed in <span class="xref myst">ros &gt; mav.py</span>.</p>
 </div>
 </div>
 
