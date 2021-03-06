@@ -200,10 +200,53 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../ros/README.html">
    ROS
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../ros/paddy/README.html">
+     Paddy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/camstream.html">
+       Camstream - streams webcam frames to /paddy/rgb on a regular interval.
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/model.html">
+       Model - runs our semantic segmentation CNN on images from /paddy/rgb and
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/steering.html">
+       Steering - calculates the throttle and steering inputs needed to stay on path
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/dms.html">
+       Dead man’s switch - passes steering inputs through from /paddy/steering to
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/mav.html">
+       Mav - proxies mavlink commands from the gcs to the drone’s flight controller
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/gcs_webui_ws_server.html">
+       GCS WebUI WebSockets server - listens on several topics to serve WebSocket
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../DOCUMENTATION.html">
