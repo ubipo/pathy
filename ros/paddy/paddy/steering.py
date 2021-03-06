@@ -1,6 +1,7 @@
-"""Steering - calculates the throttle and steering inputs needed to stay on path
-based on images from /paddy/mask and published the results to /paddy/steering.
+"""Steering
 
+Calculates the throttle and steering inputs needed to stay on path
+based on images from /paddy/mask and published the results to /paddy/steering.
 """
 
 import os, sys, json

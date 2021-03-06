@@ -1,4 +1,6 @@
-"""Mav - proxies mavlink commands from the gcs to the drone's flight controller 
+"""Mav
+
+Proxies mavlink commands from the gcs to the drone's flight controller 
 and processes steering input from /paddy/steering_safe.
 
 Note: you can rewrite the /paddy/steering_safe to /paddy/steering to bypass dms
