@@ -1,6 +1,6 @@
-"""Camstream - streams webcam frames to /paddy/rgb on a regular interval.
+"""Camstream
 
-
+Streams webcam frames to /paddy/rgb on a regular interval.
 """
 
 import os

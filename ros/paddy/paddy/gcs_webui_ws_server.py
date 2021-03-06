@@ -1,10 +1,11 @@
-"""GCS WebUI WebSockets server - listens on several topics to serve WebSocket 
-connections from our GCS WebUI, also publishes to /paddy/dms, on request of the 
-WebUI.
+"""GCS WebUI WebSockets server
+
+Listens on several topics to serve WebSocket connections from our GCS WebUI, 
+also publishes to /paddy/dms, on request of the WebUI.
 
 See /gcs/webui.html in the repo for the client-side part.
 Not to be confused with the Mavlink ground control software (QGroundControl/
-TODO: windows GCS).
+Mission Planner).
 """
 
 import sys, base64, json
