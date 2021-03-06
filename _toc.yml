@@ -32,6 +32,8 @@
     - file: ros/paddy/paddy/dms
     - file: ros/paddy/paddy/mav
     - file: ros/paddy/paddy/gcs_webui_ws_server
-  - file: ros/droidcam
+  - file: ros/droidcam/README
+    sections:
+    - file: ros/droidcam/get_android_ip
   - file: ros/webui
 - file: DOCUMENTATION

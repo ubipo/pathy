@@ -20,7 +20,7 @@ nodes to handle camera input, steering, oversight etc.
 We discuss the various nodes and their function in our 
 [package's readme](paddy/README).
 
-Two auxillary components are needed to use the package: [DroidCam](droidcam) for
+Two auxillary components are needed to use the package: [DroidCam](droidcam/README) for
  the software side of the rover's camera and [web UI](webui) for the live
   monitoring system.
 
