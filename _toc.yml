@@ -22,4 +22,14 @@
   - file: rover/ardupilot-config
   - file: rover/qgroundcontrol
 - file: ros/README
+  sections:
+  - file: ros/paddy/README
+    sections:
+    - file: ros/paddy/paddy/camstream
+    - file: ros/paddy/paddy/model
+    - file: ros/paddy/paddy/padnet
+    - file: ros/paddy/paddy/steering
+    - file: ros/paddy/paddy/dms
+    - file: ros/paddy/paddy/mav
+    - file: ros/paddy/paddy/gcs_webui_ws_server
 - file: DOCUMENTATION
