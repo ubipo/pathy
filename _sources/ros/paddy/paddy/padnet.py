@@ -1,4 +1,4 @@
-"""Model
+"""Padnet
 
 Runs our semantic segmentation CNN on images from /paddy/rgb and 
 publishes them on /paddy/mask.
