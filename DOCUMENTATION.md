@@ -61,7 +61,13 @@ source env/bin/activate
 pip install -r requirements
 ```
 
-4\. Build documentation
+4\. Update python path
+
+```
+export PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/
+```
+
+5\. Build documentation
 
 ```
 jupyter-book build .
