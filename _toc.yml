@@ -27,7 +27,6 @@
   - file: ros/paddy/README
     sections:
     - file: ros/paddy/paddy/camstream
-    - file: ros/paddy/paddy/model
     - file: ros/paddy/paddy/padnet
     - file: ros/paddy/paddy/steering
     - file: ros/paddy/paddy/dms
