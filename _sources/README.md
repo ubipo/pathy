@@ -18,14 +18,14 @@ intersections, and the mapping of road geometries.
 
 The repository is structured according to the four main stages of our project:
 
-[Dataprep](dataprep) - Documentation about, and the scripts we used for, the processing and labelling 
+[Dataprep](dataprep/README.md) - Documentation about, and the scripts we used for, the processing and labelling 
 of data used for training.
 
-[Model](model) - This folder contains the machine learning process we used to train our CNN.
+[Model](model/README.md) - This folder contains the machine learning process we used to train our CNN.
 
-[Rover](rover) - Documentation regarding the hardware aspect of our rover.
+[Rover](rover/README.md) - Documentation regarding the hardware aspect of our rover.
 
-[ROS](ros) - All documentation, ROS nodes, and extra files needed to make the rover drive
+[ROS](ros/README.md) - All documentation, ROS nodes, and extra files needed to make the rover drive
 itself.
 
 ROS is the "[Robot Operating System](https://www.ros.org/)". See 
