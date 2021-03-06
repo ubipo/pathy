@@ -1,6 +1,6 @@
 """Remove sequential and similar images
 
-Usage: remove_seq_sim.py <dir> <threshold>
+Usage: `remove_seq_sim.py <dir> <threshold>`
 
     dir: folder with images
     threshold: accumulated Chi-square histogram distance cutoff for unique images, higher is less similar

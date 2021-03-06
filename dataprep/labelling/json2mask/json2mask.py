@@ -1,17 +1,18 @@
-""" JSON to mask script
+""" JSON to mask
 
-This python script reads a json file (.json) with a fixed format and
-converts this to a image mask in PNG format. The mask consits out 2 colors
-1: Red, the color of the road 
-2: Black, the background
+Reads a json file (.json) with a fixed format and
+converts this to a grayscale png mask. With:
+- White (#FF): as the color of the road 
+- Black (#00): as the background
 
-The script accepets 2 parameteres
-1: the path to the json file and
-2: the path to the original image.
+Usage: `json2mask.py <json_file> <rgb_image>`
 
-The script outputs the mask in the same folder as the original image.
+    json_file: path to the json file
+    rgb_image: path to the rgb image
 
-The script requires OpenCV & NumPy to be installed 
+The script outputs the mask as `<image_stem>_mask.png` to the same folder as the original image.
+
+Requires OpenCV & NumPy:
 >> pip install opencv-python
 >> pip install numpy
 """

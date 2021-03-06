@@ -27,11 +27,8 @@ of data used for training.
 
 [Rover](rover/README.md) - Documentation regarding the hardware aspect of our rover.
 
-[ROS](ros/README.md) - All documentation, ROS nodes, and extra files needed to make the rover drive
+[ROS](ros/README.md) - All documentation, ROS ([Robot Operating System](https://www.ros.org/)) nodes, and extra files needed to make the rover drive
 itself.
-
-ROS is the "[Robot Operating System](https://www.ros.org/)". See 
-"[About ROS](ros/about-ros)" for more about why *we* use ROS.
 
 <br>
 

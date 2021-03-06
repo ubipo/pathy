@@ -1,7 +1,7 @@
 """Converts a directory with rgb/ and gt/ image subdirectories
 to a single directory with tfr files
 
-Usage: create_label_jsons.py <dir>
+Usage: `create_label_jsons.py <dir>`
     dir: directory with rgb/ and gt/ subdirs
 
 tfr files get written to a new tfr/ directory within <dir>

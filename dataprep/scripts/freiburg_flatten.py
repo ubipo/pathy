@@ -1,9 +1,9 @@
 """Flatten Freiburg folder structure
 
-Usage: freiburg_flatten.py <in_dir> <out_dir>
+Usage: `freiburg_flatten.py <in_dir> <out_dir>`
 
-    in_dir: "train" folder from ... TODO: url
-    out_dir: the directory to put all frames that will be named like "00072811.jpg"
+    in_dir: "train" folder from http://deepscene.cs.uni-freiburg.de/static/datasets/freiburg_forest_multispectral_annotated.tar.gz
+    out_dir: the directory to put all frames that will be named like "00000000.jpg"
 """
 
 import sys, os, json

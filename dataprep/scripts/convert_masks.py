@@ -1,6 +1,6 @@
 """Convert multicolor masks (yamaha/freiburg) to our style (b/w)
 
-Usage: convert_yamaha_masks.py <dir> <color_scheme>
+Usage: `convert_yamaha_masks.py <dir> <color_scheme>`
 
     dir: folder with images
     color_scheme: 0 for yamaha, 1 for freiburg

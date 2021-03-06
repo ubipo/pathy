@@ -1,6 +1,6 @@
 """Flatten Yamaha folder structure
 
-Usage: yamaha_flatten.py <in_dir> <out_dir>
+Usage: `yamaha_flatten.py <in_dir> <out_dir>`
 
     in_dir: folder with data from https://people.idsia.ch/~guzzi/DataSet.html
     out_dir: the directory to put all frames that will be named like "00072811.jpg"

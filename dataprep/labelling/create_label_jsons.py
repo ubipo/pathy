@@ -1,6 +1,6 @@
 """Create empty label json's for django-labeller
 
-Usage: create_label_jsons.py <dir>
+Usage: `create_label_jsons.py <dir>`
 
     dir: folder with images
 """

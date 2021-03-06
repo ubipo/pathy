@@ -1,19 +1,29 @@
 - file: README
+
 - file: technologies
+- file: dataprep/README
+  sections:
+  - file: dataprep/datasets
+  - file: dataprep/scripts/README
+    sections:
+    - file: dataprep/scripts/freiburg_flatten
+    - file: dataprep/scripts/giusti_flatten
+    - file: dataprep/scripts/yamaha_flatten
+    - file: dataprep/scripts/single_folder_flatten
+    - file: dataprep/scripts/remove_seq_sim
+    - file: dataprep/scripts/convert_masks
+    - file: dataprep/scripts/images_to_tfr
+  - file: dataprep/labelling/README.md
+    sections:
+    - file: dataprep/labelling/create_label_jsons
+    - file: dataprep/labelling/labbeler_to_masks
+    - file: dataprep/labelling/process_claims
+    - file: dataprep/labelling/json2mask/json2mask
 - file: model/README
   sections:
   - file: model/load_model
   - file: model/train
   - file: model/train_aug
-- file: dataprep/README
-  sections:
-  - file: dataprep/yamaha_flatten
-  - file: dataprep/create_label_jsons
-  - file: dataprep/freiburg_flatten
-  - file: dataprep/remove_seq_sim
-  - file: dataprep/giusti_flatten
-  - file: dataprep/convert_masks
-  - file: dataprep/images_to_tfr
 - file: admin/README
   sections:
   - file: admin/data-labelling

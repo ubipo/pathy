@@ -1,8 +1,7 @@
-# Data Labelling
+# Labelling
 
-To train our convolutional semantic image segmentation neural network 
-we need labelled data of forest paths. Most data online however is 
-meant for autnomous driving, usually on solid (asphalt/compacted gravel)
+To train our CNN we need labelled data of forest paths. Most data online however 
+is meant for autnomous driving, usually on solid (asphalt/compacted gravel)
 roads/paths.
 
 ## Freiburg
@@ -13,15 +12,20 @@ compacted gravel park roads, it also contains a lot of smaller soft paths.
 
 As such we adapted and used it for the training of our network.
 
+See also [Dataprep > Datasets > Freiburg](../datasets#freiburg).
+
 ## Giusti
 
 Another excellent dataset of forest paths is the data set from Giusti et al.'s [A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots](https://people.idsia.ch/~guzzi/DataSet.html).
 
 This data however is unfortunately only labelled as "left", "straight" or "center". 
 
+See also [Dataprep > Datasets > Giusti](../datasets#giusti).
+
 ## Own data
 
-t.b.c.
+We also collected our own data in a forest in flanders. See
+ [Dataprep > Datasets > Steentjes](../datasets#steentjes) for more info.
 
 ## Crowd Sourced Labelling
 

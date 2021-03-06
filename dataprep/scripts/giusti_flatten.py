@@ -1,6 +1,6 @@
 """Flatten Giusti et al. frame folder structure
 
-Usage: giusti-flatten.py <in_dir> <out_dir> <metadata_file>
+Usage: `giusti-flatten.py <in_dir> <out_dir> <metadata_file>`
 
     in_dir: folder with data from https://people.idsia.ch/~guzzi/DataSet.html
     out_dir: the directory to put all frames that will be named like "00072811.jpg"

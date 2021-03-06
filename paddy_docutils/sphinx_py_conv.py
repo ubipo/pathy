@@ -4,11 +4,13 @@ import nbformat
 
 DOC_FOOTER = textwrap.dedent("""\
     <hr>
-    This documentation page was generate from a python file.
-    The file is located in the repo folder corresponding to this 
-    documentation page.
-    You can also click the `suggest edit` link (GitHub logo, top right)
-    to open the file in GitHub.
+    <i>
+        This documentation page was generate from a python file.
+        The file is located in the repo folder corresponding to this 
+        documentation page.
+        You can also click the `suggest edit` link (GitHub logo, top right)
+        to open the file in GitHub.
+    </i>
 """)
 
 def py_to_nb_node(py_content: str, ext: str = "py") -> nbformat.NotebookNode:
@@ -28,7 +30,7 @@ def py_to_nb_node(py_content: str, ext: str = "py") -> nbformat.NotebookNode:
     title = docstring_lines[0]
     content = "\n".join(docstring_lines[2:])
     title_cell = nbformat.v4.new_markdown_cell(f"# {title}")
-    content_cell = nbformat.v4.new_markdown_cell(f"{content}")
+    content_cell = nbformat.v4.new_markdown_cell(content)
     info_cell = nbformat.v4.new_markdown_cell(DOC_FOOTER)
     nb = nbformat.NotebookNode(
         nbformat=nbformat.v4.nbformat,

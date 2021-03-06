@@ -2,9 +2,11 @@
 
 Images get copied to a rgb/ folder, masks to gt/.
 
-Usage: labbeler_to_masks.py <in_dir> <out_dir>
+Usage: `labbeler_to_masks.py <in_dir> <out_dir>`
+
     in_dir: directory with images and labels from django-labeller
     out_dir: where to put rgb/ and gt/ directories
+
 """
 
 import sys, os, logging, json, shutil

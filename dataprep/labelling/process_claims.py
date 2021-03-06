@@ -3,7 +3,8 @@
 Iterates through every claim, checks json and comment, and
 copies both the corresponding json file and image to <out_dir>.
 
-Usage: process_labelled_images.py <in_dir> <claims_csv> <out_dir>
+Usage: `process_labelled_images.py <in_dir> <claims_csv> <out_dir>`
+
     in_dir: directory with images and labels from django-labeller
     claims_csv: csv from the Google sheet we used
     out_dir: where to put processed json and images
