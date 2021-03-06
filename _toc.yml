@@ -1,6 +1,10 @@
 - file: README
 
 - file: model/README
+  sections:
+  - file: model/load_model
+  - file: model/train
+  - file: model/train_aug
 - file: dataprep/README
   sections:
   - file: dataprep/yamaha_flatten

@@ -91,6 +91,10 @@ We also tried performing transfer learning by training our model on one of our t
 
 All datasets were split into three subsets, train, test and validation. The splits we used were: 70% training, 15% test and 15% validation. An image can never be in 2 splits at the same time.
 
+We did all our training without augmentations in this [Jupyter Notebook](train.ipynb)
+
+All training with augmentations was done [here](train_aug.ipynb)
+
 Most of the experiments were done with a batch size of 16 images. We tried a batch size of 32 once but it did not give us better results.
 
 When you train your model to the point that it is getting too specific and it does not generalize anymore, your validation loss will start to rise again. This is because the model is so ‘used’ to the training data that when you use other data, it does not perform that well anymore. To prevent this from happening and to decrease training times, we implemented **early stopping**. Essentially what early stopping does is that when your validation loss starts to rise again, it will stop training and save the best model. We used a ‘patience’ of 3, this means that when your model does not improve for 3 consecutive epochs, it will stop the training. You can let the early stopping monitor all metrics, we chose to monitor validation loss since it is the most accurate metric.
@@ -165,6 +169,8 @@ The reason why we wanted to convert our model to TensorRT is that we were planni
 ## Real life testing
 
 When testing our final Freiburg+Steentjes+augmentations model in a real forest we had very good results. Our drone always stayed on the path and followed it nicely. The model also performed well on densely overgrown paths and was able to guide our drone over this path. When pointing the drone in a direction where there is no path, the model returns a black image, indicating that it is well trained to not classify non-paths as paths. The model was not only capable of detecting the path that starts at the bottom of the screen but also when the path was horizontal. We tested this by going a few meters off trail and pointing it in the direction of the path. The drone was able to see the path even with some trees in the way.
+
+To load a model you can use this [Jupyter notebook](load_model.ipynb) and do predictions yourselves.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eeTxom6YrDs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
