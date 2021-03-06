@@ -423,13 +423,18 @@ The loss function we used was a custom loss function that was also implemented i
 <h2>TPU<a class="headerlink" href="#tpu" title="Permalink to this headline">¶</a></h2>
 <p>Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where Google’s TPU’s come in to play. These TPU’s are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free.</p>
 <p>Without this TPU we wouldn’t have been able to do so much experimenting with training our model on different datasets etc. because it would have taken day’s to train our model on our own laptop.</p>
-<p><img alt="" src="https://i.imgur.com/f5sTiPD.png" /></p>
+<p><img alt="" src="https://i.imgur.com/f5sTiPD.png" />
+<a class="reference external" href="https://cloud.google.com/tpu">https://cloud.google.com/tpu</a></p>
+<div class="figure align-default" id="ref">
+<img alt="https://i.imgur.com/f5sTiPD.png" src="https://i.imgur.com/f5sTiPD.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Google cloud TPU</span><a class="headerlink" href="#ref" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="tensorrt">
 <h2>TensorRT<a class="headerlink" href="#tensorrt" title="Permalink to this headline">¶</a></h2>
 <p>TensorRT is an SDK made by Nvidia for doing inference on a deep learning model that is optimized for Nvidia GPUs. By converting your model from a Tensorflow Keras model to a TensorRT model, you first have to freeze the model. Freezing a model is essentially locking all the weights in the model so that your model stays the same. Then you can convert your model to TensorRT.</p>
-<p>The reason why we wanted to convert our model to TensorRT is that we were planning on running the inference on a Nvidia Jetson Nano 4GB. This way we could get a performance boost for the inference. The Jetson nano is a mini computer that has a 128-core Maxwell GPU. Unfortunately we were not able to make the conversion work.
-<img alt="" src="https://i.imgur.com/eD0p8QL.png" /></p>
+<p>The reason why we wanted to convert our model to TensorRT is that we were planning on running the inference on a Nvidia Jetson Nano 4GB. This way we could get a performance boost for the inference. The Jetson nano is a mini computer that has a 128-core Maxwell GPU. Unfortunately we were not able to make the conversion work.</p>
+<p><img alt="" src="https://i.imgur.com/eD0p8QL.png" /></p>
 </div>
 <div class="section" id="real-life-testing">
 <h2>Real life testing<a class="headerlink" href="#real-life-testing" title="Permalink to this headline">¶</a></h2>
