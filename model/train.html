@@ -55,6 +55,8 @@
     <link rel="canonical" href="https://paddy.pfiers.net/model/train.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Train with augmentations" href="train_aug.html" />
+    <link rel="prev" title="Load model" href="load_model.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,11 +100,30 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="README.html">
    Model
   </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="load_model.html">
+     Load model
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Train
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="train_aug.html">
+     Train with augmentations
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../dataprep/README.html">
@@ -505,7 +526,6 @@ WARNING:root:Limited tf.summary API due to missing TensorBoard installation.
 </div>
 <div class="section" id="prepare-dataset">
 <h2>Prepare dataset<a class="headerlink" href="#prepare-dataset" title="Permalink to this headline">¶</a></h2>
-<p>TODO: Explain where we got the Freiburg dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">448</span><span class="p">,</span> <span class="mi">640</span><span class="p">]</span>
@@ -548,7 +568,7 @@ WARNING:root:Limited tf.summary API due to missing TensorBoard installation.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/train_16_0.png" src="../_images/train_16_0.png" />
+<img alt="../_images/train_15_0.png" src="../_images/train_15_0.png" />
 </div>
 </div>
 </div>
@@ -864,6 +884,8 @@ Epoch 19/40
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="load_model.html" title="previous page">Load model</a>
+    <a class='right-next' id="next-link" href="train_aug.html" title="next page">Train with augmentations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
