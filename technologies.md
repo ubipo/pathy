@@ -20,4 +20,4 @@ All the code in this project is made in [Python](https://www.python.org/). For a
 ## Documentation
 * [Jupyter Book](DOCUMENTATION)
 * [Jupyter Notebook](https://jupyter.org/)
-* Markdown
+* [Markdown](https://myst-parser.readthedocs.io/en/latest/index.html)
