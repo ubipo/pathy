@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="QGroundControl" href="qgroundcontrol.html" />
-    <link rel="prev" title="Rover" href="README.html" />
+    <link rel="prev" title="Components" href="components.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -193,6 +193,11 @@
    Rover
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Components
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Ardupilot configuration
@@ -219,12 +224,17 @@
     <ul class="collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/paddy/paddy/camstream.html">
-       Camstream - streams webcam frames to /paddy/rgb on a regular interval.
+       Camstream
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/paddy/paddy/model.html">
        Model - runs our semantic segmentation CNN on images from /paddy/rgb and
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ros/paddy/paddy/padnet.html">
+       Model
       </a>
      </li>
      <li class="toctree-l3">
@@ -234,7 +244,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/paddy/paddy/dms.html">
-       Dead man’s switch - passes steering inputs through from /paddy/steering to
+       Dead man’s switch
       </a>
      </li>
      <li class="toctree-l3">
@@ -244,7 +254,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/paddy/paddy/gcs_webui_ws_server.html">
-       GCS WebUI WebSockets server - listens on several topics to serve WebSocket
+       GCS WebUI WebSockets server
       </a>
      </li>
     </ul>
@@ -400,11 +410,11 @@ Disable Pixhawk physical safety switch (not connected).</p>
 <p><strong>RELAY_PIN</strong>: AUXOUT5<br />
 <strong>RELAY_PIN2</strong>: AUXOUT6<br />
 Track direction output. See
-<a class="reference external" href="components.md#flight-controller">Components &gt; Flight Controller</a> for hookup
+<a class="reference external" href="components#flight-controller">Components &gt; Flight Controller</a> for hookup
 info.</p>
 <p><strong>SERVO1_FUNCTION</strong>: ThrottleRight<br />
 <strong>SERVO2_FUNCTION</strong>: ThrottleLeft<br />
-Track PWN speed control. See <a class="reference external" href="components.md#h-bridge">Components &gt; H-bridge</a> for hookup
+Track PWN speed control. See <a class="reference internal" href="components.html#components-h-bridge"><span class="std std-ref">Components &gt;  H-bridge</span></a> for hookup
 info.</p>
 <p><strong>SERVO1_MIN</strong>: 1100 PWN<br />
 <strong>SERVO2_MIN</strong>: 1100 PWN<br />
@@ -452,7 +462,7 @@ You could probably change this to MAVLink2 with only minor changes needed in <a 
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Rover</a>
+    <a class='left-prev' id="prev-link" href="components.html" title="previous page">Components</a>
     <a class='right-next' id="next-link" href="qgroundcontrol.html" title="next page">QGroundControl</a>
 
     </div>

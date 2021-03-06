@@ -1,5 +1,7 @@
-"""Dead man's switch - passes steering inputs through from /paddy/steering to
-/paddy/steering_safe, but only if a message was recently posted to /paddy/dms.
+"""Dead man's switch
+
+Passes steering inputs through from /paddy/steering to /paddy/steering_safe, but 
+only if a message was recently posted to /paddy/dms.
 
 """
 

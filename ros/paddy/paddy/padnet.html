@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Paddy</title>
+    <title>Model &#8212; Paddy</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -65,8 +65,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://paddy.pfiers.net/ros/paddy/paddy/padnet.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="&lt;no title&gt;" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Model" />
+<meta property="og:description" content="Model  Runs our semantic segmentation CNN on images from /paddy/rgb and publishes them on /paddy/mask.  Untested.  Adapted from https://www.dlology.com/blog/how" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -100,7 +100,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../../technologies.html">
    Technologies
@@ -194,6 +194,11 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../../../rover/components.html">
+     Components
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../../rover/ardupilot-config.html">
      Ardupilot configuration
     </a>
@@ -207,24 +212,29 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="../../README.html">
    ROS
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2 collapsible-parent">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active collapsible-parent">
     <a class="reference internal" href="../README.html">
      Paddy
     </a>
-    <ul class="collapse-ul">
+    <ul class="current collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="camstream.html">
-       Camstream - streams webcam frames to /paddy/rgb on a regular interval.
+       Camstream
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="model.html">
        Model - runs our semantic segmentation CNN on images from /paddy/rgb and
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Model
       </a>
      </li>
      <li class="toctree-l3">
@@ -234,7 +244,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="dms.html">
-       Dead man’s switch - passes steering inputs through from /paddy/steering to
+       Dead man’s switch
       </a>
      </li>
      <li class="toctree-l3">
@@ -244,7 +254,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="gcs_webui_ws_server.html">
-       GCS WebUI WebSockets server - listens on several topics to serve WebSocket
+       GCS WebUI WebSockets server
       </a>
      </li>
     </ul>
@@ -340,15 +350,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -356,7 +357,14 @@
         
               <div>
                 
-  
+  <div class="section" id="model">
+<h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
+<p>Runs our semantic segmentation CNN on images from /paddy/rgb and
+publishes them on /paddy/mask.</p>
+<p>Untested.</p>
+<p>Adapted from <a class="reference external" href="https://www.dlology.com/blog/how-to-run-keras-model-on-jetson-nano/">https://www.dlology.com/blog/how-to-run-keras-model-on-jetson-nano/</a></p>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,

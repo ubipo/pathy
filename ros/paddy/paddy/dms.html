@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dead man’s switch - passes steering inputs through from /paddy/steering to &#8212; Paddy</title>
+    <title>Dead man’s switch &#8212; Paddy</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -65,8 +65,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://paddy.pfiers.net/ros/paddy/paddy/dms.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Dead man’s switch - passes steering inputs through from /paddy/steering to" />
-<meta property="og:description" content="Dead man’s switch - passes steering inputs through from /paddy/steering to" />
+<meta property="og:title"       content="Dead man’s switch" />
+<meta property="og:description" content="Dead man’s switch  Passes steering inputs through from /paddy/steering to /paddy/steering_safe, but only if a message was recently posted to /paddy/dms." />
 
 
 <meta name="twitter:card" content="summary" />
@@ -194,6 +194,11 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../../../rover/components.html">
+     Components
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../../rover/ardupilot-config.html">
      Ardupilot configuration
     </a>
@@ -219,12 +224,17 @@
     <ul class="current collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="camstream.html">
-       Camstream - streams webcam frames to /paddy/rgb on a regular interval.
+       Camstream
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="model.html">
        Model - runs our semantic segmentation CNN on images from /paddy/rgb and
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="padnet.html">
+       Model
       </a>
      </li>
      <li class="toctree-l3">
@@ -234,7 +244,7 @@
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Dead man’s switch - passes steering inputs through from /paddy/steering to
+       Dead man’s switch
       </a>
      </li>
      <li class="toctree-l3">
@@ -244,7 +254,7 @@
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="gcs_webui_ws_server.html">
-       GCS WebUI WebSockets server - listens on several topics to serve WebSocket
+       GCS WebUI WebSockets server
       </a>
      </li>
     </ul>
@@ -347,8 +357,10 @@
         
               <div>
                 
-  <div class="section" id="dead-man-s-switch-passes-steering-inputs-through-from-paddy-steering-to">
-<h1>Dead man’s switch - passes steering inputs through from /paddy/steering to<a class="headerlink" href="#dead-man-s-switch-passes-steering-inputs-through-from-paddy-steering-to" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dead-man-s-switch">
+<h1>Dead man’s switch<a class="headerlink" href="#dead-man-s-switch" title="Permalink to this headline">¶</a></h1>
+<p>Passes steering inputs through from /paddy/steering to /paddy/steering_safe, but
+only if a message was recently posted to /paddy/dms.</p>
 </div>
 
     <script type="text/x-thebe-config">
