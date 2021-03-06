@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     maintainer='Pieter Fiers',
     maintainer_email='pieter@pfiers.net',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='Paddy, the ROS package that runs padnet',
+    license='Apache License, Version 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
