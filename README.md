@@ -14,6 +14,8 @@ intersections, and the mapping of road geometries.
     <source src="intro.webm" type="video/webm">
 </video>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SpPcj6MqQEs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Repository structure
 
 The repository is structured according to the four main stages of our project:
