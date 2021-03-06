@@ -56,7 +56,7 @@ We first wanted to use a library called ‘Albumentations’. This library has a
 ![](https://i.imgur.com/lSsEWCk.png)
 
 
-## Model
+## Architecture
 We chose to implement our model in [Tensorflow](https://www.tensorflow.org/), a machine learning library created by Google. The reason we chose Tensorflow is because it gave us the possibility to use a Keras model via the Tensorflow Keras API. This enabled us to use Google TPUs to train our model. Tensorflow also has a very active community and extensive documentation. 
 
 The network structure that we chose is called **Unet**[^4].  This network is created by the university of Freiburg and it was originally created to segment clinical images like X-rays. Unet is a so called 'Convolutional neural network'. The reason why we chose for this model is because it gave us the perfect balance between performance and accuracy. It is also a model that does not require a very large dataset to get good results from.
