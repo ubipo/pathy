@@ -77,4 +77,4 @@ sphinx:
     nb_custom_formats:
       .py:
         - paddy_docutils.sphinx_py_conv.py_to_nb_node
-        - fmt: py
+        - ext: py
