@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Components" href="components.html" />
-    <link rel="prev" title="Data Labelling" href="../admin/data-labelling.html" />
+    <link rel="prev" title="Train with augmentations" href="../model/train_aug.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,6 +107,93 @@
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dataprep/README.html">
+   Dataprep
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dataprep/datasets.html">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../dataprep/scripts/README.html">
+     Scripts
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/freiburg_flatten.html">
+       Flatten Freiburg folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/giusti_flatten.html">
+       Flatten Giusti et al. frame folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/yamaha_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/single_folder_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/remove_seq_sim.html">
+       Remove sequential and similar images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/convert_masks.html">
+       Convert multicolor masks (yamaha/freiburg) to our style (b/w)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/images_to_tfr.html">
+       Converts a directory with rgb/ and gt/ image subdirectories
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../dataprep/labelling/README.html">
+     Labelling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/create_label_jsons.html">
+       Create empty label json’s for django-labeller
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/labbeler_to_masks.html">
+       Converts django-labeller jsons to masks for an entire directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/process_claims.html">
+       Process images from django-labeller and a claims csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/json2mask/json2mask.html">
+       JSON to mask
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../model/README.html">
    Model
   </a>
@@ -124,64 +211,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../model/train_aug.html">
      Train with augmentations
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../dataprep/README.html">
-   Dataprep
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/yamaha_flatten.html">
-     Flatten Yamaha folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/create_label_jsons.html">
-     Create empty label json’s for django-labeller
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/freiburg_flatten.html">
-     Flatten Freiburg folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/remove_seq_sim.html">
-     Remove sequential and similar images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/giusti_flatten.html">
-     Flatten Giusti et al. frame folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/convert_masks.html">
-     Convert multicolor masks (yamaha/freiburg) to our style (b/w)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/images_to_tfr.html">
-     Converts a directory with rgb/ and gt/ image subdirectories
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../admin/README.html">
-   Admin
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../admin/data-labelling.html">
-     Data Labelling
     </a>
    </li>
   </ul>
@@ -376,12 +405,12 @@
 <p>Our rover is based on a <a class="reference external" href="https://www.seeedstudio.com/TS100-shock-absorber-tank-chassis-with-track-and-DC-geared-motors-Kit-p-4107.html">tank chassis kit</a>, controlled by a <a class="reference external" href="https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk.html">Pixhawk flight controller</a>, and uses an <a class="reference external" href="https://developer.nvidia.com/embedded/jetson-nano-developer-kit">NVIDIA Jetson Nano SBC</a> to make autonomous steering decisions. The software logic for this is discussed in the chapter about <a class="reference internal" href="../ros/README.html"><span class="doc std std-doc">ROS</span></a>.</p>
 <div class="figure align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/rover-cropped.jpg"><img alt="../_images/rover-cropped.jpg" src="../_images/rover-cropped.jpg" style="width: 216.0px; height: 426.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The assembled rover.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">The assembled rover.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>We used a generic USB Wi-Fi adapter to connect our ground station (laptop) to the SBC and by extent, the flight controller.</p>
 <div class="figure align-default" id="system">
 <a class="reference internal image-reference" href="../_images/system-diagram.png"><img alt="../_images/system-diagram.png" src="../_images/system-diagram.png" style="width: 480.0px; height: 277.75px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Rover and gcs system overview</span><a class="headerlink" href="#system" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Rover and gcs system overview</span><a class="headerlink" href="#system" title="Permalink to this image">¶</a></p>
 </div>
 <p>The rover’s components are discussed in <a class="reference internal" href="components.html"><span class="doc std std-doc">Components</span></a>.</p>
 <p>All configuration of the Pixhawk, as well as manual control of the rover was done through <a class="reference external" href="http://qgroundcontrol.com/">QGroundControl</a> GCS software. See the <a class="reference internal" href="qgroundcontrol.html"><span class="doc std std-doc">QGroundControl</span></a> chapter for more info about this.</p>
@@ -418,7 +447,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../admin/data-labelling.html" title="previous page">Data Labelling</a>
+    <a class='left-prev' id="prev-link" href="../model/train_aug.html" title="previous page">Train with augmentations</a>
     <a class='right-next' id="next-link" href="components.html" title="next page">Components</a>
 
     </div>

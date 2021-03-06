@@ -106,6 +106,93 @@
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="dataprep/README.html">
+   Dataprep
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataprep/datasets.html">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="dataprep/scripts/README.html">
+     Scripts
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/freiburg_flatten.html">
+       Flatten Freiburg folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/giusti_flatten.html">
+       Flatten Giusti et al. frame folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/yamaha_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/single_folder_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/remove_seq_sim.html">
+       Remove sequential and similar images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/convert_masks.html">
+       Convert multicolor masks (yamaha/freiburg) to our style (b/w)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/scripts/images_to_tfr.html">
+       Converts a directory with rgb/ and gt/ image subdirectories
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="dataprep/labelling/README.html">
+     Labelling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/labelling/create_label_jsons.html">
+       Create empty label json’s for django-labeller
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/labelling/labbeler_to_masks.html">
+       Converts django-labeller jsons to masks for an entire directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/labelling/process_claims.html">
+       Process images from django-labeller and a claims csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataprep/labelling/json2mask/json2mask.html">
+       JSON to mask
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="model/README.html">
    Model
   </a>
@@ -123,64 +210,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="model/train_aug.html">
      Train with augmentations
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="dataprep/README.html">
-   Dataprep
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/yamaha_flatten.html">
-     Flatten Yamaha folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/create_label_jsons.html">
-     Create empty label json’s for django-labeller
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/freiburg_flatten.html">
-     Flatten Freiburg folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/remove_seq_sim.html">
-     Remove sequential and similar images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/giusti_flatten.html">
-     Flatten Giusti et al. frame folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/convert_masks.html">
-     Convert multicolor masks (yamaha/freiburg) to our style (b/w)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dataprep/images_to_tfr.html">
-     Converts a directory with rgb/ and gt/ image subdirectories
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="admin/README.html">
-   Admin
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="admin/data-labelling.html">
-     Data Labelling
     </a>
    </li>
   </ul>
@@ -404,10 +433,8 @@ intersections, and the mapping of road geometries.</p>
 of data used for training.</p>
 <p><a class="reference internal" href="model/README.html"><span class="doc std std-doc">Model</span></a> - This folder contains the machine learning process we used to train our CNN.</p>
 <p><a class="reference internal" href="rover/README.html"><span class="doc std std-doc">Rover</span></a> - Documentation regarding the hardware aspect of our rover.</p>
-<p><a class="reference internal" href="ros/README.html"><span class="doc std std-doc">ROS</span></a> - All documentation, ROS nodes, and extra files needed to make the rover drive
+<p><a class="reference internal" href="ros/README.html"><span class="doc std std-doc">ROS</span></a> - All documentation, ROS (<a class="reference external" href="https://www.ros.org/">Robot Operating System</a>) nodes, and extra files needed to make the rover drive
 itself.</p>
-<p>ROS is the “<a class="reference external" href="https://www.ros.org/">Robot Operating System</a>”. See
-“<span class="xref myst">About ROS</span>” for more about why <em>we</em> use ROS.</p>
 <br>
 <div class="toctree-wrapper compound">
 </div>

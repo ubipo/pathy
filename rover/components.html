@@ -107,6 +107,93 @@
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dataprep/README.html">
+   Dataprep
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dataprep/datasets.html">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../dataprep/scripts/README.html">
+     Scripts
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/freiburg_flatten.html">
+       Flatten Freiburg folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/giusti_flatten.html">
+       Flatten Giusti et al. frame folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/yamaha_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/single_folder_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/remove_seq_sim.html">
+       Remove sequential and similar images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/convert_masks.html">
+       Convert multicolor masks (yamaha/freiburg) to our style (b/w)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/scripts/images_to_tfr.html">
+       Converts a directory with rgb/ and gt/ image subdirectories
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../dataprep/labelling/README.html">
+     Labelling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/create_label_jsons.html">
+       Create empty label json’s for django-labeller
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/labbeler_to_masks.html">
+       Converts django-labeller jsons to masks for an entire directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/process_claims.html">
+       Process images from django-labeller and a claims csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dataprep/labelling/json2mask/json2mask.html">
+       JSON to mask
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../model/README.html">
    Model
   </a>
@@ -124,64 +211,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../model/train_aug.html">
      Train with augmentations
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../dataprep/README.html">
-   Dataprep
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/yamaha_flatten.html">
-     Flatten Yamaha folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/create_label_jsons.html">
-     Create empty label json’s for django-labeller
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/freiburg_flatten.html">
-     Flatten Freiburg folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/remove_seq_sim.html">
-     Remove sequential and similar images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/giusti_flatten.html">
-     Flatten Giusti et al. frame folder structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/convert_masks.html">
-     Convert multicolor masks (yamaha/freiburg) to our style (b/w)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dataprep/images_to_tfr.html">
-     Converts a directory with rgb/ and gt/ image subdirectories
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../admin/README.html">
-   Admin
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../admin/data-labelling.html">
-     Data Labelling
     </a>
    </li>
   </ul>
@@ -410,11 +439,11 @@
 <p>The rover has two levels. The bottom level is the diy-assembly tank chassis. The top level is a wooden frame to hold the power components.</p>
 <div class="figure align-default" id="id1">
 <img alt="../_images/rover-lower.jpg" src="../_images/rover-lower.jpg" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Rover bottom level</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Rover bottom level</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id2">
 <img alt="../_images/rover-upper.jpg" src="../_images/rover-upper.jpg" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Rover top level</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Rover top level</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="chassis">
 <span id="components-chassis"></span><h2>Chassis<a class="headerlink" href="#chassis" title="Permalink to this headline">¶</a></h2>
@@ -426,7 +455,7 @@
 <p>To control the speed and direction of the two motors we used a <a class="reference external" href="https://www.velleman.eu/products/view/?id=435576">VMA409 H-bridge breakout board</a>, also provided to us by Airobot.</p>
 <p>To ease control of the H-bridge through software we added a simple <a class="reference external" href="https://web.mit.edu/6.131/www/document/7402.pdf">NOR-gate</a> circuit.</p>
 <div class="figure align-default" id="circuit-diagram">
-<img alt="../_images/nor-gates-circuit.svg" src="../_images/nor-gates-circuit.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Circuit to control the H-bridge from the Pixhawk</span><a class="headerlink" href="#circuit-diagram" title="Permalink to this image">¶</a></p>
+<img alt="../_images/nor-gates-circuit.svg" src="../_images/nor-gates-circuit.svg" /><p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Circuit to control the H-bridge from the Pixhawk</span><a class="headerlink" href="#circuit-diagram" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="flight-controller">
@@ -434,7 +463,7 @@
 <p>To control the rover’s motors (and potentially other RC components) we used a <a class="reference external" href="https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk.html">Pixhawk 2.4.8 flight controller</a>.</p>
 <div class="figure align-default" id="pixhawk">
 <a class="reference internal image-reference" href="../_images/pixhawk.png"><img alt="../_images/pixhawk.png" src="../_images/pixhawk.png" style="width: 133.0px; height: 213.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Pixhawk flight controller</span><a class="headerlink" href="#pixhawk" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Pixhawk flight controller</span><a class="headerlink" href="#pixhawk" title="Permalink to this image">¶</a></p>
 </div>
 <p>To control the speed of the motors the H-bridge’s motor PWN connections (labelled “ENA” and “ENB” on the VMA409) should be connected to the Pixhawk’s SERVO1 and SERVO2 pins (mainout rail).</p>
 <p>The Pixhawk’s Relay 1 and Relay 2 pins control the motors’ direction. See the <a class="reference internal" href="#circuit-diagram"><span class="std std-ref">circuit diagram above</span></a> for the necessary connections.</p>
@@ -445,7 +474,7 @@
 <p>As previously discussed we used an <a class="reference external" href="https://developer.nvidia.com/embedded/jetson-nano-developer-kit">NVIDIA Jetson Nano SBC</a> to make autonomous steering decisions. The software logic for this is discussed in the chapter about <a class="reference internal" href="../ros/README.html"><span class="doc std std-doc">ROS</span></a>.</p>
 <div class="figure align-default" id="jetson">
 <a class="reference internal image-reference" href="../_images/jetson.png"><img alt="../_images/jetson.png" src="../_images/jetson.png" style="width: 300.0px; height: 244.75px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">NVIDIA Jetson Nano SBC</span><a class="headerlink" href="#jetson" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">NVIDIA Jetson Nano SBC</span><a class="headerlink" href="#jetson" title="Permalink to this image">¶</a></p>
 </div>
 <p>To relay its eventual steering decisions to the flight controller (and thus the motors) we connected the Jetson Nano to the Pixhawk through serial (Pixhawk TELEM 1 &lt;-&gt; Jetson Nano UART_2). Also see <a class="reference external" href="https://www.mathworks.com/help/supportpkg/jetsoncpu/ref/jetson-pixhawk-interface-example.html">this guide by MathWorks</a>.</p>
 </div>

@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labelling &#8212; Paddy</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://paddy.pfiers.net/dataprep/labelling/README.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Create empty label json’s for django-labeller" href="create_label_jsons.html" />
+    <link rel="prev" title="Converts a directory with rgb/ and gt/ image subdirectories" href="../scripts/images_to_tfr.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://paddy.pfiers.net/dataprep/labelling/README.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Labelling" />
+<meta property="og:description" content="Labelling  To train our CNN we need labelled data of forest paths. Most data online however is meant for autnomous driving, usually on solid (asphalt/compacted " />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Paddy</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../technologies.html">
+   Technologies
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../README.html">
+   Dataprep
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../datasets.html">
+     Datasets
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../scripts/README.html">
+     Scripts
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/freiburg_flatten.html">
+       Flatten Freiburg folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/giusti_flatten.html">
+       Flatten Giusti et al. frame folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/yamaha_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/single_folder_flatten.html">
+       Flatten Yamaha folder structure
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/remove_seq_sim.html">
+       Remove sequential and similar images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/convert_masks.html">
+       Convert multicolor masks (yamaha/freiburg) to our style (b/w)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../scripts/images_to_tfr.html">
+       Converts a directory with rgb/ and gt/ image subdirectories
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="current reference internal" href="#">
+     Labelling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="create_label_jsons.html">
+       Create empty label json’s for django-labeller
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="labbeler_to_masks.html">
+       Converts django-labeller jsons to masks for an entire directory
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="process_claims.html">
+       Process images from django-labeller and a claims csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="json2mask/json2mask.html">
+       JSON to mask
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../model/README.html">
+   Model
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../model/load_model.html">
+     Load model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../model/train.html">
+     Train
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../model/train_aug.html">
+     Train with augmentations
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../rover/README.html">
+   Rover
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../rover/components.html">
+     Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../rover/ardupilot-config.html">
+     Ardupilot configuration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../rover/qgroundcontrol.html">
+     QGroundControl
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../ros/README.html">
+   ROS
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../ros/paddy/README.html">
+     Paddy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/camstream.html">
+       Camstream
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/padnet.html">
+       Padnet
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/steering.html">
+       Steering
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/dms.html">
+       Dead man’s switch
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/mav.html">
+       Mav
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/paddy/paddy/gcs_webui_ws_server.html">
+       GCS WebUI WebSockets server
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../ros/droidcam/README.html">
+     DroidCAM
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../ros/droidcam/get_android_ip.html">
+       Get Android IP
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ros/webui.html">
+     Web UI
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../DOCUMENTATION.html">
+   Documentation
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/dataprep/labelling/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ubipo/paddy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/dataprep/labelling/README.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#freiburg">
+   Freiburg
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#giusti">
+   Giusti
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#own-data">
+   Own data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crowd-sourced-labelling">
+   Crowd Sourced Labelling
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="labelling">
+<h1>Labelling<a class="headerlink" href="#labelling" title="Permalink to this headline">¶</a></h1>
+<p>To train our CNN we need labelled data of forest paths. Most data online however
+is meant for autnomous driving, usually on solid (asphalt/compacted gravel)
+roads/paths.</p>
+<div class="section" id="freiburg">
+<h2>Freiburg<a class="headerlink" href="#freiburg" title="Permalink to this headline">¶</a></h2>
+<p>One (near) exception to this is the
+<a class="reference external" href="http://deepscene.cs.uni-freiburg.de/segment_random/FOREST_RGB">Freiburg deepscene forest dataset</a>. While this dataset still mostly contains
+compacted gravel park roads, it also contains a lot of smaller soft paths.</p>
+<p>As such we adapted and used it for the training of our network.</p>
+<p>See also <a class="reference external" href="../datasets#freiburg">Dataprep &gt; Datasets &gt; Freiburg</a>.</p>
+</div>
+<div class="section" id="giusti">
+<h2>Giusti<a class="headerlink" href="#giusti" title="Permalink to this headline">¶</a></h2>
+<p>Another excellent dataset of forest paths is the data set from Giusti et al.’s <a class="reference external" href="https://people.idsia.ch/~guzzi/DataSet.html">A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots</a>.</p>
+<p>This data however is unfortunately only labelled as “left”, “straight” or “center”.</p>
+<p>See also <a class="reference external" href="../datasets#giusti">Dataprep &gt; Datasets &gt; Giusti</a>.</p>
+</div>
+<div class="section" id="own-data">
+<h2>Own data<a class="headerlink" href="#own-data" title="Permalink to this headline">¶</a></h2>
+<p>We also collected our own data in a forest in flanders. See
+<a class="reference external" href="../datasets#steentjes">Dataprep &gt; Datasets &gt; Steentjes</a> for more info.</p>
+</div>
+<div class="section" id="crowd-sourced-labelling">
+<h2>Crowd Sourced Labelling<a class="headerlink" href="#crowd-sourced-labelling" title="Permalink to this headline">¶</a></h2>
+<p>To label the Giusti and our own data we employed the help of our
+fellow students in a crowd sourced labelling effort.</p>
+<p>We set up a custom version of
+<a class="reference external" href="https://github.com/Britefury/django-labeller">Django Labeller</a>
+on a Google Cloud VPS and used a
+<a class="reference external" href="https://docs.google.com/spreadsheets/d/1F_qDVuE1kOOzWPlyxjIwmBufMYoukAm_Qs4766otick">collaborative spreadsheet</a>
+and a simple
+<a class="reference external" href="https://hackmd.io/eotmVGgfR6CO1zPifdQnyw">instructional document</a>
+to coordinate the labelling.</p>
+<p><img alt="Our Django Labeller instance" src="dataprep/labelling/images/labeller.png" />
+<em>Our Django Labeller instance</em></p>
+<br>
+<p><img alt="Instructional document" src="dataprep/labelling/images/document.png" />
+<em>Instructional document to coordinate labelling</em></p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dataprep/labelling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../scripts/images_to_tfr.html" title="previous page">Converts a directory with rgb/ and gt/ image subdirectories</a>
+    <a class='right-next' id="next-link" href="create_label_jsons.html" title="next page">Create empty label json’s for django-labeller</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Pieter Fiers, Simon Germeau<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
