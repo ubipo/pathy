@@ -5,11 +5,11 @@ import nbformat
 DOC_FOOTER = textwrap.dedent("""\
     <hr>
     <i>
-        This documentation page was generate from a python file.
+        This documentation page was generated from a python file.
         The file is located in the repo folder corresponding to this 
         documentation page.
         You can also click the `suggest edit` link (GitHub logo, top right)
-        to open the file in GitHub.
+        to open the file for editing in GitHub.
     </i>
 """)
 
