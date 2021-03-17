@@ -40,10 +40,10 @@ and a simple
 [instructional document](https://hackmd.io/eotmVGgfR6CO1zPifdQnyw)
 to coordinate the labelling.
 
-![Our Django Labeller instance](images/labeller.png)
+![Our Django Labeller instance](media/labeller.png)
 *Our Django Labeller instance*
 
 <br>
 
-![Instructional document](images/document.png)
+![Instructional document](media/document.png)
 *Instructional document to coordinate labelling*
