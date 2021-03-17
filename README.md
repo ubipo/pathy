@@ -14,8 +14,6 @@ intersections, and the mapping of road geometries.
     <source src="intro.webm" type="video/webm">
 </video>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SpPcj6MqQEs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## Repository structure
 
 The repository is structured according to the four main stages of our project:
@@ -29,6 +27,18 @@ of data used for training.
 
 [ROS](ros/README.md) - All documentation, ROS ([Robot Operating System](https://www.ros.org/)) nodes, and extra files needed to make the rover drive
 itself.
+
+## Presentation
+
+<a href="presentation.pdf">As pdf</a> or <a href="presentation.pptx">as pptx</a> &nbsp; <small>[source](https://docs.google.com/presentation/d/1WMvPDMJ7YyHw0fyk2sWPqvgLIdivagkhP7UBCjnO4ww/edit?usp=sharing)</small>
+
+## Demo videos
+
+All demo videos combined (see YouTube description for timestamps):
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SpPcj6MqQEs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[youtu.be/SpPcj6MqQEs](https://youtu.be/SpPcj6MqQEs)
 
 <br>
 
