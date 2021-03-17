@@ -55,11 +55,13 @@ python3 -m venv env
 source env/bin/activate
 ```
 
+
 3\. Install requirements
 
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
+
 
 4\. Update python path
 
@@ -67,10 +69,12 @@ pip install -r requirements
 export PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/
 ```
 
+
 5\. Build documentation
 
 ```
 jupyter-book build .
 ```
+
 
 To view the docs, see [Viewing locally](#viewing-locally)
