@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'paddy'
+package_name = 'pathy'
 
 setup(
     name=package_name,
@@ -15,17 +15,17 @@ setup(
     zip_safe=True,
     maintainer='Pieter Fiers',
     maintainer_email='pieter@pfiers.net',
-    description='Paddy, the ROS package that runs padnet',
+    description='Pathy, the ROS package that runs padnet',
     license='Apache License, Version 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mav = paddy.mav:main',
-            'padnet = paddy.padnet:main',
-            'camstream = paddy.camstream:main',
-            'gcs_webui_ws_server = paddy.gcs_webui_ws_server:main',
-            'dms = paddy.dms:main',
-            'steering = paddy.steering:main'
+            'mav = pathy.mav:main',
+            'padnet = pathy.padnet:main',
+            'camstream = pathy.camstream:main',
+            'gcs_webui_ws_server = pathy.gcs_webui_ws_server:main',
+            'dms = pathy.dms:main',
+            'steering = pathy.steering:main'
         ],
     },
 )

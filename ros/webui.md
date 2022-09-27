@@ -7,7 +7,7 @@ The client-side of this system is simply the flat webui.html file in the same
 directory as this documentation file (ros/webui.html in the repo).
 
 The server-side is implemented by the 
-[GCS WebUI WebSockets server](paddy/paddy/gcs_webui_ws_server) ROS node.
+[GCS WebUI WebSockets server](pathy/pathy/gcs_webui_ws_server) ROS node.
 
 ## Protocol
 

@@ -1,7 +1,7 @@
 """Steering
 
 Calculates the throttle and steering inputs needed to stay on path
-based on images from /paddy/mask and published the results to /paddy/steering.
+based on images from /pathy/mask and published the results to /pathy/steering.
 """
 
 import os, sys, json
@@ -21,8 +21,8 @@ class Steering(Node):
     def __init__(self, throttle):
         super().__init__('steering')
         self._throttle = throttle
-        self.create_subscription(Image, '/paddy/mask', self._mask_handler, 10)
-        self._steering_pub = self.create_publisher(String, '/paddy/steering', 10)
+        self.create_subscription(Image, '/pathy/mask', self._mask_handler, 10)
+        self._steering_pub = self.create_publisher(String, '/pathy/steering', 10)
         self._last_dms_msg_time = 0.0 # epoch
         self._bridge = CvBridge()
 

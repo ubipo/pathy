@@ -1,7 +1,7 @@
 """Dead man's switch
 
-Passes steering inputs through from /paddy/steering to /paddy/steering_safe, but 
-only if a message was recently posted to /paddy/dms.
+Passes steering inputs through from /pathy/steering to /pathy/steering_safe, but 
+only if a message was recently posted to /pathy/dms.
 
 """
 
@@ -16,9 +16,9 @@ from std_msgs.msg import String, Empty
 class Dms(Node):
     def __init__(self, dms_max_delay):
         super().__init__('dms')
-        self._pub = self.create_publisher(String, '/paddy/steering_safe', 10)
-        self.create_subscription(String, '/paddy/steering', self._steering_handler, 10)
-        self.create_subscription(Empty, '/paddy/dms', self._dms_handler, 10)
+        self._pub = self.create_publisher(String, '/pathy/steering_safe', 10)
+        self.create_subscription(String, '/pathy/steering', self._steering_handler, 10)
+        self.create_subscription(Empty, '/pathy/dms', self._dms_handler, 10)
         self._dms_max_delay = dms_max_delay
         self._last_dms_msg_time = datetime.min
 

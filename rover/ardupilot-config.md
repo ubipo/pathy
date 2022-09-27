@@ -42,4 +42,4 @@ Disable motor slew. We didn't experience any negative consequences, your experie
 Personal preference
 
 **SERIAL1_PROTOCOL**: MAVLink1  
-You could probably change this to MAVLink2 with only minor changes needed in [ros > mav.py](../ros/paddy/paddy/mav.py).
+You could probably change this to MAVLink2 with only minor changes needed in [ros > mav.py](../ros/pathy/pathy/mav.py).

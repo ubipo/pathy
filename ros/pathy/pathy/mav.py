@@ -1,10 +1,10 @@
 """Mav
 
 Proxies mavlink commands from the gcs to the drone's flight controller 
-and processes steering input from /paddy/steering_safe.
+and processes steering input from /pathy/steering_safe.
 
-Note: you can rewrite the /paddy/steering_safe to /paddy/steering to bypass dms
-by issuing "--ros-args -r /paddy/steering_safe:=/paddy/steering" on the command
+Note: you can rewrite the /pathy/steering_safe to /pathy/steering to bypass dms
+by issuing "--ros-args -r /pathy/steering_safe:=/pathy/steering" on the command
 line.
 """
 
@@ -71,7 +71,7 @@ def manual_control(mf, throttle: float, steer: float):
 class Mav(Node):
     def __init__(self, pixhawk_serial_dev, pixhawk_serial_baud, source_system_me, override_timeout):
         super().__init__('mav')
-        self.create_subscription(String, '/paddy/steering_safe', self._steering_handler, 10)
+        self.create_subscription(String, '/pathy/steering_safe', self._steering_handler, 10)
         self._pixhawk_serial_dev = pixhawk_serial_dev
         self._pixhawk_serial_baud = pixhawk_serial_baud
         self._source_system_me = source_system_me

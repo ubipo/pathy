@@ -1,7 +1,7 @@
 """Padnet
 
-Runs our semantic segmentation CNN on images from /paddy/rgb and 
-publishes them on /paddy/mask.
+Runs our semantic segmentation CNN on images from /pathy/rgb and 
+publishes them on /pathy/mask.
 
 Untested.
 
@@ -37,8 +37,8 @@ class Padnet(Node):
     def __init__(self, model_path):
         super().__init__('padnet')
         self.model_path = model_path
-        self.create_subscription(Image, '/paddy/rgb', self._rgb_handler, 10)
-        self._mask_pub = self.create_publisher(Image, '/paddy/mask', 10)
+        self.create_subscription(Image, '/pathy/rgb', self._rgb_handler, 10)
+        self._mask_pub = self.create_publisher(Image, '/pathy/mask', 10)
         self._bridge = CvBridge()
 
     def run_forever(self):

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>paddy</name>
+  <name>pathy</name>
   <version>0.0.0</version>
-  <description>Paddy autonomous rover</description>
+  <description>Pathy autonomous rover</description>
   <maintainer email="pieter@pfiers.net">Pieter Fiers</maintainer>
   <maintainer email="simon.germeau@live.be">Simon Germeau</maintainer>
   <license>Apache License, Version 2.0</license>

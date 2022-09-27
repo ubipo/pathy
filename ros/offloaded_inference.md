@@ -10,4 +10,4 @@ The [inference script running on the laptop](../model/run_inference_ws) then ret
 
 This works well and is actually very handy during development while testing different DNN setups.
 
-The [ROS node necessary for onboard inference](paddy/paddy/padnet) is also included (untested) in the paddy ROS package. It *should* work plug-and-play if the Jetson's [Tensorflow](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html) and [TensorRT](https://developer.nvidia.com/tensorrt) python bindings work.
+The [ROS node necessary for onboard inference](pathy/pathy/padnet) is also included (untested) in the pathy ROS package. It *should* work plug-and-play if the Jetson's [Tensorflow](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html) and [TensorRT](https://developer.nvidia.com/tensorrt) python bindings work.

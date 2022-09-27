@@ -1,6 +1,6 @@
 """Camstream
 
-Streams webcam frames to /paddy/rgb on a regular interval.
+Streams webcam frames to /pathy/rgb on a regular interval.
 """
 
 import os
@@ -19,7 +19,7 @@ class CamStream(Node):
     def __init__(self, video_source):
         super().__init__('camstream')
         self._source = video_source
-        self._pub = self.create_publisher(Image, '/paddy/rgb', 10)
+        self._pub = self.create_publisher(Image, '/pathy/rgb', 10)
         timer_period = 0.5
         self.create_timer(timer_period, self._timer_callback)
         self._bridge = CvBridge()

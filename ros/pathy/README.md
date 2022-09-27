@@ -1,6 +1,6 @@
-# Paddy
+# Pathy
 
-Paddy, the ROS package that runs padnet, consists of 7 nodes:
+Pathy, the ROS package that runs padnet, consists of 7 nodes:
 
 ```{figure} media/ros-diagram.svg
 ---
@@ -8,23 +8,23 @@ scale: 25%
 name: nodes-overview
 ---
 
-Nodes in the Paddy package
+Nodes in the Pathy package
 ```
 
 ## Nodes
 
-- [Camstream](paddy/camstream): Webcam video capture
-- [Padnet](paddy/padnet): Semantic segmentation CNN
-- [Steering](paddy/steering): Steering from path mask
-- [DMS](paddy/dms): Dead man's switch
-- [Mav](paddy/mav): Mavlink proxy and injection
-- [GCS WebUI WebSockets server](paddy/gcs_webui_ws_server): WebSockets server for the WebUI
+- [Camstream](pathy/camstream): Webcam video capture
+- [Padnet](pathy/padnet): Semantic segmentation CNN
+- [Steering](pathy/steering): Steering from path mask
+- [DMS](pathy/dms): Dead man's switch
+- [Mav](pathy/mav): Mavlink proxy and injection
+- [GCS WebUI WebSockets server](pathy/gcs_webui_ws_server): WebSockets server for the WebUI
 
 ## Running
 
 During development and testing we manually started all nodes using:
 ```sh
-ros2 run paddy <name-of-node>
+ros2 run pathy <name-of-node>
 ```
 
 In [Byobu](https://www.byobu.org/), a terminal multiplexer, this looks something
@@ -36,7 +36,7 @@ scale: 50%
 name: byobu
 ---
 
-Running paddy nodes in development
+Running pathy nodes in development
 ```
 
 This would probably be a bit of a hassle in production. ROS 2 of course has 

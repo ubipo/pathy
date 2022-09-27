@@ -1,7 +1,7 @@
 """GCS WebUI WebSockets server
 
 Listens on several topics to serve WebSocket connections from our GCS WebUI, 
-also publishes to /paddy/dms, on request of the WebUI.
+also publishes to /pathy/dms, on request of the WebUI.
 
 See /gcs/webui.html in the repo for the client-side part.
 Not to be confused with the Mavlink ground control software (QGroundControl/
@@ -70,15 +70,15 @@ class GcsWebuiWsServer(Node):
         super().__init__('gcs_webui_ws_server')
         loop = asyncio.get_event_loop()
         self.create_subscription(
-            Image, '/paddy/rgb', async_to_non_blocking(loop, self._on_rgb), 10
+            Image, '/pathy/rgb', async_to_non_blocking(loop, self._on_rgb), 10
         )
-        # self.create_subscription(Image, '/paddy/mask', self._on_mask, 10)
+        # self.create_subscription(Image, '/pathy/mask', self._on_mask, 10)
         self.create_subscription(
-            String, '/paddy/steering', 
+            String, '/pathy/steering', 
             async_to_non_blocking(loop, self._on_steering), 10
         )
-        self._mask_pub = self.create_publisher(Image, '/paddy/mask', 10)
-        self._dms_pub = self.create_publisher(Empty, '/paddy/dms', 10)
+        self._mask_pub = self.create_publisher(Image, '/pathy/mask', 10)
+        self._dms_pub = self.create_publisher(Empty, '/pathy/dms', 10)
         self._bridge = CvBridge()
         self._clients = set()
         self._loop = asyncio.get_event_loop()

@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -28,7 +28,7 @@ jobs:
 
       - name: Add docutils to PYTHONPATH
         run: |
-          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/" >> $GITHUB_ENV
+          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/pathy_docutils/" >> $GITHUB_ENV
           
       - name: Build Jupyter Book
         run: |
@@ -36,7 +36,7 @@ jobs:
 
       - name: Add CNAME
         run: |
-          echo "paddy.pfiers.net" > _build/html/CNAME
+          echo "pathy.pfiers.net" > _build/html/CNAME
 
       - name: Add .nojekyll
         run: |

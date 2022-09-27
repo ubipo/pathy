@@ -34,14 +34,14 @@
   - file: rover/qgroundcontrol
 - file: ros/README
   sections:
-  - file: ros/paddy/README
+  - file: ros/pathy/README
     sections:
-    - file: ros/paddy/paddy/camstream
-    - file: ros/paddy/paddy/padnet
-    - file: ros/paddy/paddy/steering
-    - file: ros/paddy/paddy/dms
-    - file: ros/paddy/paddy/mav
-    - file: ros/paddy/paddy/gcs_webui_ws_server
+    - file: ros/pathy/pathy/camstream
+    - file: ros/pathy/pathy/padnet
+    - file: ros/pathy/pathy/steering
+    - file: ros/pathy/pathy/dms
+    - file: ros/pathy/pathy/mav
+    - file: ros/pathy/pathy/gcs_webui_ws_server
   - file: ros/droidcam/README
     sections:
     - file: ros/droidcam/get_android_ip

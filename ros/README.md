@@ -14,11 +14,11 @@ to exchange data between these nodes.
 Nodes are separated into packages. A package is the minimal publishable unit of
 ROS 'stuff'.
 
-To control our rover we created one package: "paddy". This package contains all 
+To control our rover we created one package: "pathy". This package contains all 
 nodes to handle camera input, steering, oversight etc.
 
 We discuss the various nodes and their function in our 
-[package's readme](paddy/README).
+[package's readme](pathy/README).
 
 Two auxillary components are needed to use the package: [DroidCam](droidcam/README) for
  the software side of the rover's camera and [web UI](webui) for the live
@@ -31,16 +31,16 @@ functionality.
 
 ### Topic inspection
 
-To debug a ROS topic ("/paddy/steering" in this example), use:
+To debug a ROS topic ("/pathy/steering" in this example), use:
 
 ```
-ros2 topic echo /paddy/steering
+ros2 topic echo /pathy/steering
 ```
 
 Something similar can be used for Image topics:
 
 ```
-ros2 run image_tools showimage --ros-args -r image:=/paddy/rgb
+ros2 run image_tools showimage --ros-args -r image:=/pathy/rgb
 ```
 
 ```{figure} media/showimage.png
@@ -58,7 +58,7 @@ possible to rewrite topics.
 
 I often used:
 ```
-ros2 run paddy mav --ros-args -r /paddy/steering_safe:=/paddy/steering
+ros2 run pathy mav --ros-args -r /pathy/steering_safe:=/pathy/steering
 ```
 
 ...during development to run the rover with 'unsafe' steering (steering messages 

@@ -1,5 +1,5 @@
 # Book settings
-title                       : Paddy  # The title of the book. Will be placed in the left navbar.
+title                       : Pathy  # The title of the book. Will be placed in the left navbar.
 author                      : Pieter Fiers, Simon Germeau  # The author of the book
 # copyright                   : "2020"  # Copyright year to be placed in the footer
 # logo                        : ""  # A path to the book logo
@@ -48,7 +48,7 @@ html:
 #   extra_footer              : ""  # Will be displayed underneath the footer.
 #   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
-  baseurl                   : "https://paddy.pfiers.net/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  baseurl                   : "https://pathy.pfiers.net/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
 #   comments:
 #     hypothesis              : false
 #     utterances              : false
@@ -68,7 +68,7 @@ html:
 #   colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
 
 repository:
-  url                       : https://github.com/ubipo/paddy
+  url                       : https://github.com/ubipo/pathy
   branch                    : master
 
 sphinx:

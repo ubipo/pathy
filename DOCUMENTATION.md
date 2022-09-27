@@ -1,6 +1,6 @@
 # Documentation
 
-**TL;DR: [paddy.pfiers.net](https://paddy.pfiers.net)**
+**TL;DR: [pathy.pfiers.net](https://pathy.pfiers.net)**
 
 We use [Jupyter Book](https://jupyterbook.org/) (not to be confused with 
 [Jupyter Notebooks](https://jupyter.org/)) to create HTML documentation 
@@ -13,7 +13,7 @@ the relevant webpage.
 ![Find the "as pdf" button in the top-right corner](media/documentation-as-pdf.png)
 
 By far the easiest way to view these docs is by browsing to
-[paddy.pfiers.net](https://paddy.pfiers.net). However, you can also
+[pathy.pfiers.net](https://pathy.pfiers.net). However, you can also
 view and/or build them locally:
 
 ## Viewing locally
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 4\. Update python path
 
 ```
-export PYTHONPATH=$PYTHONPATH:$(pwd)/paddy_docutils/
+export PYTHONPATH=$PYTHONPATH:$(pwd)/pathy_docutils/
 ```
 
 
