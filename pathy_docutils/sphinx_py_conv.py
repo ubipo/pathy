@@ -13,7 +13,7 @@ DOC_FOOTER = textwrap.dedent("""\
     </i>
 """)
 
-def py_to_nb_node(py_content: str, ext: str = "py") -> nbformat.NotebookNode:
+def py_to_nb_node(py_content: str, ext: str = ".py") -> nbformat.NotebookNode:
     if py_content is None:
         return None
     
@@ -38,8 +38,10 @@ def py_to_nb_node(py_content: str, ext: str = "py") -> nbformat.NotebookNode:
         metadata={
             "title": title,
             "language_info": {
-                "file_extension": ext
-            }
+                "file_extension": ext,
+                "mimetype": "text/x-python",
+                "name": "python",
+            },
         },
         cells=[title_cell, content_cell, info_cell],
     )

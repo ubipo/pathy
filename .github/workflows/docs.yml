@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r requirements-docs.txt
 
       - name: Add docutils to PYTHONPATH
         run: |

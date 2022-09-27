@@ -1,5 +1,6 @@
-- file: README
-
+format: jb-article
+root: README
+sections:
 - file: technologies
 - file: dataprep/README
   sections:

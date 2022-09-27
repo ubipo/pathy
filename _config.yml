@@ -4,7 +4,7 @@ author                      : Pieter Fiers, Simon Germeau  # The author of the b
 # copyright                   : "2020"  # Copyright year to be placed in the footer
 # logo                        : ""  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
-exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", env]
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", "env-pathy", env]
 # Auto-exclude files not in the toc
 only_build_toc_files        : false
 
@@ -77,4 +77,4 @@ sphinx:
     nb_custom_formats:
       .py:
         - sphinx_py_conv.py_to_nb_node
-        - ext: py
+        - ext: ".py"
