@@ -72,8 +72,9 @@ repository:
   branch                    : master
 
 sphinx:
+  extra_extensions:
+    - include_in_output
   config:
-    html_extra_path: ['media']
     nb_custom_formats:
       .py:
         - sphinx_py_conv.py_to_nb_node

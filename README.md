@@ -32,7 +32,7 @@ itself.
 
 ## Presentation
 
-<a href="presentation.pdf">As pdf</a> or <a href="presentation.pptx">as pptx</a> &nbsp; <small>[source](https://docs.google.com/presentation/d/1WMvPDMJ7YyHw0fyk2sWPqvgLIdivagkhP7UBCjnO4ww/edit?usp=sharing)</small>
+[As pdf](presentation.pdf) or [as pptx](presentation.pptx) &nbsp; <small>[source](https://docs.google.com/presentation/d/1WMvPDMJ7YyHw0fyk2sWPqvgLIdivagkhP7UBCjnO4ww/edit?usp=sharing)</small>
 
 ## Demo videos
 
@@ -42,7 +42,14 @@ All demo videos combined (see YouTube description for timestamps):
 
 [youtu.be/SpPcj6MqQEs](https://youtu.be/SpPcj6MqQEs)
 
+![Collage of the pathy rover and prediction for a forest path](pathy-collage.webp)
+
 <br>
 
 [^1]: Smolyanskiy et al., “Toward Low-Flying Autonomous MAV Trail Navigation using DeepNeural Networks for Environmental Awareness” May 2017.  
 [^2]: Giusti et al., “A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots” Dec 2015. 
+
+{include-in-output}`intro.webm`
+{include-in-output}`presentation.pdf`
+{include-in-output}`presentation.pptx`
+{include-in-output}`documentation-as-pdf.png`
