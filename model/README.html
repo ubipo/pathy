@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model &#8212; Paddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Model &#8212; Pathy</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,110 +20,126 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://paddy.pfiers.net/model/README.html" />
+    <link rel="canonical" href="https://pathy.pfiers.net/model/README.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Load model" href="load_model.html" />
     <link rel="prev" title="JSON to mask" href="../dataprep/labelling/json2mask/json2mask.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://paddy.pfiers.net/model/README.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="Model" />
-<meta property="og:description" content="Model  Prior art  Before we started developing this project we looked online for research and/or papers that have done something similar to what we were plannin" />
-
-
-<meta name="twitter:card" content="summary" />
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Paddy</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Pathy</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../technologies.html">
    Technologies
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../dataprep/README.html">
    Dataprep
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../dataprep/datasets.html">
      Datasets
     </a>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dataprep/scripts/README.html">
      Scripts
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dataprep/scripts/freiburg_flatten.html">
        Flatten Freiburg folder structure
@@ -157,14 +176,17 @@
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dataprep/labelling/README.html">
      Labelling
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dataprep/labelling/create_label_jsons.html">
        Create empty label json’s for django-labeller
@@ -186,18 +208,19 @@
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Model
   </a>
-  <ul class="collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="load_model.html">
      Load model
@@ -214,14 +237,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../rover/README.html">
    Rover
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../rover/components.html">
      Components
@@ -238,66 +264,75 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ros/README.html">
    ROS
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="../ros/paddy/README.html">
-     Paddy
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../ros/pathy/README.html">
+     Pathy
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/camstream.html">
+      <a class="reference internal" href="../ros/pathy/pathy/camstream.html">
        Camstream
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/padnet.html">
+      <a class="reference internal" href="../ros/pathy/pathy/padnet.html">
        Padnet
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/steering.html">
+      <a class="reference internal" href="../ros/pathy/pathy/steering.html">
        Steering
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/dms.html">
+      <a class="reference internal" href="../ros/pathy/pathy/dms.html">
        Dead man’s switch
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/mav.html">
+      <a class="reference internal" href="../ros/pathy/pathy/mav.html">
        Mav
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/gcs_webui_ws_server.html">
+      <a class="reference internal" href="../ros/pathy/pathy/gcs_webui_ws_server.html">
        GCS WebUI WebSockets server
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../ros/droidcam/README.html">
      DroidCAM
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/droidcam/get_android_ip.html">
        Get Android IP
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ros/webui.html">
@@ -305,8 +340,6 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../DOCUMENTATION.html">
@@ -315,89 +348,181 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/model/README.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ubipo/paddy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/model/README.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ubipo/pathy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ubipo/pathy/edit/master/model/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/model/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prior-art">
    Prior art
@@ -477,129 +602,230 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Model</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prior-art">
+   Prior art
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#semantic-segmentation">
+   Semantic segmentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets">
+   Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#augmentations">
+   Augmentations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#architecture">
+   Architecture
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transfer-learning">
+   Transfer Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#freiburg">
+     Freiburg
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#giusti">
+     Giusti
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steentjes">
+     Steentjes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#giusti-freiburg-steentjes">
+     Giusti + Freiburg + Steentjes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#freiburg-steentjes">
+     Freiburg + Steentjes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tpu">
+   TPU
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensorrt">
+   TensorRT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-life-testing">
+   Real life testing
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="model">
-<h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="prior-art">
-<h2>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="model">
+<h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h1>
+<section id="prior-art">
+<h2>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">#</a></h2>
 <p>Before we started developing this project we looked online for research and/or papers that have done something similar to what we were planning on doing. We found two researches, one by Giusti et al<a class="footnote-reference brackets" href="#id9" id="id1">1</a>. and one by Smolyanskiy et al.<a class="footnote-reference brackets" href="#id10" id="id2">2</a> Giusti classified their images with 1 of 3 classes: left view, right view and center view. They trained their model to classify an image with one of these classes to then get steering from this prediction.</p>
 <p>Smolyanskiy did the same things but instead of 3 classes, they used 6 classes. The 3 same classes as Giusti and 3 classes that represented if the drone was in the center, left or right of the path. The addition of these 3 classes was done to make sure that the drone always flies in the middle of the path and so to avoid obstacles to the side of the road.</p>
 <p>You can keep adding classes to make a better steering estimation but this is not the best way to do this. We came with the idea to use image segmentation to create an exact mask of where the road is on the camera’s field of view. This way it is possible to make more accurate steering estimations and it even gives us the possibility to implement a system that is able to take turns.</p>
-</div>
-<div class="section" id="semantic-segmentation">
-<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="semantic-segmentation">
+<h2>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">#</a></h2>
 <p>Semantic segmentation is like object detection a computer vision technique. With object detection you are trying to detect a certain object in an image and most of the time draw a box around it. Semantic segmentation kind of does the same but it tries to label a region in an image. In our case, we are only interested where the road is, so we only need to mark the road and no other regions.</p>
-<div class="figure align-default" id="ref">
+<figure class="align-default" id="ref">
 <img alt="https://i.imgur.com/VKcyK1y.png" src="https://i.imgur.com/VKcyK1y.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text"><a class="reference external" href="https://medium.com/deelvin-machine-learning/compression-artifact-localization-as-a-semantic-segmentation-task-2b57f8a4a022">Semantic segmentation</a></span><a class="headerlink" href="#ref" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="datasets">
-<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><a class="reference external" href="https://medium.com/deelvin-machine-learning/compression-artifact-localization-as-a-semantic-segmentation-task-2b57f8a4a022">Semantic segmentation</a></span><a class="headerlink" href="#ref" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="../dataprep/datasets.html"><span class="doc std std-doc">Dataprep &gt; Datasets</span></a> for an overview of the datasets
 we used.</p>
-</div>
-<div class="section" id="augmentations">
-<h2>Augmentations<a class="headerlink" href="#augmentations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="augmentations">
+<h2>Augmentations<a class="headerlink" href="#augmentations" title="Permalink to this headline">#</a></h2>
 <p>To train a machine learning model you need lots and lots of ground truth data. Sometimes it is easy to collect the data and more data often means better results from your model. But in our case collecting and annotating the data is very labour intensive. Luckily there is a technique called data augmentations that takes a piece of data, in our case an image and the mask, and does some augmentations to it to create new data. Some examples of augmentations you can perform on images are: horizontal flip, crop, hue, color, etc.</p>
 <p>One important thing when doing augmentations is that you have to use some type of randomization to augment the image. When you apply the same augmentation to every image, the results are not going to change much since the model overfits to that type of data. When you use a randomizer that sets some parameters in the augmentations you have a more varied set of augmentations and thus a more varied dataset.</p>
 <p>We first wanted to use a library called ‘Albumentations’. This library has an easy to use API to perform augmentations on images and it had way better performance then the built-in Tensorflow augmentations. Unfortunately we were not able to use this library because it is not possible to run arbitrary Python code on a TPU. The TPUs only accept Tensorflow commands.
 <img alt="" src="https://i.imgur.com/lSsEWCk.png" /></p>
-</div>
-<div class="section" id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">#</a></h2>
 <p>We chose to implement our model in <a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a>, a machine learning library created by Google. The reason we chose Tensorflow is because it gave us the possibility to use a Keras model via the Tensorflow Keras API. This enabled us to use Google TPUs to train our model. Tensorflow also has a very active community and extensive documentation.</p>
 <p>The network structure that we chose is called <strong>Unet</strong><a class="footnote-reference brackets" href="#id11" id="id3">4</a>.  This network is created by the university of Freiburg and it was originally created to segment clinical images like X-rays. Unet is a so called ‘Convolutional neural network’. The reason why we chose for this model is because it gave us the perfect balance between performance and accuracy. It is also a model that does not require a very large dataset to get good results from.</p>
 <p>If we talk about a network structure, we don’t mean a network with routers and switches but a network of operations that happen on a image and that are connected to each other. We are not going in full detail about every layer in this network but there are two main ones: Convolution layer and Max Pooling.</p>
 <p>We used a high level API called <strong>Segmentation_models</strong><a class="footnote-reference brackets" href="#id12" id="id4">5</a> to create our model. This library abstracts away some things and makes it easier to implement a model. This library returns a Keras model but since we were planning on using Google’s TPU’s to train our model, we had to use the Tensorflow Keras API.</p>
 <p>As the backbone for our network we used <strong>efficientnetb3</strong><a class="footnote-reference brackets" href="#id13" id="id5">6</a>. This is the encoder used to extract features from the data. It might be a bit confusing but we are not actually using the standard Unet but we are implementing efficientnet in the Unet structure. If you look at the image below, you can see that there are two parts to the Unet: Downsample and upsample. The downsample part is the efficientnet and the upsamle part is efficientnet but reversed. You can substitute efficientnet for other backbones like Mobilenet which is optimized to run on mobile devices.
 <img alt="" src="../_images/model" /></p>
-<div class="figure align-default" id="id6">
+<figure class="align-default" id="id6">
 <img alt="https://i.imgur.com/1A02S1r.png" src="https://i.imgur.com/1A02S1r.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text"><a class="reference external" href="https://github.com/qubvel/segmentation_models">Unet</a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text"><a class="reference external" href="https://github.com/qubvel/segmentation_models">Unet</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The loss function we used was a custom loss function that was also implemented in the Segmentation models library. Essentially it is two loss functions, dice loss and Focal Binary Loss, added together.</p>
 <p><strong>Dice loss</strong> is a binary semantic segmentation specific loss function.</p>
 <p><strong>Focal binary loss</strong>, penalizes hard to classify images more heavily relative to easy to classify images.</p>
-</div>
-<div class="section" id="transfer-learning">
-<h2>Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transfer-learning">
+<h2>Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">#</a></h2>
 <p>Since our dataset was not that big we used a pre trained model and we did transfer learning on this model to get better results from it. With transfer learning you load a pre-trained model into the network and then start training the model on your data. The pre-trained model is already capable of extracting abstract features from an image so we only have to train for specific features in our data. The pre-trained model is trained on the 2012 ILSVRC ImageNet dataset.</p>
 <p>We also tried performing transfer learning by training our model on one of our three datasets to then apply transfer learning on one of the other datasets. Unfortunately we didn’t get any useful results by doing this.</p>
-</div>
-<div class="section" id="training">
-<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h2>
 <p>All datasets were split into three subsets, train, test and validation. The splits we used were: 70% training, 15% test and 15% validation. An image can never be in 2 splits at the same time.</p>
 <p>We did all our training without augmentations in this <a class="reference internal" href="train.html"><span class="doc std std-doc">Jupyter Notebook</span></a></p>
 <p>All training with augmentations was done <a class="reference internal" href="train_aug.html"><span class="doc std std-doc">here</span></a></p>
 <p>Most of the experiments were done with a batch size of 16 images. We tried a batch size of 32 once but it did not give us better results.</p>
 <p>When you train your model to the point that it is getting too specific and it does not generalize anymore, your validation loss will start to rise again. This is because the model is so ‘used’ to the training data that when you use other data, it does not perform that well anymore. To prevent this from happening and to decrease training times, we implemented <strong>early stopping</strong>. Essentially what early stopping does is that when your validation loss starts to rise again, it will stop training and save the best model. We used a ‘patience’ of 3, this means that when your model does not improve for 3 consecutive epochs, it will stop the training. You can let the early stopping monitor all metrics, we chose to monitor validation loss since it is the most accurate metric.</p>
 <p><img alt="" src="https://i.imgur.com/LYZu3qg.png" /></p>
-<div class="section" id="freiburg">
-<h3>Freiburg<a class="headerlink" href="#freiburg" title="Permalink to this headline">¶</a></h3>
+<section id="freiburg">
+<h3>Freiburg<a class="headerlink" href="#freiburg" title="Permalink to this headline">#</a></h3>
 <p>When training our model on the Freiburg dataset, we got some pretty good results but the downside was that it only performed well on images that looked like the images in the Freiburg dataset. When we predicted images from the other datasets on this model we didn’t get any good results at all, it was only good to classify paths with a distinct color change like in the Freiburg dataset.</p>
 <p>When training on Freiburg + augmentations we didn’t see a big improvement since the dataset on itself was large and varied enough.</p>
-</div>
-<div class="section" id="giusti">
-<h3>Giusti<a class="headerlink" href="#giusti" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="giusti">
+<h3>Giusti<a class="headerlink" href="#giusti" title="Permalink to this headline">#</a></h3>
 <p>Training on Giusti was an exciting one for us since we didn’t know if the masks we got from our crowdsourced project were sufficient to train a model. After training and tweaking some parameters we did not have a very good result. This is probably due to the fact that the Giusti dataset is too varied and that there was too much noisy data. When testing the model on it’s own validation set it didn’t give good results at all, most of the masks were off or there were no masks at all. Also the testing on Freiburg and Steentjes didn’t give good results at all.</p>
 <p>Adding augmentations to the training didn’t help either, it gave pretty much the same result as the model without augmentations.
 <img alt="" src="https://i.imgur.com/m0VhhPA.png" /></p>
-</div>
-<div class="section" id="steentjes">
-<h3>Steentjes<a class="headerlink" href="#steentjes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="steentjes">
+<h3>Steentjes<a class="headerlink" href="#steentjes" title="Permalink to this headline">#</a></h3>
 <p>The Steentjes dataset without augmentations was a total miss. Instead of the validation loss going down, the validation loss went up drastically. The explanation for this is simple, the dataset is way too small. When you look at the masks that the model predicted from the test dataset, you can see that the model sees the path but the problem is that the model is not developed enough to rule out the rest of the image that is no path. If we had more data in this dataset, the model could have been a good one.</p>
 <p>We also added some augmentations to this dataset and here you can see a big difference. Thanks to the extra augmentations the validation loss dropped. For our drone we don’t really need all the detail in the mask, if it can see the direction the path is going in, it should be fine. But if you want to do other things with the mask, you need a better defined path, not just the rough direction.
 <img alt="" src="https://i.imgur.com/Ntcr8Qy.png" /></p>
-</div>
-<div class="section" id="giusti-freiburg-steentjes">
-<h3>Giusti + Freiburg + Steentjes<a class="headerlink" href="#giusti-freiburg-steentjes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="giusti-freiburg-steentjes">
+<h3>Giusti + Freiburg + Steentjes<a class="headerlink" href="#giusti-freiburg-steentjes" title="Permalink to this headline">#</a></h3>
 <p>We also tried to concatenate some datasets together to see if this gives any good or interesting results. The concatenation of Giusti, Freiburg and Steentjes was ok in seeing the path but it sometimes lacked detail in more difficult images.</p>
 <p>Since this dataset was pretty big it didn’t really get any benefits from doing augmentations.</p>
 <p>With this dataset we also tried a different batch size then we were using before. The batch size in most of the tests was 16 but for this one we also tried a batch size of 32. We didn’t see any improvements in the validation loss so we stuck with the batch size of 16 for the following tests.
 <img alt="" src="https://i.imgur.com/wQePWd6.png" /></p>
-</div>
-<div class="section" id="freiburg-steentjes">
-<h3>Freiburg + Steentjes<a class="headerlink" href="#freiburg-steentjes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="freiburg-steentjes">
+<h3>Freiburg + Steentjes<a class="headerlink" href="#freiburg-steentjes" title="Permalink to this headline">#</a></h3>
 <p>Finally we tried a concatenation of Freiburg and Steentjes. The first time we ran this training, it kept improving until all the 40 epochs were finished and the training stopped. We upped the number of epochs so it could train for more than 40 epochs and in the second run it still improved and it ended at 0.24 validation loss. When looking at the output from the test data We saw some pretty good results, paths were well defined, also horizontal paths that don’t start at the bottom of the image.</p>
 <p>Like with all tests, we also tested if augmentations would help and in this case it made a good model better. After training this model with the augmentations we saw very good results. Most predictions were well detailed and even very difficult trails were segmented correctly. Paths to the side of the road were also detected by the model, this can be especially useful for further development of the software to let the drone take turns. Also the model almost always classifies non roads as non roads so that our drone does not start moving in the wrong direction.
 <img alt="" src="https://i.imgur.com/Se2r6mR.png" /></p>
-</div>
-</div>
-<div class="section" id="tpu">
-<h2>TPU<a class="headerlink" href="#tpu" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="tpu">
+<h2>TPU<a class="headerlink" href="#tpu" title="Permalink to this headline">#</a></h2>
 <p>Training a deep learning models requires a lot of processing power. You can train your model on a CPU but this might take ages. Nowadays people use GPU’s (Graphical processing unit) to train deep learning models. The advantage of using a GPU over a CPU is that a GPU can process large amounts of data (higher bandwidth). Training a deep learning model essentially is doing lots of matrix multiplications and these matrices can be really big. GPU’s like the name says are actually created for processing graphics and are not really optimized for training deep learning models. That’s where <a class="reference external" href="https://cloud.google.com/tpu">Google’s TPUs</a> come in to play. These TPUs are basically GPU’s that are optimized for training deep learning models. You can’t just go out and buy a TPU but you can only hire one on Google’s Cloud Platform. We were able to get one month of TPU usage for free.</p>
 <p>Without this TPU we wouldn’t have been able to do so much experimenting with training our model on different datasets etc. because it would have taken day’s to train our model on our own laptop.</p>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <img alt="https://i.imgur.com/f5sTiPD.png" src="https://i.imgur.com/f5sTiPD.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text"><a class="reference external" href="https://cloud.google.com/tpu">Google cloud TPU</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="tensorrt">
-<h2>TensorRT<a class="headerlink" href="#tensorrt" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text"><a class="reference external" href="https://cloud.google.com/tpu">Google cloud TPU</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tensorrt">
+<h2>TensorRT<a class="headerlink" href="#tensorrt" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://developer.nvidia.com/tensorrt">TensorRT</a> is an SDK made by Nvidia for doing inference on a deep learning model that is optimized for Nvidia GPUs. By converting your model from a Tensorflow Keras model to a TensorRT model, you first have to freeze the model. Freezing a model is essentially locking all the weights in the model so that your model stays the same. Then you can convert your model to TensorRT.</p>
 <p>The reason why we wanted to convert our model to TensorRT is that we were planning on running the inference on a Nvidia Jetson Nano 4GB. This way we could get a performance boost for the inference. The Jetson nano is a mini computer that has a 128-core Maxwell GPU. Unfortunately we were not able to make the conversion work.</p>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <img alt="https://i.imgur.com/eD0p8QL.png" src="https://i.imgur.com/eD0p8QL.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text"><a class="reference external" href="https://developer.nvidia.com/tensorrt">TensorRT</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="real-life-testing">
-<h2>Real life testing<a class="headerlink" href="#real-life-testing" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text"><a class="reference external" href="https://developer.nvidia.com/tensorrt">TensorRT</a></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="real-life-testing">
+<h2>Real life testing<a class="headerlink" href="#real-life-testing" title="Permalink to this headline">#</a></h2>
 <p>When testing our final Freiburg+Steentjes+augmentations model in a real forest we had very good results. Our drone always stayed on the path and followed it nicely. The model also performed well on densely overgrown paths and was able to guide our drone over this path. When pointing the drone in a direction where there is no path, the model returns a black image, indicating that it is well trained to not classify non-paths as paths. The model was not only capable of detecting the path that starts at the bottom of the screen but also when the path was horizontal. We tested this by going a few meters off trail and pointing it in the direction of the path. The drone was able to see the path even with some trees in the way.</p>
 <p>To load a model you can use this <a class="reference internal" href="load_model.html"><span class="doc std std-doc">Jupyter notebook</span></a> and do predictions yourselves.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eeTxom6YrDs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
-<div class="toctree-wrapper compound">
-</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -618,8 +844,10 @@ we used.</p>
 <dd><p>M. Tan, “EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks” May 2019.</p>
 </dd>
 </dl>
+</section>
+<div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -643,36 +871,48 @@ we used.</p>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../dataprep/labelling/json2mask/json2mask.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">JSON to mask</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="load_model.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Load model</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="../dataprep/labelling/json2mask/json2mask.html" title="previous page">JSON to mask</a>
-    <a class='right-next' id="next-link" href="load_model.html" title="next page">Load model</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pieter Fiers, Simon Germeau<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Pieter Fiers, Simon Germeau<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

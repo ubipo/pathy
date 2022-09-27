@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Components &#8212; Paddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Components &#8212; Pathy</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,110 +20,126 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://paddy.pfiers.net/rover/components.html" />
+    <link rel="canonical" href="https://pathy.pfiers.net/rover/components.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ardupilot configuration" href="ardupilot-config.html" />
     <link rel="prev" title="Rover" href="README.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://paddy.pfiers.net/rover/components.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="Components" />
-<meta property="og:description" content="Components  The rover has two levels. The bottom level is the diy-assembly tank chassis. The top level is a wooden frame to hold the power components.    Rover " />
-
-
-<meta name="twitter:card" content="summary" />
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Paddy</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Pathy</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../technologies.html">
    Technologies
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../dataprep/README.html">
    Dataprep
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../dataprep/datasets.html">
      Datasets
     </a>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dataprep/scripts/README.html">
      Scripts
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dataprep/scripts/freiburg_flatten.html">
        Flatten Freiburg folder structure
@@ -157,14 +176,17 @@
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../dataprep/labelling/README.html">
      Labelling
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../dataprep/labelling/create_label_jsons.html">
        Create empty label json’s for django-labeller
@@ -186,18 +208,19 @@
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../model/README.html">
    Model
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../model/load_model.html">
      Load model
@@ -214,14 +237,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="README.html">
    Rover
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Components
@@ -238,66 +264,75 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ros/README.html">
    ROS
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="../ros/paddy/README.html">
-     Paddy
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../ros/pathy/README.html">
+     Pathy
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/camstream.html">
+      <a class="reference internal" href="../ros/pathy/pathy/camstream.html">
        Camstream
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/padnet.html">
+      <a class="reference internal" href="../ros/pathy/pathy/padnet.html">
        Padnet
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/steering.html">
+      <a class="reference internal" href="../ros/pathy/pathy/steering.html">
        Steering
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/dms.html">
+      <a class="reference internal" href="../ros/pathy/pathy/dms.html">
        Dead man’s switch
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/mav.html">
+      <a class="reference internal" href="../ros/pathy/pathy/mav.html">
        Mav
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../ros/paddy/paddy/gcs_webui_ws_server.html">
+      <a class="reference internal" href="../ros/pathy/pathy/gcs_webui_ws_server.html">
        GCS WebUI WebSockets server
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../ros/droidcam/README.html">
      DroidCAM
     </a>
-    <ul class="collapse-ul">
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../ros/droidcam/get_android_ip.html">
        Get Android IP
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ros/webui.html">
@@ -305,8 +340,6 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../DOCUMENTATION.html">
@@ -315,89 +348,181 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/rover/components.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ubipo/paddy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/ubipo/paddy/edit/master/rover/components.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ubipo/pathy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ubipo/pathy/edit/master/rover/components.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/rover/components.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chassis">
    Chassis
@@ -425,61 +550,114 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Components</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chassis">
+   Chassis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#h-bridge">
+   H-bridge
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flight-controller">
+   Flight controller
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sbc">
+   SBC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power">
+   Power
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="components">
-<h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="components">
+<h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">#</a></h1>
 <p>The rover has two levels. The bottom level is the diy-assembly tank chassis. The top level is a wooden frame to hold the power components.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="../_images/rover-lower.jpg" src="../_images/rover-lower.jpg" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Rover bottom level</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id2">
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Rover bottom level</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
 <img alt="../_images/rover-upper.jpg" src="../_images/rover-upper.jpg" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Rover top level</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="chassis">
-<span id="components-chassis"></span><h2>Chassis<a class="headerlink" href="#chassis" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Rover top level</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="chassis">
+<span id="components-chassis"></span><h2>Chassis<a class="headerlink" href="#chassis" title="Permalink to this headline">#</a></h2>
 <p>The base of the rover is the “<a class="reference external" href="https://www.seeedstudio.com/TS100-shock-absorber-tank-chassis-with-track-and-DC-geared-motors-Kit-p-4107.html">TS100 Shock Absorber Tank Chassis</a>” by <a class="reference external" href="https://www.doit.am">DOIT</a> (<a class="reference external" href="https://raw.githubusercontent.com/SeeedDocument/Outsourcing/master/110090267%20TS100%20shock%20absorber%20tank%20chassis%20with%20track%20and%20DC%20geared%20motors%20Kit/InstallationforTS100%20.pdf">manual</a>). The kit for this rover was kindly provided to us by our mentor at <a class="reference external" href="https://airobot.eu/">Airobot</a>.</p>
 <p>The chassis uses <a class="reference external" href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-7420481794.72.fWWJc1&amp;id=45203541487">simple DC motors</a> with a Hall-effect sensor. It is possible to use these sensors with Ardupilot for better positional accuracy, but we didn’t in our setup. The motors are rated for a max of 9V.</p>
-</div>
-<div class="section" id="h-bridge">
-<span id="components-h-bridge"></span><h2>H-bridge<a class="headerlink" href="#h-bridge" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="h-bridge">
+<span id="components-h-bridge"></span><h2>H-bridge<a class="headerlink" href="#h-bridge" title="Permalink to this headline">#</a></h2>
 <p>To control the speed and direction of the two motors we used a <a class="reference external" href="https://www.velleman.eu/products/view/?id=435576">VMA409 H-bridge breakout board</a>, also provided to us by Airobot.</p>
 <p>To ease control of the H-bridge through software we added a simple <a class="reference external" href="https://web.mit.edu/6.131/www/document/7402.pdf">NOR-gate</a> circuit.</p>
-<div class="figure align-default" id="circuit-diagram">
-<img alt="../_images/nor-gates-circuit.svg" src="../_images/nor-gates-circuit.svg" /><p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Circuit to control the H-bridge from the Pixhawk</span><a class="headerlink" href="#circuit-diagram" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="flight-controller">
-<h2>Flight controller<a class="headerlink" href="#flight-controller" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="circuit-diagram">
+<img alt="../_images/nor-gates-circuit.svg" src="../_images/nor-gates-circuit.svg" /><figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Circuit to control the H-bridge from the Pixhawk</span><a class="headerlink" href="#circuit-diagram" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="flight-controller">
+<h2>Flight controller<a class="headerlink" href="#flight-controller" title="Permalink to this headline">#</a></h2>
 <p>To control the rover’s motors (and potentially other RC components) we used a <a class="reference external" href="https://docs.px4.io/v1.9.0/en/flight_controller/pixhawk.html">Pixhawk 2.4.8 flight controller</a>.</p>
-<div class="figure align-default" id="pixhawk">
+<figure class="align-default" id="pixhawk">
 <a class="reference internal image-reference" href="../_images/pixhawk.png"><img alt="../_images/pixhawk.png" src="../_images/pixhawk.png" style="width: 133.0px; height: 213.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Pixhawk flight controller</span><a class="headerlink" href="#pixhawk" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Pixhawk flight controller</span><a class="headerlink" href="#pixhawk" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>To control the speed of the motors the H-bridge’s motor PWN connections (labelled “ENA” and “ENB” on the VMA409) should be connected to the Pixhawk’s SERVO1 and SERVO2 pins (mainout rail).</p>
 <p>The Pixhawk’s Relay 1 and Relay 2 pins control the motors’ direction. See the <a class="reference internal" href="#circuit-diagram"><span class="std std-ref">circuit diagram above</span></a> for the necessary connections.</p>
 <p>See <a class="reference internal" href="ardupilot-config.html"><span class="doc std std-doc">Ardupilot Configuration</span></a> for all the necessary ardupilot parameter tweaks.</p>
-</div>
-<div class="section" id="sbc">
-<h2>SBC<a class="headerlink" href="#sbc" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sbc">
+<h2>SBC<a class="headerlink" href="#sbc" title="Permalink to this headline">#</a></h2>
 <p>As previously discussed we used an <a class="reference external" href="https://developer.nvidia.com/embedded/jetson-nano-developer-kit">NVIDIA Jetson Nano SBC</a> to make autonomous steering decisions. The software logic for this is discussed in the chapter about <a class="reference internal" href="../ros/README.html"><span class="doc std std-doc">ROS</span></a>.</p>
-<div class="figure align-default" id="jetson">
+<figure class="align-default" id="jetson">
 <a class="reference internal image-reference" href="../_images/jetson.png"><img alt="../_images/jetson.png" src="../_images/jetson.png" style="width: 300.0px; height: 244.75px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">NVIDIA Jetson Nano SBC</span><a class="headerlink" href="#jetson" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">NVIDIA Jetson Nano SBC</span><a class="headerlink" href="#jetson" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>To relay its eventual steering decisions to the flight controller (and thus the motors) we connected the Jetson Nano to the Pixhawk through serial (Pixhawk TELEM 1 &lt;-&gt; Jetson Nano UART_2). Also see <a class="reference external" href="https://www.mathworks.com/help/supportpkg/jetsoncpu/ref/jetson-pixhawk-interface-example.html">this guide by MathWorks</a>.</p>
-</div>
-<div class="section" id="power">
-<h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="power">
+<h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">#</a></h2>
 <p>It is possible to power all components though a single LiPo battery but due to time constraints we used three separate batteries:</p>
 <ul class="simple">
 <li><p>A <a class="reference external" href="https://www.genstattu.com/ta-rl3-120c-2000-4s1p.html">14.8V LiPo battery</a> for the Jetson Nano</p></li>
@@ -489,8 +667,8 @@
 <p>The Jetson Nano is powered by the LiPo battery through a simple <a class="reference external" href="https://www.antratek.be/adjustable-dc-dc-power-converter-1-25v-35v-3a-lm2596">adjustable buck converter</a> to step the battery’s 14.8V down to 5V.</p>
 <p>The motors are powered directly by the two 18650 batteries. The motors are rated for a max voltage of 9V and thus don’t run at full speed off of the 7V battery output. This isn’t a problem.</p>
 <p>The Pixhawk is simply powered through its USB-micro connection.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -514,36 +692,48 @@
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Rover</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ardupilot-config.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ardupilot configuration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Rover</a>
-    <a class='right-next' id="next-link" href="ardupilot-config.html" title="next page">Ardupilot configuration</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pieter Fiers, Simon Germeau<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Pieter Fiers, Simon Germeau<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

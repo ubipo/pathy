@@ -1,0 +1,48 @@
+import ast, textwrap
+import nbformat
+
+
+DOC_FOOTER = textwrap.dedent("""\
+    <hr>
+    <i>
+        This documentation page was generated from a python file.
+        The file is located in the repo folder corresponding to this 
+        documentation page.
+        You can also click the `suggest edit` link (GitHub logo, top right)
+        to open the file for editing in GitHub.
+    </i>
+""")
+
+def py_to_nb_node(py_content: str, ext: str = ".py") -> nbformat.NotebookNode:
+    if py_content is None:
+        return None
+    
+    docstring = ast.get_docstring(ast.parse(py_content))
+    if (docstring is None):
+        return nbformat.NotebookNode(
+            nbformat=nbformat.v4.nbformat,
+            nbformat_minor=nbformat.v4.nbformat_minor,
+            metadata={},
+            cells=[],
+        )
+        
+    docstring_lines = docstring.split("\n")
+    title = docstring_lines[0]
+    content = "\n".join(docstring_lines[2:])
+    title_cell = nbformat.v4.new_markdown_cell(f"# {title}")
+    content_cell = nbformat.v4.new_markdown_cell(content)
+    info_cell = nbformat.v4.new_markdown_cell(DOC_FOOTER)
+    nb = nbformat.NotebookNode(
+        nbformat=nbformat.v4.nbformat,
+        nbformat_minor=nbformat.v4.nbformat_minor,
+        metadata={
+            "title": title,
+            "language_info": {
+                "file_extension": ext,
+                "mimetype": "text/x-python",
+                "name": "python",
+            },
+        },
+        cells=[title_cell, content_cell, info_cell],
+    )
+    return nb

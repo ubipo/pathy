@@ -1,5 +1,7 @@
 # Autonomously Following Forest Paths with a Mobile Robot using Semantic Segmentation
 
+**Website:** [pathy.pfiers.net](https://pathy.pfiers.net)
+
 This project is [Pieter Fiers](https://pfiers.net) and
  [Simon Germeau](https://github.com/GermeauSimon)'s professional bachelor's thesis for [UCLL](https://www.ucll.be/)'s [Aplied Informatics degree](http://onderwijsaanbod.leuven.ucll.be/opleidingen/n/SC_52335187.htm).
 
